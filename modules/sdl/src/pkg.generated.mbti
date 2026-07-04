@@ -1,0 +1,318 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "klaseca/sdl"
+
+import {
+  "klaseca/sdl-sys",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub const INIT_AUDIO : UInt = 0x00000010
+
+pub const INIT_CAMERA : UInt = 0x00010000
+
+pub const INIT_EVENTS : UInt = 0x00004000
+
+pub const INIT_GAMEPAD : UInt = 0x00002000
+
+pub const INIT_HAPTIC : UInt = 0x00001000
+
+pub const INIT_JOYSTICK : UInt = 0x00000200
+
+pub const INIT_SENSOR : UInt = 0x00008000
+
+pub const INIT_VIDEO : UInt = 0x00000020
+
+pub const MESSAGEBOX_ERROR : UInt = 0x00000010
+
+pub const MESSAGEBOX_INFORMATION : UInt = 0x00000040
+
+pub const MESSAGEBOX_WARNING : UInt = 0x00000020
+
+pub const TRAYENTRY_BUTTON : UInt = 0x00000001
+
+pub const TRAYENTRY_CHECKBOX : UInt = 0x00000002
+
+pub const TRAYENTRY_CHECKED : UInt = 0x40000000
+
+pub const TRAYENTRY_DISABLED : UInt = 0x80000000
+
+pub const TRAYENTRY_SUBMENU : UInt = 0x00000004
+
+pub fn add_event_watch((Event) -> Unit) -> EventListener raise SdlError
+
+pub fn delay(UInt) -> Unit
+
+pub fn init_lib(UInt) -> Unit raise SdlError
+
+pub fn poll_event() -> Event?
+
+pub fn quit() -> Unit
+
+// Errors
+pub(all) suberror SdlError {
+  SdlError(String)
+} derive(Eq, @debug.Debug)
+
+// Types and methods
+type App
+pub fn App::App(init_flags? : UInt, control_flow? : ControlFlow) -> Self
+pub fn App::exit(Self) -> Unit
+pub fn App::is_running(Self) -> Bool
+pub fn App::run(Self, (Self) -> Unit raise SdlError) -> Unit raise SdlError
+pub fn App::run_loop(Self, () -> Unit raise SdlError) -> Unit raise SdlError
+
+pub(all) enum BlendMode {
+  NoBlend
+  Blend
+  BlendPremultiplied
+  Add
+  AddPremultiplied
+  Mod
+  Mul
+} derive(Eq, @debug.Debug)
+
+pub type Clipboard
+pub fn Clipboard::has_text() -> Bool
+pub fn Clipboard::set_text(String) -> Unit raise SdlError
+pub fn Clipboard::text() -> String
+
+pub(all) struct Color {
+  r : Byte
+  g : Byte
+  b : Byte
+  a : Byte
+} derive(Eq, @debug.Debug)
+pub fn Color::rgb(r~ : Byte, g~ : Byte, b~ : Byte) -> Self
+pub fn Color::rgba(r~ : Byte, g~ : Byte, b~ : Byte, a~ : Byte) -> Self
+
+pub(all) enum ControlFlow {
+  Poll
+  Wait(Int)
+  Exit
+} derive(Eq, @debug.Debug)
+
+pub(all) enum Event {
+  Quit
+  KeyDown(KeyboardEvent)
+  KeyUp(KeyboardEvent)
+  MouseMotion(MouseMotionEvent)
+  MouseButtonDown(MouseButtonEvent)
+  MouseButtonUp(MouseButtonEvent)
+  TextInput(TextInputEvent)
+  WindowExposed(WindowEvent)
+  WindowResized(WindowEvent)
+  WindowPixelSizeChanged(WindowEvent)
+  WindowCloseRequested(WindowEvent)
+  Other(UInt)
+} derive(Eq, @debug.Debug)
+
+type EventListener
+pub fn EventListener::dispose(Self) -> Unit
+
+pub(all) struct FRect {
+  x : Float
+  y : Float
+  w : Float
+  h : Float
+} derive(@debug.Debug)
+pub fn FRect::FRect(x~ : Float, y~ : Float, w~ : Float, h~ : Float) -> Self
+
+pub(all) struct FSize {
+  width : Float
+  height : Float
+} derive(Eq, @debug.Debug)
+
+pub(all) struct KeyboardEvent {
+  window_id : UInt
+  keyboard_id : UInt
+  scancode : Int
+  keycode : UInt
+  modifiers : UInt16
+  repeat : Bool
+} derive(Eq, @debug.Debug)
+
+pub struct Menu {
+  // private fields
+}
+pub fn Menu::Menu() -> Self
+pub fn Menu::button(Self, label~ : String, on_click? : () -> Unit, enabled? : Bool) -> Self
+pub fn Menu::checkbox(Self, label~ : String, on_click? : () -> Unit, checked? : Bool, enabled? : Bool) -> Self
+pub fn Menu::extend(Self, Self) -> Self
+pub fn Menu::separator(Self) -> Self
+pub fn Menu::submenu(Self, label~ : String, menu~ : Self) -> Self
+
+pub(all) struct MouseButtonEvent {
+  window_id : UInt
+  mouse_id : UInt
+  button : Byte
+  clicks : Byte
+  x : Float
+  y : Float
+} derive(Eq, @debug.Debug)
+
+pub(all) struct MouseMotionEvent {
+  window_id : UInt
+  mouse_id : UInt
+  state : UInt
+  x : Float
+  y : Float
+  xrel : Float
+  yrel : Float
+} derive(Eq, @debug.Debug)
+
+pub(all) enum PixelFormat {
+  Rgba8888
+  Abgr8888
+  Bgra8888
+  Bgra32
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Position {
+  x : Int
+  y : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Properties {
+  raw : UInt
+}
+pub fn Properties::Properties() -> Self raise SdlError
+pub fn Properties::destroy(Self) -> Unit
+pub fn Properties::raw(Self) -> UInt
+pub fn Properties::set_boolean(Self, name~ : Bytes, value~ : Bool?) -> Unit raise SdlError
+pub fn Properties::set_property(Self, Property) -> Unit raise SdlError
+pub fn Properties::set_string(Self, name~ : Bytes, value~ : String?) -> Unit raise SdlError
+
+pub(all) enum Property {
+  StringProperty(name~ : Bytes, value~ : String)
+  NumberProperty(name~ : Bytes, value~ : Int64)
+  FloatProperty(name~ : Bytes, value~ : Float)
+  BooleanProperty(name~ : Bytes, value~ : Bool)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Rect {
+  x : Int
+  y : Int
+  w : Int
+  h : Int
+} derive(Eq, @debug.Debug)
+pub fn Rect::Rect(x~ : Int, y~ : Int, w~ : Int, h~ : Int) -> Self
+
+type Renderer
+pub fn Renderer::Renderer(Window, name? : String) -> Self raise SdlError
+pub fn Renderer::clear(Self) -> Unit raise SdlError
+pub fn Renderer::create_texture(Self, width~ : Int, height~ : Int, format? : PixelFormat, access? : TextureAccess) -> Texture raise SdlError
+pub fn Renderer::destroy(Self) -> Unit
+pub fn Renderer::fill_frect(Self, FRect) -> Unit raise SdlError
+pub fn Renderer::fill_rect(Self, x~ : Float, y~ : Float, w~ : Float, h~ : Float) -> Unit raise SdlError
+pub fn Renderer::output_size(Self) -> Size raise SdlError
+pub fn Renderer::present(Self) -> Unit raise SdlError
+pub fn Renderer::raw(Self) -> @sdl-sys.Renderer
+pub fn Renderer::render_texture(Self, Texture, src? : FRect, dst? : FRect) -> Unit raise SdlError
+pub fn Renderer::set_draw_color(Self, Color) -> Unit raise SdlError
+
+pub(all) struct Size {
+  width : Int
+  height : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TextInputEvent {
+  text : String
+} derive(Eq, @debug.Debug)
+
+type Texture
+pub fn Texture::Texture(Renderer, width~ : Int, height~ : Int, format? : PixelFormat, access? : TextureAccess) -> Self raise SdlError
+pub fn Texture::destroy(Self) -> Unit
+pub fn Texture::raw(Self) -> @sdl-sys.Texture
+pub fn Texture::set_alpha_mod(Self, Byte) -> Unit raise SdlError
+pub fn Texture::set_blend_mode(Self, BlendMode) -> Unit raise SdlError
+pub fn Texture::set_color_mod(Self, Color) -> Unit raise SdlError
+pub fn Texture::size(Self) -> FSize raise SdlError
+pub fn Texture::update(Self, pixels~ : Bytes, pitch~ : Int, rect? : Rect) -> Unit raise SdlError
+
+pub(all) enum TextureAccess {
+  Static
+  Streaming
+  Target
+} derive(Eq, @debug.Debug)
+
+type Tray
+pub fn Tray::Tray(tooltip~ : String, menu? : Menu) -> Self raise SdlError
+pub fn Tray::destroy(Self) -> Unit
+pub fn Tray::extend(Self, Menu) -> Unit raise SdlError
+pub fn Tray::raw(Self) -> @sdl-sys.Tray
+pub fn Tray::set_tooltip(Self, String) -> Unit
+pub fn Tray::update() -> Unit
+
+type Window
+pub fn Window::Window(title~ : String, width~ : Int, height~ : Int, placement? : WindowPlacement, hidden? : Bool, resizable? : Bool, borderless? : Bool, always_on_top? : Bool, high_pixel_density? : Bool, constrain_popup? : Bool, external_graphics_context? : Bool, fullscreen? : Bool, maximized? : Bool, minimized? : Bool, menu? : Bool, modal? : Bool, mouse_grabbed? : Bool, focusable? : Bool, opengl? : Bool, metal? : Bool, vulkan? : Bool, transparent? : Bool, tooltip? : Bool, utility? : Bool, custom_properties? : Array[Property], close_behavior? : WindowCloseBehavior) -> Self raise SdlError
+pub fn Window::destroy(Self) -> Unit
+pub fn Window::flags(Self) -> UInt64
+pub fn Window::hide(Self) -> Unit raise SdlError
+pub fn Window::id(Self) -> UInt raise SdlError
+pub fn Window::keyboard_grab(Self) -> Bool
+pub fn Window::maximize(Self) -> Unit raise SdlError
+pub fn Window::maximum_size(Self) -> Size raise SdlError
+pub fn Window::minimize(Self) -> Unit raise SdlError
+pub fn Window::minimum_size(Self) -> Size raise SdlError
+pub fn Window::mouse_grab(Self) -> Bool
+pub fn Window::on(Self, WindowEventName, (WindowEvent) -> Unit) -> EventListener raise SdlError
+pub fn Window::opacity(Self) -> Float raise SdlError
+pub fn Window::position(Self) -> Position raise SdlError
+pub fn Window::raise_window(Self) -> Unit raise SdlError
+pub fn Window::raw(Self) -> @sdl-sys.Window
+pub fn Window::restore(Self) -> Unit raise SdlError
+pub fn Window::set_always_on_top(Self, Bool) -> Unit raise SdlError
+pub fn Window::set_bordered(Self, Bool) -> Unit raise SdlError
+pub fn Window::set_close_behavior(Self, WindowCloseBehavior) -> Unit raise SdlError
+pub fn Window::set_fullscreen(Self, Bool) -> Unit raise SdlError
+pub fn Window::set_keyboard_grab(Self, Bool) -> Unit raise SdlError
+pub fn Window::set_maximum_size(Self, width~ : Int, height~ : Int) -> Unit raise SdlError
+pub fn Window::set_minimum_size(Self, width~ : Int, height~ : Int) -> Unit raise SdlError
+pub fn Window::set_mouse_grab(Self, Bool) -> Unit raise SdlError
+pub fn Window::set_opacity(Self, Float) -> Unit raise SdlError
+pub fn Window::set_placement(Self, WindowPlacement) -> Unit raise SdlError
+pub fn Window::set_position(Self, x~ : Int, y~ : Int) -> Unit raise SdlError
+pub fn Window::set_resizable(Self, Bool) -> Unit raise SdlError
+pub fn Window::set_size(Self, width~ : Int, height~ : Int) -> Unit raise SdlError
+pub fn Window::set_title(Self, String) -> Unit raise SdlError
+pub fn Window::show(Self) -> Unit raise SdlError
+pub fn Window::show_simple_message_box(Self, title~ : String, message~ : String, flags? : UInt) -> Unit raise SdlError
+pub fn Window::show_system_menu(Self, x~ : Int, y~ : Int) -> Unit raise SdlError
+pub fn Window::size(Self) -> Size raise SdlError
+pub fn Window::size_in_pixels(Self) -> Size raise SdlError
+pub fn Window::start_text_input(Self) -> Unit raise SdlError
+pub fn Window::stop_text_input(Self) -> Unit raise SdlError
+pub fn Window::title(Self) -> String
+
+pub(all) enum WindowCloseBehavior {
+  ExitApp
+  Hide
+  Ignore
+} derive(Eq, @debug.Debug)
+
+pub(all) struct WindowEvent {
+  window_id : UInt
+  name : WindowEventName
+  size : Size?
+} derive(Eq, @debug.Debug)
+
+pub(all) enum WindowEventName {
+  Exposed
+  Resized
+  PixelSizeChanged
+  CloseRequested
+} derive(Eq, @debug.Debug)
+
+pub(all) enum WindowPlacement {
+  Positioned(Position)
+  Centered
+  CenteredOnDisplay(UInt)
+  Undefined
+  UndefinedOnDisplay(UInt)
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

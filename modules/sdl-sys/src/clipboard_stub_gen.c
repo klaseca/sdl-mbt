@@ -1,0 +1,22 @@
+// Generated file. Do not edit by hand.
+
+#include "../../../externals/SDL/include/SDL3/SDL.h"
+#include <moonbit.h>
+#include <stdint.h>
+
+moonbit_bytes_t moonbit_cstring_to_bytes(const char *str);
+
+int32_t moonbit_sdl_set_clipboard_text(moonbit_bytes_t text) {
+  return SDL_SetClipboardText((const char *)text);
+}
+
+moonbit_bytes_t moonbit_sdl_get_clipboard_text(void) {
+  char *result = SDL_GetClipboardText();
+  moonbit_bytes_t bytes = moonbit_cstring_to_bytes(result);
+  SDL_free(result);
+  return bytes;
+}
+
+int32_t moonbit_sdl_has_clipboard_text(void) {
+  return SDL_HasClipboardText();
+}

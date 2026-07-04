@@ -1,0 +1,210 @@
+{
+  "projectRoot": "../../..",
+  "includeDir": "externals/SDL/include/SDL3",
+  "outputDir": "modules/sdl-sys/src",
+  "cInclude": "../../../externals/SDL/include/SDL3/SDL.h",
+  "headers": [
+    "SDL_blendmode.h",
+    "SDL_error.h",
+    "SDL_events.h",
+    "SDL_init.h",
+    "SDL_clipboard.h",
+    "SDL_messagebox.h",
+    "SDL_pixels.h",
+    "SDL_properties.h",
+    "SDL_rect.h",
+    "SDL_render.h",
+    "SDL_keyboard.h",
+    "SDL_timer.h",
+    "SDL_tray.h",
+    "SDL_video.h"
+  ],
+  "functions": [
+    "SDL_ClickTrayEntry",
+    "SDL_CreateRenderer",
+    "SDL_CreateTexture",
+    {
+      "name": "SDL_CreateTray",
+      "params": {
+        "icon": {
+          "passing": "null"
+        }
+      }
+    },
+    "SDL_CreateTrayMenu",
+    "SDL_CreateTraySubmenu",
+    "SDL_CreateWindow",
+    "SDL_CreateProperties",
+    "SDL_CreateWindowWithProperties",
+    "SDL_Delay",
+    "SDL_DestroyRenderer",
+    "SDL_DestroyTexture",
+    "SDL_DestroyTray",
+    "SDL_DestroyWindow",
+    "SDL_DestroyProperties",
+    "SDL_GetBooleanProperty",
+    "SDL_SetBooleanProperty",
+    "SDL_GetFloatProperty",
+    "SDL_SetFloatProperty",
+    "SDL_GetNumberProperty",
+    "SDL_SetNumberProperty",
+    "SDL_GetStringProperty",
+    "SDL_SetStringProperty",
+    "SDL_GetError",
+    "SDL_GetClipboardText",
+    "SDL_HasClipboardText",
+    "SDL_GetCurrentRenderOutputSize",
+    "SDL_GetTrayEntryChecked",
+    "SDL_GetTrayEntryEnabled",
+    "SDL_GetTrayEntryLabel",
+    "SDL_GetTrayMenu",
+    "SDL_GetTraySubmenu",
+    "SDL_GetTextureSize",
+    {
+      "name": "SDL_GetWindowFromID",
+      "return": {
+        "ownership": "borrowed"
+      }
+    },
+    "SDL_GetWindowFlags",
+    "SDL_GetWindowID",
+    "SDL_GetWindowKeyboardGrab",
+    "SDL_GetWindowMaximumSize",
+    "SDL_GetWindowMinimumSize",
+    "SDL_GetWindowMouseGrab",
+    "SDL_GetWindowOpacity",
+    "SDL_GetWindowPosition",
+    "SDL_GetWindowProperties",
+    "SDL_GetWindowSize",
+    "SDL_GetWindowSizeInPixels",
+    "SDL_GetWindowTitle",
+    "SDL_HideWindow",
+    {
+      "name": "SDL_InsertTrayEntryAt",
+      "params": {
+        "label": {
+          "emptyAsNull": true
+        }
+      }
+    },
+    "SDL_Init",
+    "SDL_MaximizeWindow",
+    "SDL_MinimizeWindow",
+    "SDL_PollEvent",
+    "SDL_WaitEventTimeout",
+    "SDL_Quit",
+    "SDL_RaiseWindow",
+    "SDL_RemoveTrayEntry",
+    "SDL_RenderClear",
+    "SDL_RenderFillRect",
+    "SDL_RenderPresent",
+    "SDL_RenderTexture",
+    "SDL_RestoreWindow",
+    "SDL_SetRenderDrawColor",
+    "SDL_SetClipboardText",
+    "SDL_SetTextureAlphaMod",
+    "SDL_SetTextureBlendMode",
+    "SDL_SetTextureColorMod",
+    "SDL_SetTrayEntryChecked",
+    "SDL_SetTrayEntryEnabled",
+    "SDL_SetTrayEntryLabel",
+    "SDL_SetTrayTooltip",
+    "SDL_SetWindowAlwaysOnTop",
+    "SDL_SetWindowBordered",
+    "SDL_SetWindowFullscreen",
+    "SDL_SetWindowKeyboardGrab",
+    "SDL_SetWindowMaximumSize",
+    "SDL_SetWindowMinimumSize",
+    "SDL_SetWindowMouseGrab",
+    "SDL_SetWindowOpacity",
+    "SDL_SetWindowPosition",
+    "SDL_SetWindowResizable",
+    "SDL_SetWindowSize",
+    "SDL_SetWindowTitle",
+    "SDL_ShowWindow",
+    "SDL_ShowSimpleMessageBox",
+    "SDL_ShowWindowSystemMenu",
+    "SDL_StartTextInput",
+    "SDL_StopTextInput",
+    {
+      "name": "SDL_LockTexture",
+      "params": {
+        "rect": {
+          "nullable": true
+        }
+      }
+    },
+    "SDL_UnlockTexture",
+    {
+      "name": "SDL_UpdateTexture",
+      "params": {
+        "rect": {
+          "nullable": true
+        }
+      }
+    },
+    "SDL_UpdateTrays"
+  ],
+  "valueStructs": {
+    "SDL_Event": {
+      "accessors": {
+        "type": "event_type",
+        "key.windowID": "key_window_id",
+        "key.which": "key_keyboard_id",
+        "key.scancode": "key_scancode",
+        "key.key": "key_keycode",
+        "key.mod": "key_modifiers",
+        "key.repeat": "key_repeat",
+        "motion.windowID": "motion_window_id",
+        "motion.which": "motion_mouse_id",
+        "motion.state": "motion_state",
+        "motion.x": "motion_x",
+        "motion.y": "motion_y",
+        "motion.xrel": "motion_xrel",
+        "motion.yrel": "motion_yrel",
+        "button.windowID": "button_window_id",
+        "button.which": "button_mouse_id",
+        "button.button": "button_button",
+        "button.clicks": "button_clicks",
+        "button.x": "button_x",
+        "button.y": "button_y",
+        "window.windowID": "window_window_id",
+        "window.data1": "window_data1",
+        "window.data2": "window_data2",
+        "text.text": "text_text"
+      }
+    },
+    "SDL_FRect": {},
+    "SDL_Rect": {}
+  },
+  "resources": {
+    "SDL_Renderer": {
+      "destroy": "SDL_DestroyRenderer"
+    },
+    "SDL_Texture": {
+      "destroy": "SDL_DestroyTexture"
+    },
+    "SDL_Tray": {
+      "destroy": "SDL_DestroyTray"
+    },
+    "SDL_Window": {
+      "destroy": "SDL_DestroyWindow"
+    }
+  },
+  "renames": {
+    "functions": {
+      "SDL_Init": "init_lib"
+    }
+  },
+  "constantPrefixes": [
+    "SDL_BLENDMODE_",
+    "SDL_EVENT_",
+    "SDL_INIT_",
+    "SDL_MESSAGEBOX_",
+    "SDL_PIXELFORMAT_",
+    "SDL_PROP_",
+    "SDL_TEXTUREACCESS_",
+    "SDL_TRAYENTRY_",
+    "SDL_WINDOW_"
+  ]
+}

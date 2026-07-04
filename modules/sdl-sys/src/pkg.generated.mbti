@@ -1,0 +1,1201 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "klaseca/sdl-sys"
+
+import {
+  "moonbitlang/core/ref",
+}
+
+// Values
+pub const BLENDMODE_ADD : UInt = 0x00000002
+
+pub const BLENDMODE_ADD_PREMULTIPLIED : UInt = 0x00000020
+
+pub const BLENDMODE_BLEND : UInt = 0x00000001
+
+pub const BLENDMODE_BLEND_PREMULTIPLIED : UInt = 0x00000010
+
+pub const BLENDMODE_INVALID : UInt = 0x7FFFFFFF
+
+pub const BLENDMODE_MOD : UInt = 0x00000004
+
+pub const BLENDMODE_MUL : UInt = 0x00000008
+
+pub const BLENDMODE_NONE : UInt = 0x00000000
+
+pub const EVENT_AUDIO_DEVICE_ADDED : UInt = 0x1100
+
+pub const EVENT_AUDIO_DEVICE_FORMAT_CHANGED : UInt = 4354
+
+pub const EVENT_AUDIO_DEVICE_REMOVED : UInt = 4353
+
+pub const EVENT_CAMERA_DEVICE_ADDED : UInt = 0x1400
+
+pub const EVENT_CAMERA_DEVICE_APPROVED : UInt = 5122
+
+pub const EVENT_CAMERA_DEVICE_DENIED : UInt = 5123
+
+pub const EVENT_CAMERA_DEVICE_REMOVED : UInt = 5121
+
+pub const EVENT_CLIPBOARD_UPDATE : UInt = 0x900
+
+pub const EVENT_DID_ENTER_BACKGROUND : UInt = 260
+
+pub const EVENT_DID_ENTER_FOREGROUND : UInt = 262
+
+pub const EVENT_DISPLAY_ADDED : UInt = 338
+
+pub const EVENT_DISPLAY_CONTENT_SCALE_CHANGED : UInt = 343
+
+pub const EVENT_DISPLAY_CURRENT_MODE_CHANGED : UInt = 342
+
+pub const EVENT_DISPLAY_DESKTOP_MODE_CHANGED : UInt = 341
+
+pub const EVENT_DISPLAY_MOVED : UInt = 340
+
+pub const EVENT_DISPLAY_ORIENTATION : UInt = 0x151
+
+pub const EVENT_DISPLAY_REMOVED : UInt = 339
+
+pub const EVENT_DISPLAY_USABLE_BOUNDS_CHANGED : UInt = 344
+
+pub const EVENT_DROP_BEGIN : UInt = 4098
+
+pub const EVENT_DROP_COMPLETE : UInt = 4099
+
+pub const EVENT_DROP_FILE : UInt = 0x1000
+
+pub const EVENT_DROP_POSITION : UInt = 4100
+
+pub const EVENT_DROP_TEXT : UInt = 4097
+
+pub const EVENT_ENUM_PADDING : UInt = 0x7FFFFFFF
+
+pub const EVENT_FINGER_CANCELED : UInt = 1795
+
+pub const EVENT_FINGER_DOWN : UInt = 0x700
+
+pub const EVENT_FINGER_MOTION : UInt = 1794
+
+pub const EVENT_FINGER_UP : UInt = 1793
+
+pub const EVENT_FIRST : UInt = 0
+
+pub const EVENT_GAMEPAD_ADDED : UInt = 1619
+
+pub const EVENT_GAMEPAD_AXIS_MOTION : UInt = 0x650
+
+pub const EVENT_GAMEPAD_BUTTON_DOWN : UInt = 1617
+
+pub const EVENT_GAMEPAD_BUTTON_UP : UInt = 1618
+
+pub const EVENT_GAMEPAD_CAPSENSE_RELEASE : UInt = 1629
+
+pub const EVENT_GAMEPAD_CAPSENSE_TOUCH : UInt = 1628
+
+pub const EVENT_GAMEPAD_REMAPPED : UInt = 1621
+
+pub const EVENT_GAMEPAD_REMOVED : UInt = 1620
+
+pub const EVENT_GAMEPAD_SENSOR_UPDATE : UInt = 1625
+
+pub const EVENT_GAMEPAD_STEAM_HANDLE_UPDATED : UInt = 1627
+
+pub const EVENT_GAMEPAD_TOUCHPAD_DOWN : UInt = 1622
+
+pub const EVENT_GAMEPAD_TOUCHPAD_MOTION : UInt = 1623
+
+pub const EVENT_GAMEPAD_TOUCHPAD_UP : UInt = 1624
+
+pub const EVENT_GAMEPAD_UPDATE_COMPLETE : UInt = 1626
+
+pub const EVENT_JOYSTICK_ADDED : UInt = 1541
+
+pub const EVENT_JOYSTICK_AXIS_MOTION : UInt = 0x600
+
+pub const EVENT_JOYSTICK_BALL_MOTION : UInt = 1537
+
+pub const EVENT_JOYSTICK_BATTERY_UPDATED : UInt = 1543
+
+pub const EVENT_JOYSTICK_BUTTON_DOWN : UInt = 1539
+
+pub const EVENT_JOYSTICK_BUTTON_UP : UInt = 1540
+
+pub const EVENT_JOYSTICK_HAT_MOTION : UInt = 1538
+
+pub const EVENT_JOYSTICK_REMOVED : UInt = 1542
+
+pub const EVENT_JOYSTICK_UPDATE_COMPLETE : UInt = 1544
+
+pub const EVENT_KEYBOARD_ADDED : UInt = 773
+
+pub const EVENT_KEYBOARD_REMOVED : UInt = 774
+
+pub const EVENT_KEYMAP_CHANGED : UInt = 772
+
+pub const EVENT_KEY_DOWN : UInt = 0x300
+
+pub const EVENT_KEY_UP : UInt = 769
+
+pub const EVENT_LAST : UInt = 0xFFFF
+
+pub const EVENT_LOCALE_CHANGED : UInt = 263
+
+pub const EVENT_LOW_MEMORY : UInt = 258
+
+pub const EVENT_MOUSE_ADDED : UInt = 1028
+
+pub const EVENT_MOUSE_BUTTON_DOWN : UInt = 1025
+
+pub const EVENT_MOUSE_BUTTON_UP : UInt = 1026
+
+pub const EVENT_MOUSE_MOTION : UInt = 0x400
+
+pub const EVENT_MOUSE_REMOVED : UInt = 1029
+
+pub const EVENT_MOUSE_WHEEL : UInt = 1027
+
+pub const EVENT_PEN_AXIS : UInt = 4871
+
+pub const EVENT_PEN_BUTTON_DOWN : UInt = 4868
+
+pub const EVENT_PEN_BUTTON_UP : UInt = 4869
+
+pub const EVENT_PEN_DOWN : UInt = 4866
+
+pub const EVENT_PEN_MOTION : UInt = 4870
+
+pub const EVENT_PEN_PROXIMITY_IN : UInt = 0x1300
+
+pub const EVENT_PEN_PROXIMITY_OUT : UInt = 4865
+
+pub const EVENT_PEN_UP : UInt = 4867
+
+pub const EVENT_PINCH_BEGIN : UInt = 0x710
+
+pub const EVENT_PINCH_END : UInt = 1810
+
+pub const EVENT_PINCH_UPDATE : UInt = 1809
+
+pub const EVENT_POLL_SENTINEL : UInt = 0x7F00
+
+pub const EVENT_PRIVATE0 : UInt = 0x4000
+
+pub const EVENT_PRIVATE1 : UInt = 16385
+
+pub const EVENT_PRIVATE2 : UInt = 16386
+
+pub const EVENT_PRIVATE3 : UInt = 16387
+
+pub const EVENT_QUIT : UInt = 0x100
+
+pub const EVENT_RENDER_DEVICE_LOST : UInt = 8194
+
+pub const EVENT_RENDER_DEVICE_RESET : UInt = 8193
+
+pub const EVENT_RENDER_TARGETS_RESET : UInt = 0x2000
+
+pub const EVENT_SCREEN_KEYBOARD_HIDDEN : UInt = 777
+
+pub const EVENT_SCREEN_KEYBOARD_SHOWN : UInt = 776
+
+pub const EVENT_SENSOR_UPDATE : UInt = 0x1200
+
+pub const EVENT_SYSTEM_THEME_CHANGED : UInt = 264
+
+pub const EVENT_TERMINATING : UInt = 257
+
+pub const EVENT_TEXT_EDITING : UInt = 770
+
+pub const EVENT_TEXT_EDITING_CANDIDATES : UInt = 775
+
+pub const EVENT_TEXT_INPUT : UInt = 771
+
+pub const EVENT_USER : UInt = 0x8000
+
+pub const EVENT_WILL_ENTER_BACKGROUND : UInt = 259
+
+pub const EVENT_WILL_ENTER_FOREGROUND : UInt = 261
+
+pub const EVENT_WINDOW_CLOSE_REQUESTED : UInt = 528
+
+pub const EVENT_WINDOW_DESTROYED : UInt = 537
+
+pub const EVENT_WINDOW_DISPLAY_CHANGED : UInt = 531
+
+pub const EVENT_WINDOW_DISPLAY_SCALE_CHANGED : UInt = 532
+
+pub const EVENT_WINDOW_ENTER_FULLSCREEN : UInt = 535
+
+pub const EVENT_WINDOW_EXPOSED : UInt = 516
+
+pub const EVENT_WINDOW_FOCUS_GAINED : UInt = 526
+
+pub const EVENT_WINDOW_FOCUS_LOST : UInt = 527
+
+pub const EVENT_WINDOW_HDR_STATE_CHANGED : UInt = 538
+
+pub const EVENT_WINDOW_HIDDEN : UInt = 515
+
+pub const EVENT_WINDOW_HIT_TEST : UInt = 529
+
+pub const EVENT_WINDOW_ICCPROF_CHANGED : UInt = 530
+
+pub const EVENT_WINDOW_LEAVE_FULLSCREEN : UInt = 536
+
+pub const EVENT_WINDOW_MAXIMIZED : UInt = 522
+
+pub const EVENT_WINDOW_METAL_VIEW_RESIZED : UInt = 520
+
+pub const EVENT_WINDOW_MINIMIZED : UInt = 521
+
+pub const EVENT_WINDOW_MOUSE_ENTER : UInt = 524
+
+pub const EVENT_WINDOW_MOUSE_LEAVE : UInt = 525
+
+pub const EVENT_WINDOW_MOVED : UInt = 517
+
+pub const EVENT_WINDOW_OCCLUDED : UInt = 534
+
+pub const EVENT_WINDOW_PIXEL_SIZE_CHANGED : UInt = 519
+
+pub const EVENT_WINDOW_RESIZED : UInt = 518
+
+pub const EVENT_WINDOW_RESTORED : UInt = 523
+
+pub const EVENT_WINDOW_SAFE_AREA_CHANGED : UInt = 533
+
+pub const EVENT_WINDOW_SETTINGS_CHANGED : UInt = 539
+
+pub const EVENT_WINDOW_SHOWN : UInt = 0x202
+
+pub const INIT_AUDIO : UInt = 0x00000010
+
+pub const INIT_CAMERA : UInt = 0x00010000
+
+pub const INIT_EVENTS : UInt = 0x00004000
+
+pub const INIT_GAMEPAD : UInt = 0x00002000
+
+pub const INIT_HAPTIC : UInt = 0x00001000
+
+pub const INIT_JOYSTICK : UInt = 0x00000200
+
+pub const INIT_SENSOR : UInt = 0x00008000
+
+pub const INIT_VIDEO : UInt = 0x00000020
+
+pub const MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT : UInt = 0x00000080
+
+pub const MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT : UInt = 0x00000100
+
+pub const MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT : UInt = 0x00000002
+
+pub const MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT : UInt = 0x00000001
+
+pub const MESSAGEBOX_COLOR_BACKGROUND : UInt = 0
+
+pub const MESSAGEBOX_COLOR_BUTTON_BACKGROUND : UInt = 3
+
+pub const MESSAGEBOX_COLOR_BUTTON_BORDER : UInt = 2
+
+pub const MESSAGEBOX_COLOR_BUTTON_SELECTED : UInt = 4
+
+pub const MESSAGEBOX_COLOR_COUNT : UInt = 5
+
+pub const MESSAGEBOX_COLOR_TEXT : UInt = 1
+
+pub const MESSAGEBOX_ERROR : UInt = 0x00000010
+
+pub const MESSAGEBOX_INFORMATION : UInt = 0x00000040
+
+pub const MESSAGEBOX_WARNING : UInt = 0x00000020
+
+pub const PIXELFORMAT_ABGR128_FLOAT : UInt = 0x1b608010
+
+pub const PIXELFORMAT_ABGR1555 : UInt = 0x15731002
+
+pub const PIXELFORMAT_ABGR2101010 : UInt = 0x16772004
+
+pub const PIXELFORMAT_ABGR4444 : UInt = 0x15721002
+
+pub const PIXELFORMAT_ABGR64 : UInt = 0x18604008
+
+pub const PIXELFORMAT_ABGR64_FLOAT : UInt = 0x1a604008
+
+pub const PIXELFORMAT_ABGR8888 : UInt = 0x16762004
+
+pub const PIXELFORMAT_ARGB128_FLOAT : UInt = 0x1b308010
+
+pub const PIXELFORMAT_ARGB1555 : UInt = 0x15331002
+
+pub const PIXELFORMAT_ARGB2101010 : UInt = 0x16372004
+
+pub const PIXELFORMAT_ARGB4444 : UInt = 0x15321002
+
+pub const PIXELFORMAT_ARGB64 : UInt = 0x18304008
+
+pub const PIXELFORMAT_ARGB64_FLOAT : UInt = 0x1a304008
+
+pub const PIXELFORMAT_ARGB8888 : UInt = 0x16362004
+
+pub const PIXELFORMAT_BGR24 : UInt = 0x17401803
+
+pub const PIXELFORMAT_BGR48 : UInt = 0x18403006
+
+pub const PIXELFORMAT_BGR48_FLOAT : UInt = 0x1a403006
+
+pub const PIXELFORMAT_BGR565 : UInt = 0x15551002
+
+pub const PIXELFORMAT_BGR96_FLOAT : UInt = 0x1b40600c
+
+pub const PIXELFORMAT_BGRA128_FLOAT : UInt = 0x1b508010
+
+pub const PIXELFORMAT_BGRA4444 : UInt = 0x15821002
+
+pub const PIXELFORMAT_BGRA5551 : UInt = 0x15841002
+
+pub const PIXELFORMAT_BGRA64 : UInt = 0x18504008
+
+pub const PIXELFORMAT_BGRA64_FLOAT : UInt = 0x1a504008
+
+pub const PIXELFORMAT_BGRA8888 : UInt = 0x16862004
+
+pub const PIXELFORMAT_BGRX8888 : UInt = 0x16661804
+
+pub const PIXELFORMAT_EXTERNAL_OES : UInt = 0x2053454f
+
+pub const PIXELFORMAT_INDEX1LSB : UInt = 0x11100100
+
+pub const PIXELFORMAT_INDEX1MSB : UInt = 0x11200100
+
+pub const PIXELFORMAT_INDEX2LSB : UInt = 0x1c100200
+
+pub const PIXELFORMAT_INDEX2MSB : UInt = 0x1c200200
+
+pub const PIXELFORMAT_INDEX4LSB : UInt = 0x12100400
+
+pub const PIXELFORMAT_INDEX4MSB : UInt = 0x12200400
+
+pub const PIXELFORMAT_INDEX8 : UInt = 0x13000801
+
+pub const PIXELFORMAT_IYUV : UInt = 0x56555949
+
+pub const PIXELFORMAT_MJPG : UInt = 0x47504a4d
+
+pub const PIXELFORMAT_NV12 : UInt = 0x3231564e
+
+pub const PIXELFORMAT_NV21 : UInt = 0x3132564e
+
+pub const PIXELFORMAT_P010 : UInt = 0x30313050
+
+pub const PIXELFORMAT_RGB24 : UInt = 0x17101803
+
+pub const PIXELFORMAT_RGB332 : UInt = 0x14110801
+
+pub const PIXELFORMAT_RGB48 : UInt = 0x18103006
+
+pub const PIXELFORMAT_RGB48_FLOAT : UInt = 0x1a103006
+
+pub const PIXELFORMAT_RGB565 : UInt = 0x15151002
+
+pub const PIXELFORMAT_RGB96_FLOAT : UInt = 0x1b10600c
+
+pub const PIXELFORMAT_RGBA128_FLOAT : UInt = 0x1b208010
+
+pub const PIXELFORMAT_RGBA4444 : UInt = 0x15421002
+
+pub const PIXELFORMAT_RGBA5551 : UInt = 0x15441002
+
+pub const PIXELFORMAT_RGBA64 : UInt = 0x18204008
+
+pub const PIXELFORMAT_RGBA64_FLOAT : UInt = 0x1a204008
+
+pub const PIXELFORMAT_RGBA8888 : UInt = 0x16462004
+
+pub const PIXELFORMAT_RGBX8888 : UInt = 0x16261804
+
+pub const PIXELFORMAT_UNKNOWN : UInt = 0
+
+pub const PIXELFORMAT_UYVY : UInt = 0x59565955
+
+pub const PIXELFORMAT_XBGR1555 : UInt = 0x15530f02
+
+pub const PIXELFORMAT_XBGR2101010 : UInt = 0x16572004
+
+pub const PIXELFORMAT_XBGR4444 : UInt = 0x15520c02
+
+pub const PIXELFORMAT_XBGR8888 : UInt = 0x16561804
+
+pub const PIXELFORMAT_XRGB1555 : UInt = 0x15130f02
+
+pub const PIXELFORMAT_XRGB2101010 : UInt = 0x16172004
+
+pub const PIXELFORMAT_XRGB4444 : UInt = 0x15120c02
+
+pub const PIXELFORMAT_XRGB8888 : UInt = 0x16161804
+
+pub const PIXELFORMAT_YUY2 : UInt = 0x32595559
+
+pub const PIXELFORMAT_YV12 : UInt = 0x32315659
+
+pub const PIXELFORMAT_YVYU : UInt = 0x55595659
+
+pub const PROP_APP_METADATA_COPYRIGHT_STRING : Bytes = b"SDL.app.metadata.copyright"
+
+pub const PROP_APP_METADATA_CREATOR_STRING : Bytes = b"SDL.app.metadata.creator"
+
+pub const PROP_APP_METADATA_IDENTIFIER_STRING : Bytes = b"SDL.app.metadata.identifier"
+
+pub const PROP_APP_METADATA_NAME_STRING : Bytes = b"SDL.app.metadata.name"
+
+pub const PROP_APP_METADATA_TYPE_STRING : Bytes = b"SDL.app.metadata.type"
+
+pub const PROP_APP_METADATA_URL_STRING : Bytes = b"SDL.app.metadata.url"
+
+pub const PROP_APP_METADATA_VERSION_STRING : Bytes = b"SDL.app.metadata.version"
+
+pub const PROP_DISPLAY_HDR_ENABLED_BOOLEAN : Bytes = b"SDL.display.HDR_enabled"
+
+pub const PROP_DISPLAY_KMSDRM_PANEL_ORIENTATION_NUMBER : Bytes = b"SDL.display.KMSDRM.panel_orientation"
+
+pub const PROP_DISPLAY_WAYLAND_WL_OUTPUT_POINTER : Bytes = b"SDL.display.wayland.wl_output"
+
+pub const PROP_DISPLAY_WINDOWS_HMONITOR_POINTER : Bytes = b"SDL.display.windows.hmonitor"
+
+pub const PROP_GLOBAL_VIDEO_WAYLAND_WL_DISPLAY_POINTER : Bytes = b"SDL.video.wayland.wl_display"
+
+pub const PROP_NAME_STRING : Bytes = b"SDL.name"
+
+pub const PROP_RENDERER_CREATE_GPU_DEVICE_POINTER : Bytes = b"SDL.renderer.create.gpu.device"
+
+pub const PROP_RENDERER_CREATE_GPU_SHADERS_DXIL_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_dxil"
+
+pub const PROP_RENDERER_CREATE_GPU_SHADERS_MSL_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_msl"
+
+pub const PROP_RENDERER_CREATE_GPU_SHADERS_SPIRV_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_spirv"
+
+pub const PROP_RENDERER_CREATE_NAME_STRING : Bytes = b"SDL.renderer.create.name"
+
+pub const PROP_RENDERER_CREATE_OUTPUT_COLORSPACE_NUMBER : Bytes = b"SDL.renderer.create.output_colorspace"
+
+pub const PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER : Bytes = b"SDL.renderer.create.present_vsync"
+
+pub const PROP_RENDERER_CREATE_SURFACE_POINTER : Bytes = b"SDL.renderer.create.surface"
+
+pub const PROP_RENDERER_CREATE_VULKAN_DEVICE_POINTER : Bytes = b"SDL.renderer.create.vulkan.device"
+
+pub const PROP_RENDERER_CREATE_VULKAN_GRAPHICS_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.create.vulkan.graphics_queue_family_index"
+
+pub const PROP_RENDERER_CREATE_VULKAN_INSTANCE_POINTER : Bytes = b"SDL.renderer.create.vulkan.instance"
+
+pub const PROP_RENDERER_CREATE_VULKAN_PHYSICAL_DEVICE_POINTER : Bytes = b"SDL.renderer.create.vulkan.physical_device"
+
+pub const PROP_RENDERER_CREATE_VULKAN_PRESENT_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.create.vulkan.present_queue_family_index"
+
+pub const PROP_RENDERER_CREATE_VULKAN_SURFACE_NUMBER : Bytes = b"SDL.renderer.create.vulkan.surface"
+
+pub const PROP_RENDERER_CREATE_WINDOW_POINTER : Bytes = b"SDL.renderer.create.window"
+
+pub const PROP_RENDERER_D3D11_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d11.device"
+
+pub const PROP_RENDERER_D3D11_SWAPCHAIN_POINTER : Bytes = b"SDL.renderer.d3d11.swap_chain"
+
+pub const PROP_RENDERER_D3D12_COMMAND_QUEUE_POINTER : Bytes = b"SDL.renderer.d3d12.command_queue"
+
+pub const PROP_RENDERER_D3D12_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d12.device"
+
+pub const PROP_RENDERER_D3D12_SWAPCHAIN_POINTER : Bytes = b"SDL.renderer.d3d12.swap_chain"
+
+pub const PROP_RENDERER_D3D9_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d9.device"
+
+pub const PROP_RENDERER_GPU_DEVICE_POINTER : Bytes = b"SDL.renderer.gpu.device"
+
+pub const PROP_RENDERER_HDR_ENABLED_BOOLEAN : Bytes = b"SDL.renderer.HDR_enabled"
+
+pub const PROP_RENDERER_HDR_HEADROOM_FLOAT : Bytes = b"SDL.renderer.HDR_headroom"
+
+pub const PROP_RENDERER_MAX_TEXTURE_SIZE_NUMBER : Bytes = b"SDL.renderer.max_texture_size"
+
+pub const PROP_RENDERER_NAME_STRING : Bytes = b"SDL.renderer.name"
+
+pub const PROP_RENDERER_OUTPUT_COLORSPACE_NUMBER : Bytes = b"SDL.renderer.output_colorspace"
+
+pub const PROP_RENDERER_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.renderer.SDR_white_point"
+
+pub const PROP_RENDERER_SURFACE_POINTER : Bytes = b"SDL.renderer.surface"
+
+pub const PROP_RENDERER_TEXTURE_FORMATS_POINTER : Bytes = b"SDL.renderer.texture_formats"
+
+pub const PROP_RENDERER_TEXTURE_WRAPPING_BOOLEAN : Bytes = b"SDL.renderer.texture_wrapping"
+
+pub const PROP_RENDERER_VSYNC_NUMBER : Bytes = b"SDL.renderer.vsync"
+
+pub const PROP_RENDERER_VULKAN_DEVICE_POINTER : Bytes = b"SDL.renderer.vulkan.device"
+
+pub const PROP_RENDERER_VULKAN_GRAPHICS_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.vulkan.graphics_queue_family_index"
+
+pub const PROP_RENDERER_VULKAN_INSTANCE_POINTER : Bytes = b"SDL.renderer.vulkan.instance"
+
+pub const PROP_RENDERER_VULKAN_PHYSICAL_DEVICE_POINTER : Bytes = b"SDL.renderer.vulkan.physical_device"
+
+pub const PROP_RENDERER_VULKAN_PRESENT_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.vulkan.present_queue_family_index"
+
+pub const PROP_RENDERER_VULKAN_SURFACE_NUMBER : Bytes = b"SDL.renderer.vulkan.surface"
+
+pub const PROP_RENDERER_VULKAN_SWAPCHAIN_IMAGE_COUNT_NUMBER : Bytes = b"SDL.renderer.vulkan.swapchain_image_count"
+
+pub const PROP_RENDERER_WINDOW_POINTER : Bytes = b"SDL.renderer.window"
+
+pub const PROP_TEXTINPUT_ANDROID_INPUTTYPE_NUMBER : Bytes = b"SDL.textinput.android.inputtype"
+
+pub const PROP_TEXTINPUT_AUTOCORRECT_BOOLEAN : Bytes = b"SDL.textinput.autocorrect"
+
+pub const PROP_TEXTINPUT_CAPITALIZATION_NUMBER : Bytes = b"SDL.textinput.capitalization"
+
+pub const PROP_TEXTINPUT_DEFAULT_TEXT_STRING : Bytes = b"SDL.textinput.default_text"
+
+pub const PROP_TEXTINPUT_MAX_LENGTH_NUMBER : Bytes = b"SDL.textinput.max_length"
+
+pub const PROP_TEXTINPUT_MULTILINE_BOOLEAN : Bytes = b"SDL.textinput.multiline"
+
+pub const PROP_TEXTINPUT_PLACEHOLDER_STRING : Bytes = b"SDL.textinput.placeholder"
+
+pub const PROP_TEXTINPUT_TITLE_STRING : Bytes = b"SDL.textinput.title"
+
+pub const PROP_TEXTINPUT_TYPE_NUMBER : Bytes = b"SDL.textinput.type"
+
+pub const PROP_TEXTURE_ACCESS_NUMBER : Bytes = b"SDL.texture.access"
+
+pub const PROP_TEXTURE_COLORSPACE_NUMBER : Bytes = b"SDL.texture.colorspace"
+
+pub const PROP_TEXTURE_CREATE_ACCESS_NUMBER : Bytes = b"SDL.texture.create.access"
+
+pub const PROP_TEXTURE_CREATE_COLORSPACE_NUMBER : Bytes = b"SDL.texture.create.colorspace"
+
+pub const PROP_TEXTURE_CREATE_D3D11_TEXTURE_POINTER : Bytes = b"SDL.texture.create.d3d11.texture"
+
+pub const PROP_TEXTURE_CREATE_D3D11_TEXTURE_U_POINTER : Bytes = b"SDL.texture.create.d3d11.texture_u"
+
+pub const PROP_TEXTURE_CREATE_D3D11_TEXTURE_V_POINTER : Bytes = b"SDL.texture.create.d3d11.texture_v"
+
+pub const PROP_TEXTURE_CREATE_D3D12_TEXTURE_POINTER : Bytes = b"SDL.texture.create.d3d12.texture"
+
+pub const PROP_TEXTURE_CREATE_D3D12_TEXTURE_U_POINTER : Bytes = b"SDL.texture.create.d3d12.texture_u"
+
+pub const PROP_TEXTURE_CREATE_D3D12_TEXTURE_V_POINTER : Bytes = b"SDL.texture.create.d3d12.texture_v"
+
+pub const PROP_TEXTURE_CREATE_FORMAT_NUMBER : Bytes = b"SDL.texture.create.format"
+
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_POINTER : Bytes = b"SDL.texture.create.gpu.texture"
+
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_UV_POINTER : Bytes = b"SDL.texture.create.gpu.texture_uv"
+
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_U_POINTER : Bytes = b"SDL.texture.create.gpu.texture_u"
+
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_V_POINTER : Bytes = b"SDL.texture.create.gpu.texture_v"
+
+pub const PROP_TEXTURE_CREATE_HDR_HEADROOM_FLOAT : Bytes = b"SDL.texture.create.HDR_headroom"
+
+pub const PROP_TEXTURE_CREATE_HEIGHT_NUMBER : Bytes = b"SDL.texture.create.height"
+
+pub const PROP_TEXTURE_CREATE_METAL_PIXELBUFFER_POINTER : Bytes = b"SDL.texture.create.metal.pixelbuffer"
+
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture"
+
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_uv"
+
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_u"
+
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_v"
+
+pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.opengl.texture"
+
+pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.create.opengl.texture_uv"
+
+pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.create.opengl.texture_u"
+
+pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.create.opengl.texture_v"
+
+pub const PROP_TEXTURE_CREATE_PALETTE_POINTER : Bytes = b"SDL.texture.create.palette"
+
+pub const PROP_TEXTURE_CREATE_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.texture.create.SDR_white_point"
+
+pub const PROP_TEXTURE_CREATE_VULKAN_LAYOUT_NUMBER : Bytes = b"SDL.texture.create.vulkan.layout"
+
+pub const PROP_TEXTURE_CREATE_VULKAN_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.vulkan.texture"
+
+pub const PROP_TEXTURE_CREATE_WIDTH_NUMBER : Bytes = b"SDL.texture.create.width"
+
+pub const PROP_TEXTURE_D3D11_TEXTURE_POINTER : Bytes = b"SDL.texture.d3d11.texture"
+
+pub const PROP_TEXTURE_D3D11_TEXTURE_U_POINTER : Bytes = b"SDL.texture.d3d11.texture_u"
+
+pub const PROP_TEXTURE_D3D11_TEXTURE_V_POINTER : Bytes = b"SDL.texture.d3d11.texture_v"
+
+pub const PROP_TEXTURE_D3D12_TEXTURE_POINTER : Bytes = b"SDL.texture.d3d12.texture"
+
+pub const PROP_TEXTURE_D3D12_TEXTURE_U_POINTER : Bytes = b"SDL.texture.d3d12.texture_u"
+
+pub const PROP_TEXTURE_D3D12_TEXTURE_V_POINTER : Bytes = b"SDL.texture.d3d12.texture_v"
+
+pub const PROP_TEXTURE_FORMAT_NUMBER : Bytes = b"SDL.texture.format"
+
+pub const PROP_TEXTURE_GPU_TEXTURE_POINTER : Bytes = b"SDL.texture.gpu.texture"
+
+pub const PROP_TEXTURE_GPU_TEXTURE_UV_POINTER : Bytes = b"SDL.texture.gpu.texture_uv"
+
+pub const PROP_TEXTURE_GPU_TEXTURE_U_POINTER : Bytes = b"SDL.texture.gpu.texture_u"
+
+pub const PROP_TEXTURE_GPU_TEXTURE_V_POINTER : Bytes = b"SDL.texture.gpu.texture_v"
+
+pub const PROP_TEXTURE_HDR_HEADROOM_FLOAT : Bytes = b"SDL.texture.HDR_headroom"
+
+pub const PROP_TEXTURE_HEIGHT_NUMBER : Bytes = b"SDL.texture.height"
+
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_NUMBER : Bytes = b"SDL.texture.opengles2.texture"
+
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_TARGET_NUMBER : Bytes = b"SDL.texture.opengles2.target"
+
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.opengles2.texture_uv"
+
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.opengles2.texture_u"
+
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.opengles2.texture_v"
+
+pub const PROP_TEXTURE_OPENGL_TEXTURE_NUMBER : Bytes = b"SDL.texture.opengl.texture"
+
+pub const PROP_TEXTURE_OPENGL_TEXTURE_TARGET_NUMBER : Bytes = b"SDL.texture.opengl.target"
+
+pub const PROP_TEXTURE_OPENGL_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.opengl.texture_uv"
+
+pub const PROP_TEXTURE_OPENGL_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.opengl.texture_u"
+
+pub const PROP_TEXTURE_OPENGL_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.opengl.texture_v"
+
+pub const PROP_TEXTURE_OPENGL_TEX_H_FLOAT : Bytes = b"SDL.texture.opengl.tex_h"
+
+pub const PROP_TEXTURE_OPENGL_TEX_W_FLOAT : Bytes = b"SDL.texture.opengl.tex_w"
+
+pub const PROP_TEXTURE_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.texture.SDR_white_point"
+
+pub const PROP_TEXTURE_VULKAN_TEXTURE_NUMBER : Bytes = b"SDL.texture.vulkan.texture"
+
+pub const PROP_TEXTURE_WIDTH_NUMBER : Bytes = b"SDL.texture.width"
+
+pub const PROP_TRAY_CREATE_ICON_POINTER : Bytes = b"SDL.tray.create.icon"
+
+pub const PROP_TRAY_CREATE_LEFTCLICK_CALLBACK_POINTER : Bytes = b"SDL.tray.create.leftclick_callback"
+
+pub const PROP_TRAY_CREATE_MIDDLECLICK_CALLBACK_POINTER : Bytes = b"SDL.tray.create.middleclick_callback"
+
+pub const PROP_TRAY_CREATE_RIGHTCLICK_CALLBACK_POINTER : Bytes = b"SDL.tray.create.rightclick_callback"
+
+pub const PROP_TRAY_CREATE_TOOLTIP_STRING : Bytes = b"SDL.tray.create.tooltip"
+
+pub const PROP_TRAY_CREATE_USERDATA_POINTER : Bytes = b"SDL.tray.create.userdata"
+
+pub const PROP_WINDOW_ANDROID_SURFACE_POINTER : Bytes = b"SDL.window.android.surface"
+
+pub const PROP_WINDOW_ANDROID_WINDOW_POINTER : Bytes = b"SDL.window.android.window"
+
+pub const PROP_WINDOW_COCOA_METAL_VIEW_TAG_NUMBER : Bytes = b"SDL.window.cocoa.metal_view_tag"
+
+pub const PROP_WINDOW_COCOA_WINDOW_POINTER : Bytes = b"SDL.window.cocoa.window"
+
+pub const PROP_WINDOW_CREATE_ALWAYS_ON_TOP_BOOLEAN : Bytes = b"SDL.window.create.always_on_top"
+
+pub const PROP_WINDOW_CREATE_BORDERLESS_BOOLEAN : Bytes = b"SDL.window.create.borderless"
+
+pub const PROP_WINDOW_CREATE_COCOA_VIEW_POINTER : Bytes = b"SDL.window.create.cocoa.view"
+
+pub const PROP_WINDOW_CREATE_COCOA_WINDOW_POINTER : Bytes = b"SDL.window.create.cocoa.window"
+
+pub const PROP_WINDOW_CREATE_CONSTRAIN_POPUP_BOOLEAN : Bytes = b"SDL.window.create.constrain_popup"
+
+pub const PROP_WINDOW_CREATE_EMSCRIPTEN_CANVAS_ID_STRING : Bytes = b"SDL.window.create.emscripten.canvas_id"
+
+pub const PROP_WINDOW_CREATE_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING : Bytes = b"SDL.window.create.emscripten.keyboard_element"
+
+pub const PROP_WINDOW_CREATE_EXTERNAL_GRAPHICS_CONTEXT_BOOLEAN : Bytes = b"SDL.window.create.external_graphics_context"
+
+pub const PROP_WINDOW_CREATE_FLAGS_NUMBER : Bytes = b"SDL.window.create.flags"
+
+pub const PROP_WINDOW_CREATE_FOCUSABLE_BOOLEAN : Bytes = b"SDL.window.create.focusable"
+
+pub const PROP_WINDOW_CREATE_FULLSCREEN_BOOLEAN : Bytes = b"SDL.window.create.fullscreen"
+
+pub const PROP_WINDOW_CREATE_HEIGHT_NUMBER : Bytes = b"SDL.window.create.height"
+
+pub const PROP_WINDOW_CREATE_HIDDEN_BOOLEAN : Bytes = b"SDL.window.create.hidden"
+
+pub const PROP_WINDOW_CREATE_HIGH_PIXEL_DENSITY_BOOLEAN : Bytes = b"SDL.window.create.high_pixel_density"
+
+pub const PROP_WINDOW_CREATE_MAXIMIZED_BOOLEAN : Bytes = b"SDL.window.create.maximized"
+
+pub const PROP_WINDOW_CREATE_MENU_BOOLEAN : Bytes = b"SDL.window.create.menu"
+
+pub const PROP_WINDOW_CREATE_METAL_BOOLEAN : Bytes = b"SDL.window.create.metal"
+
+pub const PROP_WINDOW_CREATE_MINIMIZED_BOOLEAN : Bytes = b"SDL.window.create.minimized"
+
+pub const PROP_WINDOW_CREATE_MODAL_BOOLEAN : Bytes = b"SDL.window.create.modal"
+
+pub const PROP_WINDOW_CREATE_MOUSE_GRABBED_BOOLEAN : Bytes = b"SDL.window.create.mouse_grabbed"
+
+pub const PROP_WINDOW_CREATE_OPENGL_BOOLEAN : Bytes = b"SDL.window.create.opengl"
+
+pub const PROP_WINDOW_CREATE_PARENT_POINTER : Bytes = b"SDL.window.create.parent"
+
+pub const PROP_WINDOW_CREATE_RESIZABLE_BOOLEAN : Bytes = b"SDL.window.create.resizable"
+
+pub const PROP_WINDOW_CREATE_TITLE_STRING : Bytes = b"SDL.window.create.title"
+
+pub const PROP_WINDOW_CREATE_TOOLTIP_BOOLEAN : Bytes = b"SDL.window.create.tooltip"
+
+pub const PROP_WINDOW_CREATE_TRANSPARENT_BOOLEAN : Bytes = b"SDL.window.create.transparent"
+
+pub const PROP_WINDOW_CREATE_UTILITY_BOOLEAN : Bytes = b"SDL.window.create.utility"
+
+pub const PROP_WINDOW_CREATE_VISIONOS_SETTINGS_STRING : Bytes = b"SDL.window.create.visionos.settings"
+
+pub const PROP_WINDOW_CREATE_VULKAN_BOOLEAN : Bytes = b"SDL.window.create.vulkan"
+
+pub const PROP_WINDOW_CREATE_WAYLAND_CREATE_EGL_WINDOW_BOOLEAN : Bytes = b"SDL.window.create.wayland.create_egl_window"
+
+pub const PROP_WINDOW_CREATE_WAYLAND_SURFACE_ROLE_CUSTOM_BOOLEAN : Bytes = b"SDL.window.create.wayland.surface_role_custom"
+
+pub const PROP_WINDOW_CREATE_WAYLAND_WL_SURFACE_POINTER : Bytes = b"SDL.window.create.wayland.wl_surface"
+
+pub const PROP_WINDOW_CREATE_WIDTH_NUMBER : Bytes = b"SDL.window.create.width"
+
+pub const PROP_WINDOW_CREATE_WIN32_HWND_POINTER : Bytes = b"SDL.window.create.win32.hwnd"
+
+pub const PROP_WINDOW_CREATE_WIN32_PIXEL_FORMAT_HWND_POINTER : Bytes = b"SDL.window.create.win32.pixel_format_hwnd"
+
+pub const PROP_WINDOW_CREATE_WINDOWSCENE_POINTER : Bytes = b"SDL.window.create.uikit.windowscene"
+
+pub const PROP_WINDOW_CREATE_X11_WINDOW_NUMBER : Bytes = b"SDL.window.create.x11.window"
+
+pub const PROP_WINDOW_CREATE_X_NUMBER : Bytes = b"SDL.window.create.x"
+
+pub const PROP_WINDOW_CREATE_Y_NUMBER : Bytes = b"SDL.window.create.y"
+
+pub const PROP_WINDOW_EMSCRIPTEN_CANVAS_ID_STRING : Bytes = b"SDL.window.emscripten.canvas_id"
+
+pub const PROP_WINDOW_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING : Bytes = b"SDL.window.emscripten.keyboard_element"
+
+pub const PROP_WINDOW_HDR_ENABLED_BOOLEAN : Bytes = b"SDL.window.HDR_enabled"
+
+pub const PROP_WINDOW_HDR_HEADROOM_FLOAT : Bytes = b"SDL.window.HDR_headroom"
+
+pub const PROP_WINDOW_KMSDRM_DEVICE_INDEX_NUMBER : Bytes = b"SDL.window.kmsdrm.dev_index"
+
+pub const PROP_WINDOW_KMSDRM_DRM_FD_NUMBER : Bytes = b"SDL.window.kmsdrm.drm_fd"
+
+pub const PROP_WINDOW_KMSDRM_GBM_DEVICE_POINTER : Bytes = b"SDL.window.kmsdrm.gbm_dev"
+
+pub const PROP_WINDOW_OPENVR_OVERLAY_ID_NUMBER : Bytes = b"SDL.window.openvr.overlay_id"
+
+pub const PROP_WINDOW_QNX_SURFACE_POINTER : Bytes = b"SDL.window.qnx.surface"
+
+pub const PROP_WINDOW_QNX_WINDOW_POINTER : Bytes = b"SDL.window.qnx.window"
+
+pub const PROP_WINDOW_SDR_WHITE_LEVEL_FLOAT : Bytes = b"SDL.window.SDR_white_level"
+
+pub const PROP_WINDOW_SHAPE_POINTER : Bytes = b"SDL.window.shape"
+
+pub const PROP_WINDOW_UIKIT_METAL_VIEW_TAG_NUMBER : Bytes = b"SDL.window.uikit.metal_view_tag"
+
+pub const PROP_WINDOW_UIKIT_OPENGL_FRAMEBUFFER_NUMBER : Bytes = b"SDL.window.uikit.opengl.framebuffer"
+
+pub const PROP_WINDOW_UIKIT_OPENGL_RENDERBUFFER_NUMBER : Bytes = b"SDL.window.uikit.opengl.renderbuffer"
+
+pub const PROP_WINDOW_UIKIT_OPENGL_RESOLVE_FRAMEBUFFER_NUMBER : Bytes = b"SDL.window.uikit.opengl.resolve_framebuffer"
+
+pub const PROP_WINDOW_UIKIT_WINDOW_POINTER : Bytes = b"SDL.window.uikit.window"
+
+pub const PROP_WINDOW_VISIONOS_SETTINGS_STRING : Bytes = b"SDL.window.visionos.settings"
+
+pub const PROP_WINDOW_VIVANTE_DISPLAY_POINTER : Bytes = b"SDL.window.vivante.display"
+
+pub const PROP_WINDOW_VIVANTE_SURFACE_POINTER : Bytes = b"SDL.window.vivante.surface"
+
+pub const PROP_WINDOW_VIVANTE_WINDOW_POINTER : Bytes = b"SDL.window.vivante.window"
+
+pub const PROP_WINDOW_WAYLAND_DISPLAY_POINTER : Bytes = b"SDL.window.wayland.display"
+
+pub const PROP_WINDOW_WAYLAND_EGL_WINDOW_POINTER : Bytes = b"SDL.window.wayland.egl_window"
+
+pub const PROP_WINDOW_WAYLAND_SURFACE_POINTER : Bytes = b"SDL.window.wayland.surface"
+
+pub const PROP_WINDOW_WAYLAND_VIEWPORT_POINTER : Bytes = b"SDL.window.wayland.viewport"
+
+pub const PROP_WINDOW_WAYLAND_XDG_POPUP_POINTER : Bytes = b"SDL.window.wayland.xdg_popup"
+
+pub const PROP_WINDOW_WAYLAND_XDG_POSITIONER_POINTER : Bytes = b"SDL.window.wayland.xdg_positioner"
+
+pub const PROP_WINDOW_WAYLAND_XDG_SURFACE_POINTER : Bytes = b"SDL.window.wayland.xdg_surface"
+
+pub const PROP_WINDOW_WAYLAND_XDG_TOPLEVEL_EXPORT_HANDLE_STRING : Bytes = b"SDL.window.wayland.xdg_toplevel_export_handle"
+
+pub const PROP_WINDOW_WAYLAND_XDG_TOPLEVEL_POINTER : Bytes = b"SDL.window.wayland.xdg_toplevel"
+
+pub const PROP_WINDOW_WIN32_HDC_POINTER : Bytes = b"SDL.window.win32.hdc"
+
+pub const PROP_WINDOW_WIN32_HWND_POINTER : Bytes = b"SDL.window.win32.hwnd"
+
+pub const PROP_WINDOW_WIN32_INSTANCE_POINTER : Bytes = b"SDL.window.win32.instance"
+
+pub const PROP_WINDOW_X11_DISPLAY_POINTER : Bytes = b"SDL.window.x11.display"
+
+pub const PROP_WINDOW_X11_SCREEN_NUMBER : Bytes = b"SDL.window.x11.screen"
+
+pub const PROP_WINDOW_X11_WINDOW_NUMBER : Bytes = b"SDL.window.x11.window"
+
+pub const TEXTUREACCESS_STATIC : UInt = 0
+
+pub const TEXTUREACCESS_STREAMING : UInt = 1
+
+pub const TEXTUREACCESS_TARGET : UInt = 2
+
+pub const TRAYENTRY_BUTTON : UInt = 0x00000001
+
+pub const TRAYENTRY_CHECKBOX : UInt = 0x00000002
+
+pub const TRAYENTRY_CHECKED : UInt = 0x40000000
+
+pub const TRAYENTRY_DISABLED : UInt = 0x80000000
+
+pub const TRAYENTRY_SUBMENU : UInt = 0x00000004
+
+pub const WINDOW_ALWAYS_ON_TOP : UInt64 = 0x0000000000010000
+
+pub const WINDOW_BORDERLESS : UInt64 = 0x0000000000000010
+
+pub const WINDOW_EXTERNAL : UInt64 = 0x0000000000000800
+
+pub const WINDOW_FILL_DOCUMENT : UInt64 = 0x0000000000200000
+
+pub const WINDOW_FULLSCREEN : UInt64 = 0x0000000000000001
+
+pub const WINDOW_HIDDEN : UInt64 = 0x0000000000000008
+
+pub const WINDOW_HIGH_PIXEL_DENSITY : UInt64 = 0x0000000000002000
+
+pub const WINDOW_INPUT_FOCUS : UInt64 = 0x0000000000000200
+
+pub const WINDOW_KEYBOARD_GRABBED : UInt64 = 0x0000000000100000
+
+pub const WINDOW_MAXIMIZED : UInt64 = 0x0000000000000080
+
+pub const WINDOW_METAL : UInt64 = 0x0000000020000000
+
+pub const WINDOW_MINIMIZED : UInt64 = 0x0000000000000040
+
+pub const WINDOW_MODAL : UInt64 = 0x0000000000001000
+
+pub const WINDOW_MOUSE_CAPTURE : UInt64 = 0x0000000000004000
+
+pub const WINDOW_MOUSE_FOCUS : UInt64 = 0x0000000000000400
+
+pub const WINDOW_MOUSE_GRABBED : UInt64 = 0x0000000000000100
+
+pub const WINDOW_MOUSE_RELATIVE_MODE : UInt64 = 0x0000000000008000
+
+pub const WINDOW_NOT_FOCUSABLE : UInt64 = 0x0000000080000000
+
+pub const WINDOW_OCCLUDED : UInt64 = 0x0000000000000004
+
+pub const WINDOW_OPENGL : UInt64 = 0x0000000000000002
+
+pub const WINDOW_POPUP_MENU : UInt64 = 0x0000000000080000
+
+pub const WINDOW_RESIZABLE : UInt64 = 0x0000000000000020
+
+pub const WINDOW_SURFACE_VSYNC_ADAPTIVE : Int = -1
+
+pub const WINDOW_SURFACE_VSYNC_DISABLED : UInt64 = 0
+
+pub const WINDOW_TOOLTIP : UInt64 = 0x0000000000040000
+
+pub const WINDOW_TRANSPARENT : UInt64 = 0x0000000040000000
+
+pub const WINDOW_UTILITY : UInt64 = 0x0000000000020000
+
+pub const WINDOW_VULKAN : UInt64 = 0x0000000010000000
+
+pub fn add_event_watch(FuncRef[((Bytes) -> Unit, Bytes) -> Unit], (Bytes) -> Unit) -> EventWatch
+
+pub fn click_tray_entry(TrayEntry) -> Unit
+
+pub fn create_properties() -> UInt
+
+pub fn create_renderer(Window, Bytes) -> Renderer
+
+pub fn create_texture(Renderer, UInt, UInt, Int, Int) -> Texture
+
+pub fn create_tray(Bytes) -> Tray
+
+pub fn create_tray_menu(Tray) -> TrayMenu
+
+pub fn create_tray_submenu(TrayEntry) -> TrayMenu
+
+pub fn create_window(Bytes, Int, Int, UInt64) -> Window
+
+pub fn create_window_with_properties(UInt) -> Window
+
+pub fn delay(UInt) -> Unit
+
+pub fn destroy_properties(UInt) -> Unit
+
+pub fn destroy_renderer(Renderer) -> Unit
+
+pub fn destroy_texture(Texture) -> Unit
+
+pub fn destroy_tray(Tray) -> Unit
+
+pub fn destroy_window(Window) -> Unit
+
+pub fn get_boolean_property(UInt, Bytes, Bool) -> Bool
+
+pub fn get_clipboard_text() -> Bytes
+
+pub fn get_current_render_output_size(Renderer, @ref.Ref[Int], @ref.Ref[Int]) -> Bool
+
+pub fn get_error() -> Bytes
+
+pub fn get_float_property(UInt, Bytes, Float) -> Float
+
+pub fn get_number_property(UInt, Bytes, Int64) -> Int64
+
+pub fn get_string_property(UInt, Bytes, Bytes) -> Bytes
+
+pub fn get_texture_size(Texture, @ref.Ref[Float], @ref.Ref[Float]) -> Bool
+
+pub fn get_tray_entry_checked(TrayEntry) -> Bool
+
+pub fn get_tray_entry_enabled(TrayEntry) -> Bool
+
+pub fn get_tray_entry_label(TrayEntry) -> Bytes
+
+pub fn get_tray_menu(Tray) -> TrayMenu
+
+pub fn get_tray_submenu(TrayEntry) -> TrayMenu
+
+pub fn get_window_flags(Window) -> UInt64
+
+pub fn get_window_from_id(UInt) -> Window
+
+pub fn get_window_id(Window) -> UInt
+
+pub fn get_window_keyboard_grab(Window) -> Bool
+
+pub fn get_window_maximum_size(Window, @ref.Ref[Int], @ref.Ref[Int]) -> Bool
+
+pub fn get_window_minimum_size(Window, @ref.Ref[Int], @ref.Ref[Int]) -> Bool
+
+pub fn get_window_mouse_grab(Window) -> Bool
+
+pub fn get_window_opacity(Window) -> Float
+
+pub fn get_window_position(Window, @ref.Ref[Int], @ref.Ref[Int]) -> Bool
+
+pub fn get_window_properties(Window) -> UInt
+
+pub fn get_window_size(Window, @ref.Ref[Int], @ref.Ref[Int]) -> Bool
+
+pub fn get_window_size_in_pixels(Window, @ref.Ref[Int], @ref.Ref[Int]) -> Bool
+
+pub fn get_window_title(Window) -> Bytes
+
+pub fn has_clipboard_text() -> Bool
+
+pub fn hide_window(Window) -> Bool
+
+pub fn init_lib(UInt) -> Bool
+
+pub fn insert_tray_entry_at(TrayMenu, Int, Bytes, UInt) -> TrayEntry
+
+pub fn lock_texture(Texture, Rect, Bool, @ref.Ref[Pointer], @ref.Ref[Int]) -> Bool
+
+pub fn make_tray_entry_callback(FuncRef[(() -> Unit) -> Unit], () -> Unit) -> TrayEntryCallback
+
+pub fn maximize_window(Window) -> Bool
+
+pub fn minimize_window(Window) -> Bool
+
+pub fn poll_event(Event) -> Bool
+
+pub fn quit() -> Unit
+
+pub fn raise_window(Window) -> Bool
+
+pub fn remove_event_watch(EventWatch) -> Unit
+
+pub fn remove_tray_entry(TrayEntry) -> Unit
+
+pub fn render_clear(Renderer) -> Bool
+
+pub fn render_fill_rect(Renderer, FRect) -> Bool
+
+pub fn render_present(Renderer) -> Bool
+
+pub fn render_texture(Renderer, Texture, FRect, FRect) -> Bool
+
+pub fn restore_window(Window) -> Bool
+
+pub fn set_boolean_property(UInt, Bytes, Bool) -> Bool
+
+pub fn set_clipboard_text(Bytes) -> Bool
+
+pub fn set_float_property(UInt, Bytes, Float) -> Bool
+
+pub fn set_number_property(UInt, Bytes, Int64) -> Bool
+
+pub fn set_render_draw_color(Renderer, Byte, Byte, Byte, Byte) -> Bool
+
+pub fn set_string_property(UInt, Bytes, Bytes) -> Bool
+
+pub fn set_texture_alpha_mod(Texture, Byte) -> Bool
+
+pub fn set_texture_blend_mode(Texture, UInt) -> Bool
+
+pub fn set_texture_color_mod(Texture, Byte, Byte, Byte) -> Bool
+
+pub fn set_tray_entry_callback(TrayEntry, TrayEntryCallback) -> Unit
+
+pub fn set_tray_entry_checked(TrayEntry, Bool) -> Unit
+
+pub fn set_tray_entry_enabled(TrayEntry, Bool) -> Unit
+
+pub fn set_tray_entry_label(TrayEntry, Bytes) -> Unit
+
+pub fn set_tray_tooltip(Tray, Bytes) -> Unit
+
+pub fn set_window_always_on_top(Window, Bool) -> Bool
+
+pub fn set_window_bordered(Window, Bool) -> Bool
+
+pub fn set_window_fullscreen(Window, Bool) -> Bool
+
+pub fn set_window_keyboard_grab(Window, Bool) -> Bool
+
+pub fn set_window_maximum_size(Window, Int, Int) -> Bool
+
+pub fn set_window_minimum_size(Window, Int, Int) -> Bool
+
+pub fn set_window_mouse_grab(Window, Bool) -> Bool
+
+pub fn set_window_opacity(Window, Float) -> Bool
+
+pub fn set_window_position(Window, Int, Int) -> Bool
+
+pub fn set_window_resizable(Window, Bool) -> Bool
+
+pub fn set_window_size(Window, Int, Int) -> Bool
+
+pub fn set_window_title(Window, Bytes) -> Bool
+
+pub fn show_simple_message_box(UInt, Bytes, Bytes, Window) -> Bool
+
+pub fn show_window(Window) -> Bool
+
+pub fn show_window_system_menu(Window, Int, Int) -> Bool
+
+pub fn start_text_input(Window) -> Bool
+
+pub fn stop_text_input(Window) -> Bool
+
+pub fn unlock_texture(Texture) -> Unit
+
+pub fn update_texture(Texture, Rect, Bool, Bytes, Int) -> Bool
+
+pub fn update_trays() -> Unit
+
+pub fn wait_event_timeout(Event, Int) -> Bool
+
+// Errors
+
+// Types and methods
+#external
+pub type DisplayModeData
+pub fn DisplayModeData::is_null(Self) -> Bool
+pub fn DisplayModeData::to_pointer(Self) -> Pointer
+
+type Event
+pub fn Event::Event() -> Self
+pub fn Event::button_button(Self) -> Byte
+pub fn Event::button_clicks(Self) -> Byte
+pub fn Event::button_mouse_id(Self) -> UInt
+pub fn Event::button_window_id(Self) -> UInt
+pub fn Event::button_x(Self) -> Float
+pub fn Event::button_y(Self) -> Float
+pub fn Event::event_type(Self) -> UInt
+pub fn Event::from_bytes(Bytes) -> Self
+pub fn Event::key_keyboard_id(Self) -> UInt
+pub fn Event::key_keycode(Self) -> UInt
+pub fn Event::key_modifiers(Self) -> UInt16
+pub fn Event::key_repeat(Self) -> Bool
+pub fn Event::key_scancode(Self) -> Int
+pub fn Event::key_window_id(Self) -> UInt
+pub fn Event::motion_mouse_id(Self) -> UInt
+pub fn Event::motion_state(Self) -> UInt
+pub fn Event::motion_window_id(Self) -> UInt
+pub fn Event::motion_x(Self) -> Float
+pub fn Event::motion_xrel(Self) -> Float
+pub fn Event::motion_y(Self) -> Float
+pub fn Event::motion_yrel(Self) -> Float
+pub fn Event::text_text(Self) -> Bytes
+pub fn Event::to_bytes(Self) -> Bytes
+pub fn Event::window_data1(Self) -> Int
+pub fn Event::window_data2(Self) -> Int
+pub fn Event::window_window_id(Self) -> UInt
+
+pub type EventWatch
+pub fn EventWatch::is_null(Self) -> Bool
+
+type FRect
+pub fn FRect::FRect(Float, Float, Float, Float) -> Self
+pub fn FRect::to_bytes(Self) -> Bytes
+
+#external
+pub type GPURenderState
+pub fn GPURenderState::is_null(Self) -> Bool
+pub fn GPURenderState::to_pointer(Self) -> Pointer
+
+#external
+pub type Pointer
+pub fn Pointer::is_null(Self) -> Bool
+
+type Rect
+pub fn Rect::Rect(Int, Int, Int, Int) -> Self
+pub fn Rect::to_bytes(Self) -> Bytes
+
+pub type Renderer
+pub fn Renderer::is_null(Self) -> Bool
+
+pub type Texture
+pub fn Texture::is_null(Self) -> Bool
+
+pub type Tray
+pub fn Tray::is_null(Self) -> Bool
+
+#external
+pub type TrayEntry
+pub fn TrayEntry::is_null(Self) -> Bool
+pub fn TrayEntry::to_pointer(Self) -> Pointer
+
+pub type TrayEntryCallback
+
+#external
+pub type TrayMenu
+pub fn TrayMenu::is_null(Self) -> Bool
+pub fn TrayMenu::to_pointer(Self) -> Pointer
+
+pub type Window
+pub fn Window::is_null(Self) -> Bool
+
+// Type aliases
+
+// Traits
+

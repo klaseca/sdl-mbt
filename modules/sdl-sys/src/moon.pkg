@@ -1,0 +1,40 @@
+formatter(
+  ignore: [
+    "blendmode_gen.mbt",
+    "clipboard_gen.mbt",
+    "error_gen.mbt",
+    "events_gen.mbt",
+    "init_gen.mbt",
+    "keyboard_gen.mbt",
+    "messagebox_gen.mbt",
+    "pixels_gen.mbt",
+    "properties_gen.mbt",
+    "rect_gen.mbt",
+    "render_gen.mbt",
+    "timer_gen.mbt",
+    "tray_gen.mbt",
+    "video_gen.mbt",
+  ],
+)
+
+options(
+  link: { "native": { "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}" } },
+  "native-stub": [
+    "clipboard_stub_gen.c",
+    "cstring_stub.c",
+    "error_stub_gen.c",
+    "event_watch_stub.c",
+    "events_stub_gen.c",
+    "init_stub_gen.c",
+    "keyboard_stub_gen.c",
+    "messagebox_stub_gen.c",
+    "pointer_stub.c",
+    "properties_stub_gen.c",
+    "rect_stub_gen.c",
+    "render_stub_gen.c",
+    "timer_stub_gen.c",
+    "tray_stub_gen.c",
+    "tray_callback_stub.c",
+    "video_stub_gen.c",
+  ],
+)

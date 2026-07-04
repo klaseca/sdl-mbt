@@ -1,0 +1,5 @@
+members = [
+  "examples",
+  "modules/sdl-sys",
+  "modules/sdl",
+]

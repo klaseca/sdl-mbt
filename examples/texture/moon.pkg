@@ -1,0 +1,7 @@
+import {
+  "klaseca/sdl",
+}
+
+options(
+  "is-main": true,
+)
