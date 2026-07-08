@@ -4,6 +4,7 @@
 #include <moonbit.h>
 #include <string.h>
 
+MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_f_rect_make(float x, float y, float w, float h) {
   SDL_FRect value = { 0 };
   value.x = x;
@@ -15,6 +16,7 @@ moonbit_bytes_t moonbit_sdl_f_rect_make(float x, float y, float w, float h) {
   return bytes;
 }
 
+MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_rect_make(int x, int y, int w, int h) {
   SDL_Rect value = { 0 };
   value.x = x;

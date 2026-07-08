@@ -48,6 +48,7 @@ static void moonbit_sdl_event_watch_destroy(void *self) {
   }
 }
 
+MOONBIT_FFI_EXPORT
 moonbit_sdl_event_watch_t *moonbit_sdl_add_event_watch(
   moonbit_sdl_event_watch_call_callback_t call_callback,
   void *callback
@@ -75,10 +76,12 @@ moonbit_sdl_event_watch_t *moonbit_sdl_add_event_watch(
   return watch;
 }
 
+MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_event_watch_is_null(moonbit_sdl_event_watch_t *watch) {
   return watch == NULL || !watch->active || watch->callback == NULL;
 }
 
+MOONBIT_FFI_EXPORT
 void moonbit_sdl_remove_event_watch(moonbit_sdl_event_watch_t *watch) {
   moonbit_sdl_event_watch_destroy(watch);
 }

@@ -5,6 +5,7 @@
 
 moonbit_bytes_t moonbit_cstring_to_bytes(const char *str);
 
+MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_get_error(void) {
   return moonbit_cstring_to_bytes(SDL_GetError());
 }

@@ -938,6 +938,7 @@ function emitResourceHelpers(lines, resourceUsages) {
     if (usage.destroy && destroy) {
       const visibility = usage.exportDestroy ? '' : 'static '
       const destroySymbol = usage.destroySymbol ?? `${prefix}_destroy`
+      if (usage.exportDestroy) lines.push('MOONBIT_FFI_EXPORT')
       lines.push(`${visibility}void ${destroySymbol}(void *self) {`)
       lines.push(`  ${structName} *resource = (${structName} *)self;`)
       lines.push('  if (resource == NULL || resource->ptr == NULL) {')
@@ -981,6 +982,7 @@ function emitResourceHelpers(lines, resourceUsages) {
       lines.push('')
     }
     if (usage.isNull) {
+      lines.push('MOONBIT_FFI_EXPORT')
       lines.push(`int32_t moonbit_sdl_${resourceBaseName(cName)}_is_null(${structName} *self) {`)
       lines.push(`  return ${prefix}_ptr(self) == NULL;`)
       lines.push('}')
@@ -1004,12 +1006,8 @@ function emitC(opaqueTypes, valueStructs, functions) {
       valueStruct.accessors.some((accessor) => isAbiKind(accessor.mapped, AbiKind.CStringReturn)),
     )
   const needsMoonbit =
+    hasFunctionBodies ||
     valueStructs.size > 0 ||
-    functions.some(
-      (fn) =>
-        fn.returnType.c === 'moonbit_bytes_t' ||
-        fn.params.some((param) => param.mapped.c === 'moonbit_bytes_t'),
-    ) ||
     resourceUsages.size > 0
   const needsStddef =
     resourceUsages.size > 0 ||
@@ -1043,6 +1041,7 @@ function emitC(opaqueTypes, valueStructs, functions) {
     a.mbtName.localeCompare(b.mbtName),
   )) {
     const params = valueStruct.fields.map((field) => `${field.c} ${field.name}`).join(', ')
+    lines.push('MOONBIT_FFI_EXPORT')
     lines.push(`moonbit_bytes_t moonbit_sdl_${valueStruct.makeName}_make(${params}) {`)
     lines.push(`  ${valueStruct.cName} value = { 0 };`)
     for (const field of valueStruct.fields) {
@@ -1054,6 +1053,7 @@ function emitC(opaqueTypes, valueStructs, functions) {
     lines.push('}')
     lines.push('')
     for (const accessor of valueStruct.accessors) {
+      lines.push('MOONBIT_FFI_EXPORT')
       lines.push(
         `${accessor.mapped.c} moonbit_sdl_${valueStruct.makeName}_${accessor.name}(moonbit_bytes_t self) {`,
       )
@@ -1069,6 +1069,7 @@ function emitC(opaqueTypes, valueStructs, functions) {
     const hasValueStructParam = fn.params.some((param) => wrapperNeedsBytesParam(param.mapped))
     const cRawName = hasValueStructParam ? `${fn.rawName}_ffi` : fn.rawName
     const params = fn.params.flatMap((param) => cParamDeclarations(param)).join(', ')
+    lines.push('MOONBIT_FFI_EXPORT')
     lines.push(`${cReturn} moonbit_sdl_${cRawName}(${params || 'void'}) {`)
     for (const param of fn.params) {
       const local = cOutParamLocal(param)

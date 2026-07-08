@@ -13,10 +13,12 @@ static SDL_Window *moonbit_sdl_window_ptr(moonbit_sdl_window_resource_t *self) {
   return self == NULL ? NULL : self->ptr;
 }
 
+MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_start_text_input(moonbit_sdl_window_resource_t * window) {
   return SDL_StartTextInput(moonbit_sdl_window_ptr(window));
 }
 
+MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_stop_text_input(moonbit_sdl_window_resource_t * window) {
   return SDL_StopTextInput(moonbit_sdl_window_ptr(window));
 }

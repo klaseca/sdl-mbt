@@ -6,10 +6,12 @@
 
 moonbit_bytes_t moonbit_cstring_to_bytes(const char *str);
 
+MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_set_clipboard_text(moonbit_bytes_t text) {
   return SDL_SetClipboardText((const char *)text);
 }
 
+MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_get_clipboard_text(void) {
   char *result = SDL_GetClipboardText();
   moonbit_bytes_t bytes = moonbit_cstring_to_bytes(result);
@@ -17,6 +19,7 @@ moonbit_bytes_t moonbit_sdl_get_clipboard_text(void) {
   return bytes;
 }
 
+MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_has_clipboard_text(void) {
   return SDL_HasClipboardText();
 }
