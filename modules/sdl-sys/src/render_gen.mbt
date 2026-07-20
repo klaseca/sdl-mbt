@@ -1,18 +1,6 @@
 // Generated file. Do not edit by hand.
 
 ///|
-#external
-pub type GPURenderState
-
-///|
-pub fn GPURenderState::to_pointer(self : Self) -> Pointer = "%identity"
-
-///|
-pub fn GPURenderState::is_null(self : Self) -> Bool {
-  self.to_pointer().is_null()
-}
-
-///|
 pub type Renderer
 
 ///|
@@ -37,19 +25,25 @@ pub fn Texture::is_null(self : Self) -> Bool {
 }
 
 ///|
-pub const PROP_RENDERER_CREATE_GPU_DEVICE_POINTER : Bytes = b"SDL.renderer.create.gpu.device"
+#external
+pub type GPURenderState
 
 ///|
-pub const PROP_RENDERER_CREATE_GPU_SHADERS_DXIL_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_dxil"
+pub fn GPURenderState::to_pointer(self : Self) -> Pointer = "%identity"
 
 ///|
-pub const PROP_RENDERER_CREATE_GPU_SHADERS_MSL_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_msl"
-
-///|
-pub const PROP_RENDERER_CREATE_GPU_SHADERS_SPIRV_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_spirv"
+pub fn GPURenderState::is_null(self : Self) -> Bool {
+  self.to_pointer().is_null()
+}
 
 ///|
 pub const PROP_RENDERER_CREATE_NAME_STRING : Bytes = b"SDL.renderer.create.name"
+
+///|
+pub const PROP_RENDERER_CREATE_WINDOW_POINTER : Bytes = b"SDL.renderer.create.window"
+
+///|
+pub const PROP_RENDERER_CREATE_SURFACE_POINTER : Bytes = b"SDL.renderer.create.surface"
 
 ///|
 pub const PROP_RENDERER_CREATE_OUTPUT_COLORSPACE_NUMBER : Bytes = b"SDL.renderer.create.output_colorspace"
@@ -58,7 +52,25 @@ pub const PROP_RENDERER_CREATE_OUTPUT_COLORSPACE_NUMBER : Bytes = b"SDL.renderer
 pub const PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER : Bytes = b"SDL.renderer.create.present_vsync"
 
 ///|
-pub const PROP_RENDERER_CREATE_SURFACE_POINTER : Bytes = b"SDL.renderer.create.surface"
+pub const PROP_RENDERER_CREATE_GPU_DEVICE_POINTER : Bytes = b"SDL.renderer.create.gpu.device"
+
+///|
+pub const PROP_RENDERER_CREATE_GPU_SHADERS_SPIRV_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_spirv"
+
+///|
+pub const PROP_RENDERER_CREATE_GPU_SHADERS_DXIL_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_dxil"
+
+///|
+pub const PROP_RENDERER_CREATE_GPU_SHADERS_MSL_BOOLEAN : Bytes = b"SDL.renderer.create.gpu.shaders_msl"
+
+///|
+pub const PROP_RENDERER_CREATE_VULKAN_INSTANCE_POINTER : Bytes = b"SDL.renderer.create.vulkan.instance"
+
+///|
+pub const PROP_RENDERER_CREATE_VULKAN_SURFACE_NUMBER : Bytes = b"SDL.renderer.create.vulkan.surface"
+
+///|
+pub const PROP_RENDERER_CREATE_VULKAN_PHYSICAL_DEVICE_POINTER : Bytes = b"SDL.renderer.create.vulkan.physical_device"
 
 ///|
 pub const PROP_RENDERER_CREATE_VULKAN_DEVICE_POINTER : Bytes = b"SDL.renderer.create.vulkan.device"
@@ -67,61 +79,22 @@ pub const PROP_RENDERER_CREATE_VULKAN_DEVICE_POINTER : Bytes = b"SDL.renderer.cr
 pub const PROP_RENDERER_CREATE_VULKAN_GRAPHICS_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.create.vulkan.graphics_queue_family_index"
 
 ///|
-pub const PROP_RENDERER_CREATE_VULKAN_INSTANCE_POINTER : Bytes = b"SDL.renderer.create.vulkan.instance"
-
-///|
-pub const PROP_RENDERER_CREATE_VULKAN_PHYSICAL_DEVICE_POINTER : Bytes = b"SDL.renderer.create.vulkan.physical_device"
-
-///|
 pub const PROP_RENDERER_CREATE_VULKAN_PRESENT_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.create.vulkan.present_queue_family_index"
-
-///|
-pub const PROP_RENDERER_CREATE_VULKAN_SURFACE_NUMBER : Bytes = b"SDL.renderer.create.vulkan.surface"
-
-///|
-pub const PROP_RENDERER_CREATE_WINDOW_POINTER : Bytes = b"SDL.renderer.create.window"
-
-///|
-pub const PROP_RENDERER_D3D11_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d11.device"
-
-///|
-pub const PROP_RENDERER_D3D11_SWAPCHAIN_POINTER : Bytes = b"SDL.renderer.d3d11.swap_chain"
-
-///|
-pub const PROP_RENDERER_D3D12_COMMAND_QUEUE_POINTER : Bytes = b"SDL.renderer.d3d12.command_queue"
-
-///|
-pub const PROP_RENDERER_D3D12_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d12.device"
-
-///|
-pub const PROP_RENDERER_D3D12_SWAPCHAIN_POINTER : Bytes = b"SDL.renderer.d3d12.swap_chain"
-
-///|
-pub const PROP_RENDERER_D3D9_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d9.device"
-
-///|
-pub const PROP_RENDERER_GPU_DEVICE_POINTER : Bytes = b"SDL.renderer.gpu.device"
-
-///|
-pub const PROP_RENDERER_HDR_ENABLED_BOOLEAN : Bytes = b"SDL.renderer.HDR_enabled"
-
-///|
-pub const PROP_RENDERER_HDR_HEADROOM_FLOAT : Bytes = b"SDL.renderer.HDR_headroom"
-
-///|
-pub const PROP_RENDERER_MAX_TEXTURE_SIZE_NUMBER : Bytes = b"SDL.renderer.max_texture_size"
 
 ///|
 pub const PROP_RENDERER_NAME_STRING : Bytes = b"SDL.renderer.name"
 
 ///|
-pub const PROP_RENDERER_OUTPUT_COLORSPACE_NUMBER : Bytes = b"SDL.renderer.output_colorspace"
-
-///|
-pub const PROP_RENDERER_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.renderer.SDR_white_point"
+pub const PROP_RENDERER_WINDOW_POINTER : Bytes = b"SDL.renderer.window"
 
 ///|
 pub const PROP_RENDERER_SURFACE_POINTER : Bytes = b"SDL.renderer.surface"
+
+///|
+pub const PROP_RENDERER_VSYNC_NUMBER : Bytes = b"SDL.renderer.vsync"
+
+///|
+pub const PROP_RENDERER_MAX_TEXTURE_SIZE_NUMBER : Bytes = b"SDL.renderer.max_texture_size"
 
 ///|
 pub const PROP_RENDERER_TEXTURE_FORMATS_POINTER : Bytes = b"SDL.renderer.texture_formats"
@@ -130,7 +103,43 @@ pub const PROP_RENDERER_TEXTURE_FORMATS_POINTER : Bytes = b"SDL.renderer.texture
 pub const PROP_RENDERER_TEXTURE_WRAPPING_BOOLEAN : Bytes = b"SDL.renderer.texture_wrapping"
 
 ///|
-pub const PROP_RENDERER_VSYNC_NUMBER : Bytes = b"SDL.renderer.vsync"
+pub const PROP_RENDERER_OUTPUT_COLORSPACE_NUMBER : Bytes = b"SDL.renderer.output_colorspace"
+
+///|
+pub const PROP_RENDERER_HDR_ENABLED_BOOLEAN : Bytes = b"SDL.renderer.HDR_enabled"
+
+///|
+pub const PROP_RENDERER_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.renderer.SDR_white_point"
+
+///|
+pub const PROP_RENDERER_HDR_HEADROOM_FLOAT : Bytes = b"SDL.renderer.HDR_headroom"
+
+///|
+pub const PROP_RENDERER_D3D9_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d9.device"
+
+///|
+pub const PROP_RENDERER_D3D11_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d11.device"
+
+///|
+pub const PROP_RENDERER_D3D11_SWAPCHAIN_POINTER : Bytes = b"SDL.renderer.d3d11.swap_chain"
+
+///|
+pub const PROP_RENDERER_D3D12_DEVICE_POINTER : Bytes = b"SDL.renderer.d3d12.device"
+
+///|
+pub const PROP_RENDERER_D3D12_SWAPCHAIN_POINTER : Bytes = b"SDL.renderer.d3d12.swap_chain"
+
+///|
+pub const PROP_RENDERER_D3D12_COMMAND_QUEUE_POINTER : Bytes = b"SDL.renderer.d3d12.command_queue"
+
+///|
+pub const PROP_RENDERER_VULKAN_INSTANCE_POINTER : Bytes = b"SDL.renderer.vulkan.instance"
+
+///|
+pub const PROP_RENDERER_VULKAN_SURFACE_NUMBER : Bytes = b"SDL.renderer.vulkan.surface"
+
+///|
+pub const PROP_RENDERER_VULKAN_PHYSICAL_DEVICE_POINTER : Bytes = b"SDL.renderer.vulkan.physical_device"
 
 ///|
 pub const PROP_RENDERER_VULKAN_DEVICE_POINTER : Bytes = b"SDL.renderer.vulkan.device"
@@ -139,34 +148,37 @@ pub const PROP_RENDERER_VULKAN_DEVICE_POINTER : Bytes = b"SDL.renderer.vulkan.de
 pub const PROP_RENDERER_VULKAN_GRAPHICS_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.vulkan.graphics_queue_family_index"
 
 ///|
-pub const PROP_RENDERER_VULKAN_INSTANCE_POINTER : Bytes = b"SDL.renderer.vulkan.instance"
-
-///|
-pub const PROP_RENDERER_VULKAN_PHYSICAL_DEVICE_POINTER : Bytes = b"SDL.renderer.vulkan.physical_device"
-
-///|
 pub const PROP_RENDERER_VULKAN_PRESENT_QUEUE_FAMILY_INDEX_NUMBER : Bytes = b"SDL.renderer.vulkan.present_queue_family_index"
-
-///|
-pub const PROP_RENDERER_VULKAN_SURFACE_NUMBER : Bytes = b"SDL.renderer.vulkan.surface"
 
 ///|
 pub const PROP_RENDERER_VULKAN_SWAPCHAIN_IMAGE_COUNT_NUMBER : Bytes = b"SDL.renderer.vulkan.swapchain_image_count"
 
 ///|
-pub const PROP_RENDERER_WINDOW_POINTER : Bytes = b"SDL.renderer.window"
+pub const PROP_RENDERER_GPU_DEVICE_POINTER : Bytes = b"SDL.renderer.gpu.device"
 
 ///|
-pub const PROP_TEXTURE_ACCESS_NUMBER : Bytes = b"SDL.texture.access"
+pub const PROP_TEXTURE_CREATE_COLORSPACE_NUMBER : Bytes = b"SDL.texture.create.colorspace"
 
 ///|
-pub const PROP_TEXTURE_COLORSPACE_NUMBER : Bytes = b"SDL.texture.colorspace"
+pub const PROP_TEXTURE_CREATE_FORMAT_NUMBER : Bytes = b"SDL.texture.create.format"
 
 ///|
 pub const PROP_TEXTURE_CREATE_ACCESS_NUMBER : Bytes = b"SDL.texture.create.access"
 
 ///|
-pub const PROP_TEXTURE_CREATE_COLORSPACE_NUMBER : Bytes = b"SDL.texture.create.colorspace"
+pub const PROP_TEXTURE_CREATE_WIDTH_NUMBER : Bytes = b"SDL.texture.create.width"
+
+///|
+pub const PROP_TEXTURE_CREATE_HEIGHT_NUMBER : Bytes = b"SDL.texture.create.height"
+
+///|
+pub const PROP_TEXTURE_CREATE_PALETTE_POINTER : Bytes = b"SDL.texture.create.palette"
+
+///|
+pub const PROP_TEXTURE_CREATE_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.texture.create.SDR_white_point"
+
+///|
+pub const PROP_TEXTURE_CREATE_HDR_HEADROOM_FLOAT : Bytes = b"SDL.texture.create.HDR_headroom"
 
 ///|
 pub const PROP_TEXTURE_CREATE_D3D11_TEXTURE_POINTER : Bytes = b"SDL.texture.create.d3d11.texture"
@@ -187,40 +199,7 @@ pub const PROP_TEXTURE_CREATE_D3D12_TEXTURE_U_POINTER : Bytes = b"SDL.texture.cr
 pub const PROP_TEXTURE_CREATE_D3D12_TEXTURE_V_POINTER : Bytes = b"SDL.texture.create.d3d12.texture_v"
 
 ///|
-pub const PROP_TEXTURE_CREATE_FORMAT_NUMBER : Bytes = b"SDL.texture.create.format"
-
-///|
-pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_POINTER : Bytes = b"SDL.texture.create.gpu.texture"
-
-///|
-pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_UV_POINTER : Bytes = b"SDL.texture.create.gpu.texture_uv"
-
-///|
-pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_U_POINTER : Bytes = b"SDL.texture.create.gpu.texture_u"
-
-///|
-pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_V_POINTER : Bytes = b"SDL.texture.create.gpu.texture_v"
-
-///|
-pub const PROP_TEXTURE_CREATE_HDR_HEADROOM_FLOAT : Bytes = b"SDL.texture.create.HDR_headroom"
-
-///|
-pub const PROP_TEXTURE_CREATE_HEIGHT_NUMBER : Bytes = b"SDL.texture.create.height"
-
-///|
 pub const PROP_TEXTURE_CREATE_METAL_PIXELBUFFER_POINTER : Bytes = b"SDL.texture.create.metal.pixelbuffer"
-
-///|
-pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture"
-
-///|
-pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_uv"
-
-///|
-pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_u"
-
-///|
-pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_v"
 
 ///|
 pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.opengl.texture"
@@ -235,19 +214,55 @@ pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.cr
 pub const PROP_TEXTURE_CREATE_OPENGL_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.create.opengl.texture_v"
 
 ///|
-pub const PROP_TEXTURE_CREATE_PALETTE_POINTER : Bytes = b"SDL.texture.create.palette"
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture"
 
 ///|
-pub const PROP_TEXTURE_CREATE_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.texture.create.SDR_white_point"
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_uv"
 
 ///|
-pub const PROP_TEXTURE_CREATE_VULKAN_LAYOUT_NUMBER : Bytes = b"SDL.texture.create.vulkan.layout"
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_u"
+
+///|
+pub const PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.create.opengles2.texture_v"
 
 ///|
 pub const PROP_TEXTURE_CREATE_VULKAN_TEXTURE_NUMBER : Bytes = b"SDL.texture.create.vulkan.texture"
 
 ///|
-pub const PROP_TEXTURE_CREATE_WIDTH_NUMBER : Bytes = b"SDL.texture.create.width"
+pub const PROP_TEXTURE_CREATE_VULKAN_LAYOUT_NUMBER : Bytes = b"SDL.texture.create.vulkan.layout"
+
+///|
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_POINTER : Bytes = b"SDL.texture.create.gpu.texture"
+
+///|
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_UV_POINTER : Bytes = b"SDL.texture.create.gpu.texture_uv"
+
+///|
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_U_POINTER : Bytes = b"SDL.texture.create.gpu.texture_u"
+
+///|
+pub const PROP_TEXTURE_CREATE_GPU_TEXTURE_V_POINTER : Bytes = b"SDL.texture.create.gpu.texture_v"
+
+///|
+pub const PROP_TEXTURE_COLORSPACE_NUMBER : Bytes = b"SDL.texture.colorspace"
+
+///|
+pub const PROP_TEXTURE_FORMAT_NUMBER : Bytes = b"SDL.texture.format"
+
+///|
+pub const PROP_TEXTURE_ACCESS_NUMBER : Bytes = b"SDL.texture.access"
+
+///|
+pub const PROP_TEXTURE_WIDTH_NUMBER : Bytes = b"SDL.texture.width"
+
+///|
+pub const PROP_TEXTURE_HEIGHT_NUMBER : Bytes = b"SDL.texture.height"
+
+///|
+pub const PROP_TEXTURE_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.texture.SDR_white_point"
+
+///|
+pub const PROP_TEXTURE_HDR_HEADROOM_FLOAT : Bytes = b"SDL.texture.HDR_headroom"
 
 ///|
 pub const PROP_TEXTURE_D3D11_TEXTURE_POINTER : Bytes = b"SDL.texture.d3d11.texture"
@@ -268,7 +283,43 @@ pub const PROP_TEXTURE_D3D12_TEXTURE_U_POINTER : Bytes = b"SDL.texture.d3d12.tex
 pub const PROP_TEXTURE_D3D12_TEXTURE_V_POINTER : Bytes = b"SDL.texture.d3d12.texture_v"
 
 ///|
-pub const PROP_TEXTURE_FORMAT_NUMBER : Bytes = b"SDL.texture.format"
+pub const PROP_TEXTURE_OPENGL_TEXTURE_NUMBER : Bytes = b"SDL.texture.opengl.texture"
+
+///|
+pub const PROP_TEXTURE_OPENGL_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.opengl.texture_uv"
+
+///|
+pub const PROP_TEXTURE_OPENGL_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.opengl.texture_u"
+
+///|
+pub const PROP_TEXTURE_OPENGL_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.opengl.texture_v"
+
+///|
+pub const PROP_TEXTURE_OPENGL_TEXTURE_TARGET_NUMBER : Bytes = b"SDL.texture.opengl.target"
+
+///|
+pub const PROP_TEXTURE_OPENGL_TEX_W_FLOAT : Bytes = b"SDL.texture.opengl.tex_w"
+
+///|
+pub const PROP_TEXTURE_OPENGL_TEX_H_FLOAT : Bytes = b"SDL.texture.opengl.tex_h"
+
+///|
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_NUMBER : Bytes = b"SDL.texture.opengles2.texture"
+
+///|
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.opengles2.texture_uv"
+
+///|
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.opengles2.texture_u"
+
+///|
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.opengles2.texture_v"
+
+///|
+pub const PROP_TEXTURE_OPENGLES2_TEXTURE_TARGET_NUMBER : Bytes = b"SDL.texture.opengles2.target"
+
+///|
+pub const PROP_TEXTURE_VULKAN_TEXTURE_NUMBER : Bytes = b"SDL.texture.vulkan.texture"
 
 ///|
 pub const PROP_TEXTURE_GPU_TEXTURE_POINTER : Bytes = b"SDL.texture.gpu.texture"
@@ -281,57 +332,6 @@ pub const PROP_TEXTURE_GPU_TEXTURE_U_POINTER : Bytes = b"SDL.texture.gpu.texture
 
 ///|
 pub const PROP_TEXTURE_GPU_TEXTURE_V_POINTER : Bytes = b"SDL.texture.gpu.texture_v"
-
-///|
-pub const PROP_TEXTURE_HDR_HEADROOM_FLOAT : Bytes = b"SDL.texture.HDR_headroom"
-
-///|
-pub const PROP_TEXTURE_HEIGHT_NUMBER : Bytes = b"SDL.texture.height"
-
-///|
-pub const PROP_TEXTURE_OPENGLES2_TEXTURE_NUMBER : Bytes = b"SDL.texture.opengles2.texture"
-
-///|
-pub const PROP_TEXTURE_OPENGLES2_TEXTURE_TARGET_NUMBER : Bytes = b"SDL.texture.opengles2.target"
-
-///|
-pub const PROP_TEXTURE_OPENGLES2_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.opengles2.texture_uv"
-
-///|
-pub const PROP_TEXTURE_OPENGLES2_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.opengles2.texture_u"
-
-///|
-pub const PROP_TEXTURE_OPENGLES2_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.opengles2.texture_v"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEXTURE_NUMBER : Bytes = b"SDL.texture.opengl.texture"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEXTURE_TARGET_NUMBER : Bytes = b"SDL.texture.opengl.target"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEXTURE_UV_NUMBER : Bytes = b"SDL.texture.opengl.texture_uv"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEXTURE_U_NUMBER : Bytes = b"SDL.texture.opengl.texture_u"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEXTURE_V_NUMBER : Bytes = b"SDL.texture.opengl.texture_v"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEX_H_FLOAT : Bytes = b"SDL.texture.opengl.tex_h"
-
-///|
-pub const PROP_TEXTURE_OPENGL_TEX_W_FLOAT : Bytes = b"SDL.texture.opengl.tex_w"
-
-///|
-pub const PROP_TEXTURE_SDR_WHITE_POINT_FLOAT : Bytes = b"SDL.texture.SDR_white_point"
-
-///|
-pub const PROP_TEXTURE_VULKAN_TEXTURE_NUMBER : Bytes = b"SDL.texture.vulkan.texture"
-
-///|
-pub const PROP_TEXTURE_WIDTH_NUMBER : Bytes = b"SDL.texture.width"
 
 ///|
 pub const TEXTUREACCESS_STATIC : UInt = 0

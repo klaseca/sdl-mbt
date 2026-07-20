@@ -1156,7 +1156,11 @@ pub fn EventWatch::is_null(Self) -> Bool
 
 type FRect
 pub fn FRect::FRect(Float, Float, Float, Float) -> Self
+pub fn FRect::h(Self) -> Float
 pub fn FRect::to_bytes(Self) -> Bytes
+pub fn FRect::w(Self) -> Float
+pub fn FRect::x(Self) -> Float
+pub fn FRect::y(Self) -> Float
 
 #external
 pub type GPURenderState
@@ -1169,7 +1173,11 @@ pub fn Pointer::is_null(Self) -> Bool
 
 type Rect
 pub fn Rect::Rect(Int, Int, Int, Int) -> Self
+pub fn Rect::h(Self) -> Int
 pub fn Rect::to_bytes(Self) -> Bytes
+pub fn Rect::w(Self) -> Int
+pub fn Rect::x(Self) -> Int
+pub fn Rect::y(Self) -> Int
 
 pub type Renderer
 pub fn Renderer::is_null(Self) -> Bool

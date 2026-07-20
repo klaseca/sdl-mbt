@@ -1,0 +1,33 @@
+{
+  "files": [
+    "blendmode_gen.mbt",
+    "clipboard_gen.mbt",
+    "clipboard_stub_gen.c",
+    "cstring_stub_gen.c",
+    "error_gen.mbt",
+    "error_stub_gen.c",
+    "events_gen.mbt",
+    "events_stub_gen.c",
+    "init_gen.mbt",
+    "init_stub_gen.c",
+    "keyboard_gen.mbt",
+    "keyboard_stub_gen.c",
+    "messagebox_gen.mbt",
+    "messagebox_stub_gen.c",
+    "pixels_gen.mbt",
+    "pointer_gen.mbt",
+    "pointer_stub_gen.c",
+    "properties_gen.mbt",
+    "properties_stub_gen.c",
+    "rect_gen.mbt",
+    "rect_stub_gen.c",
+    "render_gen.mbt",
+    "render_stub_gen.c",
+    "timer_gen.mbt",
+    "timer_stub_gen.c",
+    "tray_gen.mbt",
+    "tray_stub_gen.c",
+    "video_gen.mbt",
+    "video_stub_gen.c"
+  ]
+}

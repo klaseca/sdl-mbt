@@ -8,7 +8,7 @@ repository = "https://github.com/klaseca/sdl-mbt"
 
 license = "Apache-2.0"
 
-keywords = ["sdl"]
+keywords = [ "sdl" ]
 
 description = "MoonBit bindings for SDL"
 
@@ -18,6 +18,4 @@ import {
 
 preferred_target = "native"
 
-options(
-  source: "src",
-)
+source = "src"

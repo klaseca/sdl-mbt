@@ -8,13 +8,14 @@ repository = "https://github.com/klaseca/sdl-mbt"
 
 license = "Apache-2.0"
 
-keywords = ["sdl"]
+keywords = [ "sdl" ]
 
 description = "Low-level MoonBit bindings for SDL C API"
 
 preferred_target = "native"
 
+source = "src"
+
 options(
-  source: "src",
   "--moonbit-unstable-prebuild": "prebuild.mjs",
 )

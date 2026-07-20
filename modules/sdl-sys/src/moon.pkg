@@ -8,6 +8,7 @@ formatter(
     "keyboard_gen.mbt",
     "messagebox_gen.mbt",
     "pixels_gen.mbt",
+    "pointer_gen.mbt",
     "properties_gen.mbt",
     "rect_gen.mbt",
     "render_gen.mbt",
@@ -18,17 +19,23 @@ formatter(
 )
 
 options(
-  link: { "native": { "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}" } },
+  link: {
+    "native": {
+      // "cc": "D:\\dev\\tools\\visual-studio\\build-tools\\VC\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\cl.exe",
+      // "cc": "D:\\tools\\scoop\\apps\\llvm\\current\\bin\\clang.exe",
+      "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}",
+    },
+  },
   "native-stub": [
     "clipboard_stub_gen.c",
-    "cstring_stub.c",
+    "cstring_stub_gen.c",
     "error_stub_gen.c",
     "event_watch_stub.c",
     "events_stub_gen.c",
     "init_stub_gen.c",
     "keyboard_stub_gen.c",
     "messagebox_stub_gen.c",
-    "pointer_stub.c",
+    "pointer_stub_gen.c",
     "properties_stub_gen.c",
     "rect_stub_gen.c",
     "render_stub_gen.c",

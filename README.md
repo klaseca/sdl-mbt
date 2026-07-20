@@ -10,29 +10,27 @@ The bindings currently target native builds. The public API is still evolving;
 the project is intended to grow from the window, event, tray, renderer, and
 texture APIs that are already present.
 
-## Repository Layout
-
-```text
-examples/
-  basic_window/         Minimal window and renderer example.
-  texture/              Texture upload/rendering example.
-  tray/                 Tray menu example.
-modules/
-  sdl/                  High-level MoonBit API.
-  sdl-sys/              Generated C FFI layer and generator.
-externals/SDL/          SDL headers used by the generated stubs.
-```
-
 ## Requirements
 
-- MoonBit with native backend support.
-- Node.js, used by the `sdl-sys` generator and prebuild script.
+- Node.js, used by the binding generator and prebuild script.
 - SDL 3 headers and native libraries.
 - If linking SDL dynamically, the SDL runtime library must be discoverable by
   the operating system loader when the built application starts.
 
 The default setup expects SDL headers in `externals/SDL/include` and reads link
 configuration from `.env`.
+
+Clone the SDL submodule and install the generator dependency before developing
+the bindings:
+
+```sh
+git submodule update --init --recursive
+npm install
+```
+
+Create `.env` from `.env.example`, then set `SDL3_LIB_DIR`. Relative paths in
+this file are resolved from the repository root; absolute paths are accepted as
+well.
 
 `SDL3_LIB_DIR` should point to the directory containing the SDL import library
 used by the linker. `SDL3_INCLUDE_DIR` is optional when the SDL headers are kept
@@ -83,23 +81,21 @@ Format MoonBit files:
 moon fmt
 ```
 
-## Code Generation
+## Binding Generation
 
-The low-level `sdl-sys` bindings are generated from SDL headers by:
+The low-level `sdl-sys` module is generated from the SDL headers. Run the
+generator after updating SDL or changing `bindgen/sdl_sys.config.ts`:
 
 ```sh
-node modules/sdl-sys/codegen/codegen_sdl_sys.mjs
+npm run bindgen
 ```
 
-The generator configuration lives in:
-
-```text
-modules/sdl-sys/codegen/sdl_sys.config.json
-```
-
-Generated MoonBit and C files use the `_gen` suffix. Manual support files are
-kept beside them in `modules/sdl-sys/src`.
+Generated MoonBit and C files are written to `modules/sdl-sys/src` and use the
+`_gen` suffix. Do not edit them manually.
 
 ## Documentation
 
-Module documentation lives in each module
+Module documentation:
+
+- [`klaseca/sdl`](modules/sdl/README.mbt.md)
+- [`klaseca/sdl-sys`](modules/sdl-sys/README.mbt.md)

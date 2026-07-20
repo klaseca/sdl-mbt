@@ -1,14 +1,14 @@
 // Generated file. Do not edit by hand.
 
-#include "../../../externals/SDL/include/SDL3/SDL.h"
+#include "../../../externals/SDL/include/SDL3/SDL_events.h"
 #include <moonbit.h>
 #include <stdint.h>
 #include <string.h>
 
-moonbit_bytes_t moonbit_cstring_to_bytes(const char *str);
+moonbit_bytes_t moonbit_cstring_to_bytes_sdl(const char *str);
 
 MOONBIT_FFI_EXPORT
-moonbit_bytes_t moonbit_sdl_event_make() {
+moonbit_bytes_t moonbit_sdl_event_make(void) {
   SDL_Event value = { 0 };
   moonbit_bytes_t bytes = moonbit_make_bytes(sizeof(SDL_Event), 0);
   memcpy(bytes, &value, sizeof(SDL_Event));
@@ -132,15 +132,15 @@ Sint32 moonbit_sdl_event_window_data2(moonbit_bytes_t self) {
 
 MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_event_text_text(moonbit_bytes_t self) {
-  return moonbit_cstring_to_bytes(((SDL_Event *)self)->text.text);
+  return moonbit_cstring_to_bytes_sdl(((SDL_Event *)self)->text.text);
 }
 
 MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_poll_event_ffi(moonbit_bytes_t event) {
-  return SDL_PollEvent((SDL_Event *)event);
+  return SDL_PollEvent(((SDL_Event *)event));
 }
 
 MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_wait_event_timeout_ffi(moonbit_bytes_t event, Sint32 timeoutMS) {
-  return SDL_WaitEventTimeout((SDL_Event *)event, timeoutMS);
+  return SDL_WaitEventTimeout(((SDL_Event *)event), timeoutMS);
 }

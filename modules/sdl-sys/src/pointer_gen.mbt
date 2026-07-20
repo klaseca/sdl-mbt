@@ -1,3 +1,5 @@
+// Generated file. Do not edit by hand.
+
 ///|
 #external
 pub type Pointer

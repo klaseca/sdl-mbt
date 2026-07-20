@@ -1,85 +1,7 @@
 // Generated file. Do not edit by hand.
 
 ///|
-pub const PIXELFORMAT_ABGR128_FLOAT : UInt = 0x1b608010
-
-///|
-pub const PIXELFORMAT_ABGR1555 : UInt = 0x15731002
-
-///|
-pub const PIXELFORMAT_ABGR2101010 : UInt = 0x16772004
-
-///|
-pub const PIXELFORMAT_ABGR4444 : UInt = 0x15721002
-
-///|
-pub const PIXELFORMAT_ABGR64 : UInt = 0x18604008
-
-///|
-pub const PIXELFORMAT_ABGR64_FLOAT : UInt = 0x1a604008
-
-///|
-pub const PIXELFORMAT_ABGR8888 : UInt = 0x16762004
-
-///|
-pub const PIXELFORMAT_ARGB128_FLOAT : UInt = 0x1b308010
-
-///|
-pub const PIXELFORMAT_ARGB1555 : UInt = 0x15331002
-
-///|
-pub const PIXELFORMAT_ARGB2101010 : UInt = 0x16372004
-
-///|
-pub const PIXELFORMAT_ARGB4444 : UInt = 0x15321002
-
-///|
-pub const PIXELFORMAT_ARGB64 : UInt = 0x18304008
-
-///|
-pub const PIXELFORMAT_ARGB64_FLOAT : UInt = 0x1a304008
-
-///|
-pub const PIXELFORMAT_ARGB8888 : UInt = 0x16362004
-
-///|
-pub const PIXELFORMAT_BGR24 : UInt = 0x17401803
-
-///|
-pub const PIXELFORMAT_BGR48 : UInt = 0x18403006
-
-///|
-pub const PIXELFORMAT_BGR48_FLOAT : UInt = 0x1a403006
-
-///|
-pub const PIXELFORMAT_BGR565 : UInt = 0x15551002
-
-///|
-pub const PIXELFORMAT_BGR96_FLOAT : UInt = 0x1b40600c
-
-///|
-pub const PIXELFORMAT_BGRA128_FLOAT : UInt = 0x1b508010
-
-///|
-pub const PIXELFORMAT_BGRA4444 : UInt = 0x15821002
-
-///|
-pub const PIXELFORMAT_BGRA5551 : UInt = 0x15841002
-
-///|
-pub const PIXELFORMAT_BGRA64 : UInt = 0x18504008
-
-///|
-pub const PIXELFORMAT_BGRA64_FLOAT : UInt = 0x1a504008
-
-///|
-pub const PIXELFORMAT_BGRA8888 : UInt = 0x16862004
-
-///|
-pub const PIXELFORMAT_BGRX8888 : UInt = 0x16661804
-
-///|
-pub const PIXELFORMAT_EXTERNAL_OES : UInt = 0x2053454f
+pub const PIXELFORMAT_UNKNOWN : UInt = 0
 
 ///|
 pub const PIXELFORMAT_INDEX1LSB : UInt = 0x11100100
@@ -103,10 +25,160 @@ pub const PIXELFORMAT_INDEX4MSB : UInt = 0x12200400
 pub const PIXELFORMAT_INDEX8 : UInt = 0x13000801
 
 ///|
+pub const PIXELFORMAT_RGB332 : UInt = 0x14110801
+
+///|
+pub const PIXELFORMAT_XRGB4444 : UInt = 0x15120c02
+
+///|
+pub const PIXELFORMAT_XBGR4444 : UInt = 0x15520c02
+
+///|
+pub const PIXELFORMAT_XRGB1555 : UInt = 0x15130f02
+
+///|
+pub const PIXELFORMAT_XBGR1555 : UInt = 0x15530f02
+
+///|
+pub const PIXELFORMAT_ARGB4444 : UInt = 0x15321002
+
+///|
+pub const PIXELFORMAT_RGBA4444 : UInt = 0x15421002
+
+///|
+pub const PIXELFORMAT_ABGR4444 : UInt = 0x15721002
+
+///|
+pub const PIXELFORMAT_BGRA4444 : UInt = 0x15821002
+
+///|
+pub const PIXELFORMAT_ARGB1555 : UInt = 0x15331002
+
+///|
+pub const PIXELFORMAT_RGBA5551 : UInt = 0x15441002
+
+///|
+pub const PIXELFORMAT_ABGR1555 : UInt = 0x15731002
+
+///|
+pub const PIXELFORMAT_BGRA5551 : UInt = 0x15841002
+
+///|
+pub const PIXELFORMAT_RGB565 : UInt = 0x15151002
+
+///|
+pub const PIXELFORMAT_BGR565 : UInt = 0x15551002
+
+///|
+pub const PIXELFORMAT_RGB24 : UInt = 0x17101803
+
+///|
+pub const PIXELFORMAT_BGR24 : UInt = 0x17401803
+
+///|
+pub const PIXELFORMAT_XRGB8888 : UInt = 0x16161804
+
+///|
+pub const PIXELFORMAT_RGBX8888 : UInt = 0x16261804
+
+///|
+pub const PIXELFORMAT_XBGR8888 : UInt = 0x16561804
+
+///|
+pub const PIXELFORMAT_BGRX8888 : UInt = 0x16661804
+
+///|
+pub const PIXELFORMAT_ARGB8888 : UInt = 0x16362004
+
+///|
+pub const PIXELFORMAT_RGBA8888 : UInt = 0x16462004
+
+///|
+pub const PIXELFORMAT_ABGR8888 : UInt = 0x16762004
+
+///|
+pub const PIXELFORMAT_BGRA8888 : UInt = 0x16862004
+
+///|
+pub const PIXELFORMAT_XRGB2101010 : UInt = 0x16172004
+
+///|
+pub const PIXELFORMAT_XBGR2101010 : UInt = 0x16572004
+
+///|
+pub const PIXELFORMAT_ARGB2101010 : UInt = 0x16372004
+
+///|
+pub const PIXELFORMAT_ABGR2101010 : UInt = 0x16772004
+
+///|
+pub const PIXELFORMAT_RGB48 : UInt = 0x18103006
+
+///|
+pub const PIXELFORMAT_BGR48 : UInt = 0x18403006
+
+///|
+pub const PIXELFORMAT_RGBA64 : UInt = 0x18204008
+
+///|
+pub const PIXELFORMAT_ARGB64 : UInt = 0x18304008
+
+///|
+pub const PIXELFORMAT_BGRA64 : UInt = 0x18504008
+
+///|
+pub const PIXELFORMAT_ABGR64 : UInt = 0x18604008
+
+///|
+pub const PIXELFORMAT_RGB48_FLOAT : UInt = 0x1a103006
+
+///|
+pub const PIXELFORMAT_BGR48_FLOAT : UInt = 0x1a403006
+
+///|
+pub const PIXELFORMAT_RGBA64_FLOAT : UInt = 0x1a204008
+
+///|
+pub const PIXELFORMAT_ARGB64_FLOAT : UInt = 0x1a304008
+
+///|
+pub const PIXELFORMAT_BGRA64_FLOAT : UInt = 0x1a504008
+
+///|
+pub const PIXELFORMAT_ABGR64_FLOAT : UInt = 0x1a604008
+
+///|
+pub const PIXELFORMAT_RGB96_FLOAT : UInt = 0x1b10600c
+
+///|
+pub const PIXELFORMAT_BGR96_FLOAT : UInt = 0x1b40600c
+
+///|
+pub const PIXELFORMAT_RGBA128_FLOAT : UInt = 0x1b208010
+
+///|
+pub const PIXELFORMAT_ARGB128_FLOAT : UInt = 0x1b308010
+
+///|
+pub const PIXELFORMAT_BGRA128_FLOAT : UInt = 0x1b508010
+
+///|
+pub const PIXELFORMAT_ABGR128_FLOAT : UInt = 0x1b608010
+
+///|
+pub const PIXELFORMAT_YV12 : UInt = 0x32315659
+
+///|
 pub const PIXELFORMAT_IYUV : UInt = 0x56555949
 
 ///|
-pub const PIXELFORMAT_MJPG : UInt = 0x47504a4d
+pub const PIXELFORMAT_YUY2 : UInt = 0x32595559
+
+///|
+pub const PIXELFORMAT_UYVY : UInt = 0x59565955
+
+///|
+pub const PIXELFORMAT_YVYU : UInt = 0x55595659
 
 ///|
 pub const PIXELFORMAT_NV12 : UInt = 0x3231564e
@@ -118,79 +190,7 @@ pub const PIXELFORMAT_NV21 : UInt = 0x3132564e
 pub const PIXELFORMAT_P010 : UInt = 0x30313050
 
 ///|
-pub const PIXELFORMAT_RGB24 : UInt = 0x17101803
+pub const PIXELFORMAT_EXTERNAL_OES : UInt = 0x2053454f
 
 ///|
-pub const PIXELFORMAT_RGB332 : UInt = 0x14110801
-
-///|
-pub const PIXELFORMAT_RGB48 : UInt = 0x18103006
-
-///|
-pub const PIXELFORMAT_RGB48_FLOAT : UInt = 0x1a103006
-
-///|
-pub const PIXELFORMAT_RGB565 : UInt = 0x15151002
-
-///|
-pub const PIXELFORMAT_RGB96_FLOAT : UInt = 0x1b10600c
-
-///|
-pub const PIXELFORMAT_RGBA128_FLOAT : UInt = 0x1b208010
-
-///|
-pub const PIXELFORMAT_RGBA4444 : UInt = 0x15421002
-
-///|
-pub const PIXELFORMAT_RGBA5551 : UInt = 0x15441002
-
-///|
-pub const PIXELFORMAT_RGBA64 : UInt = 0x18204008
-
-///|
-pub const PIXELFORMAT_RGBA64_FLOAT : UInt = 0x1a204008
-
-///|
-pub const PIXELFORMAT_RGBA8888 : UInt = 0x16462004
-
-///|
-pub const PIXELFORMAT_RGBX8888 : UInt = 0x16261804
-
-///|
-pub const PIXELFORMAT_UNKNOWN : UInt = 0
-
-///|
-pub const PIXELFORMAT_UYVY : UInt = 0x59565955
-
-///|
-pub const PIXELFORMAT_XBGR1555 : UInt = 0x15530f02
-
-///|
-pub const PIXELFORMAT_XBGR2101010 : UInt = 0x16572004
-
-///|
-pub const PIXELFORMAT_XBGR4444 : UInt = 0x15520c02
-
-///|
-pub const PIXELFORMAT_XBGR8888 : UInt = 0x16561804
-
-///|
-pub const PIXELFORMAT_XRGB1555 : UInt = 0x15130f02
-
-///|
-pub const PIXELFORMAT_XRGB2101010 : UInt = 0x16172004
-
-///|
-pub const PIXELFORMAT_XRGB4444 : UInt = 0x15120c02
-
-///|
-pub const PIXELFORMAT_XRGB8888 : UInt = 0x16161804
-
-///|
-pub const PIXELFORMAT_YUY2 : UInt = 0x32595559
-
-///|
-pub const PIXELFORMAT_YV12 : UInt = 0x32315659
-
-///|
-pub const PIXELFORMAT_YVYU : UInt = 0x55595659
+pub const PIXELFORMAT_MJPG : UInt = 0x47504a4d

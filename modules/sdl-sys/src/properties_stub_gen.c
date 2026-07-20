@@ -1,10 +1,10 @@
 // Generated file. Do not edit by hand.
 
-#include "../../../externals/SDL/include/SDL3/SDL.h"
+#include "../../../externals/SDL/include/SDL3/SDL_properties.h"
 #include <moonbit.h>
 #include <stdint.h>
 
-moonbit_bytes_t moonbit_cstring_to_bytes(const char *str);
+moonbit_bytes_t moonbit_cstring_to_bytes_sdl(const char *str);
 
 MOONBIT_FFI_EXPORT
 SDL_PropertiesID moonbit_sdl_create_properties(void) {
@@ -33,7 +33,7 @@ int32_t moonbit_sdl_set_boolean_property(SDL_PropertiesID props, moonbit_bytes_t
 
 MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_get_string_property(SDL_PropertiesID props, moonbit_bytes_t name, moonbit_bytes_t default_value) {
-  return moonbit_cstring_to_bytes(SDL_GetStringProperty(props, (const char *)name, (const char *)default_value));
+  return moonbit_cstring_to_bytes_sdl(SDL_GetStringProperty(props, (const char *)name, (const char *)default_value));
 }
 
 MOONBIT_FFI_EXPORT

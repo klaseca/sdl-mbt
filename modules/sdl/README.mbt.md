@@ -19,7 +19,9 @@ import {
 ```
 
 Native builds also need the SDL setup required by `klaseca/sdl-sys`: headers,
-link library, and runtime DLL/shared library.
+link library, and runtime shared library. Consuming this module does not require
+running the binding generator. `npm install` and `npm run bindgen` are only
+needed when changing the generated `sdl-sys` API in this repository.
 
 ## Application Loop
 

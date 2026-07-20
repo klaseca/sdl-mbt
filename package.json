@@ -1,0 +1,14 @@
+{
+  "name": "sdl-mbt",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.18.0"
+  },
+  "scripts": {
+    "bindgen": "node --import ./ts-loader.js ./bindgen/bindgen_sdl_sys.ts"
+  },
+  "devDependencies": {
+    "moonbit-bindgen": "github:klaseca/moonbit-bindgen#cc5247816ddc8d014aed358fc87b52e3fd6dda36"
+  }
+}
