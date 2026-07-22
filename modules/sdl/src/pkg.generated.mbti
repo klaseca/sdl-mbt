@@ -136,9 +136,9 @@ pub struct Menu {
   // private fields
 }
 pub fn Menu::Menu() -> Self
+pub fn Menu::append(Self, Self) -> Self
 pub fn Menu::button(Self, label~ : String, on_click? : () -> Unit, enabled? : Bool) -> Self
 pub fn Menu::checkbox(Self, label~ : String, on_click? : () -> Unit, checked? : Bool, enabled? : Bool) -> Self
-pub fn Menu::extend(Self, Self) -> Self
 pub fn Menu::separator(Self) -> Self
 pub fn Menu::submenu(Self, label~ : String, menu~ : Self) -> Self
 
@@ -238,8 +238,8 @@ pub(all) enum TextureAccess {
 
 type Tray
 pub fn Tray::Tray(tooltip~ : String, menu? : Menu) -> Self raise SdlError
+pub fn Tray::append(Self, Menu) -> Unit raise SdlError
 pub fn Tray::destroy(Self) -> Unit
-pub fn Tray::extend(Self, Menu) -> Unit raise SdlError
 pub fn Tray::raw(Self) -> @sdl-sys.Tray
 pub fn Tray::set_tooltip(Self, String) -> Unit
 pub fn Tray::update() -> Unit

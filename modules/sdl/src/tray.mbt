@@ -74,7 +74,7 @@ pub fn Menu::submenu(self : Self, label~ : String, menu~ : Menu) -> Self {
 }
 
 ///|
-pub fn Menu::extend(self : Self, menu : Menu) -> Self {
+pub fn Menu::append(self : Self, menu : Menu) -> Self {
   self.elements.append(menu.elements)
   self
 }
@@ -126,7 +126,7 @@ impl MenuElement for Submenu with fn insert(self, menu, pos) {
     TRAYENTRY_SUBMENU,
     pos~,
   )
-  entry.submenu().extend(self.menu)
+  entry.submenu().insert_menu(self.menu)
 }
 
 ///|
@@ -148,7 +148,7 @@ pub fn Tray::Tray(tooltip~ : String, menu? : Menu) -> Tray raise SdlError {
   }
   let tray : Tray = { raw, context: { callback_handles: [] } }
   if menu is Some(menu) {
-    tray.extend(menu)
+    tray.append(menu)
   }
   tray
 }
@@ -164,8 +164,8 @@ pub fn Tray::set_tooltip(self : Self, tooltip : String) -> Unit {
 }
 
 ///|
-pub fn Tray::extend(self : Self, menu : Menu) -> Unit raise SdlError {
-  self.menu().extend(menu)
+pub fn Tray::append(self : Self, menu : Menu) -> Unit raise SdlError {
+  self.menu().insert_menu(menu)
 }
 
 ///|
@@ -216,11 +216,6 @@ fn TrayMenu::insert_entry(
     raise_last_error("SDL_InsertTrayEntryAt")
   }
   { raw, context: self.context }
-}
-
-///|
-fn TrayMenu::extend(self : Self, menu : Menu) -> Unit raise SdlError {
-  self.insert_menu(menu)
 }
 
 ///|
