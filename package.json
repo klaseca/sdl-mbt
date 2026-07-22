@@ -6,9 +6,9 @@
     "node": ">=24.18.0"
   },
   "scripts": {
-    "bindgen": "node --import ./ts-loader.js ./bindgen/bindgen_sdl_sys.ts"
+    "bindgen": "node --import moonbit-bindgen/register ./bindgen/bindgen_sdl_sys.ts"
   },
   "devDependencies": {
-    "moonbit-bindgen": "github:klaseca/moonbit-bindgen#cc5247816ddc8d014aed358fc87b52e3fd6dda36"
+    "moonbit-bindgen": "github:klaseca/moonbit-bindgen#867b9cbdb7fafc06eadf618835e8cb834bbe54f9"
   }
 }
