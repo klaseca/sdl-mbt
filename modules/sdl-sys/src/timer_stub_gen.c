@@ -1,6 +1,6 @@
 // Generated file. Do not edit by hand.
 
-#include "../../../externals/SDL/include/SDL3/SDL_timer.h"
+#include <SDL3/SDL_timer.h>
 #include <moonbit.h>
 
 MOONBIT_FFI_EXPORT

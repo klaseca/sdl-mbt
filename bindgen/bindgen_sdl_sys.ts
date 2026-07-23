@@ -18,6 +18,7 @@ const source = createSourceCRegex({
       .replace(/\b(?:SDL_DECLSPEC|SDLCALL|SDL_PRINTF_FORMAT_STRING|SDL_MALLOC)\b/g, '')
       .replace(/\bSDL_(?:OUT_Z_CAP|INOUT_Z_CAP|OUT_CAP|INOUT_CAP)\([^)]*\)/g, ''),
   headerOutputBase: (file) => basename(file, '.h').replace(/^SDL_/, '').toLowerCase(),
+  headerInclude: (file) => `<SDL3/${file}>`,
   functionPattern: /extern SDL_DECLSPEC (.*?) SDLCALL (SDL_\w+)\((.*?)\);/g,
   constantType: (name) => {
     if (name.endsWith('_ADAPTIVE')) return 'Int'

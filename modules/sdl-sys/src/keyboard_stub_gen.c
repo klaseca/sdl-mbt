@@ -1,6 +1,6 @@
 // Generated file. Do not edit by hand.
 
-#include "../../../externals/SDL/include/SDL3/SDL_keyboard.h"
+#include <SDL3/SDL_keyboard.h>
 #include <moonbit.h>
 #include <stdint.h>
 

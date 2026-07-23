@@ -1,4 +1,4 @@
-#include "../../../externals/SDL/include/SDL3/SDL.h"
+#include <SDL3/SDL.h>
 #include <moonbit.h>
 #include <string.h>
 

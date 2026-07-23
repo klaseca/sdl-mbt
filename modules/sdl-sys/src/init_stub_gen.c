@@ -1,6 +1,6 @@
 // Generated file. Do not edit by hand.
 
-#include "../../../externals/SDL/include/SDL3/SDL_init.h"
+#include <SDL3/SDL_init.h>
 #include <moonbit.h>
 #include <stdint.h>
 
