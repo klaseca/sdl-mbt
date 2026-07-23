@@ -21,8 +21,6 @@ formatter(
 options(
   link: {
     "native": {
-      // "cc": "D:\\dev\\tools\\visual-studio\\build-tools\\VC\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\cl.exe",
-      // "cc": "D:\\tools\\scoop\\apps\\llvm\\current\\bin\\clang.exe",
       "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}",
     },
   },
