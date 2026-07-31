@@ -364,9 +364,6 @@ pub const EVENT_WINDOW_DESTROYED : UInt = 537
 pub const EVENT_WINDOW_HDR_STATE_CHANGED : UInt = 538
 
 ///|
-pub const EVENT_WINDOW_SETTINGS_CHANGED : UInt = 539
-
-///|
 pub const EVENT_KEY_DOWN : UInt = 0x300
 
 ///|
@@ -476,12 +473,6 @@ pub const EVENT_GAMEPAD_UPDATE_COMPLETE : UInt = 1626
 
 ///|
 pub const EVENT_GAMEPAD_STEAM_HANDLE_UPDATED : UInt = 1627
-
-///|
-pub const EVENT_GAMEPAD_CAPSENSE_TOUCH : UInt = 1628
-
-///|
-pub const EVENT_GAMEPAD_CAPSENSE_RELEASE : UInt = 1629
 
 ///|
 pub const EVENT_FINGER_DOWN : UInt = 0x700

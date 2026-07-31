@@ -19,11 +19,7 @@ formatter(
 )
 
 options(
-  link: {
-    "native": {
-      "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}",
-    },
-  },
+  link: { "native": { "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}" } },
   "native-stub": [
     "clipboard_stub_gen.c",
     "cstring_stub_gen.c",

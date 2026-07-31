@@ -52,24 +52,6 @@ pub const TRAYENTRY_DISABLED : UInt = 0x80000000
 pub const TRAYENTRY_CHECKED : UInt = 0x40000000
 
 ///|
-pub const PROP_TRAY_CREATE_ICON_POINTER : Bytes = b"SDL.tray.create.icon"
-
-///|
-pub const PROP_TRAY_CREATE_TOOLTIP_STRING : Bytes = b"SDL.tray.create.tooltip"
-
-///|
-pub const PROP_TRAY_CREATE_USERDATA_POINTER : Bytes = b"SDL.tray.create.userdata"
-
-///|
-pub const PROP_TRAY_CREATE_LEFTCLICK_CALLBACK_POINTER : Bytes = b"SDL.tray.create.leftclick_callback"
-
-///|
-pub const PROP_TRAY_CREATE_RIGHTCLICK_CALLBACK_POINTER : Bytes = b"SDL.tray.create.rightclick_callback"
-
-///|
-pub const PROP_TRAY_CREATE_MIDDLECLICK_CALLBACK_POINTER : Bytes = b"SDL.tray.create.middleclick_callback"
-
-///|
 #borrow(tooltip)
 pub extern "c" fn create_tray(tooltip : Bytes) -> Tray = "moonbit_sdl_create_tray"
 

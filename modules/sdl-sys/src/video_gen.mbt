@@ -232,9 +232,6 @@ pub const PROP_WINDOW_CREATE_EMSCRIPTEN_CANVAS_ID_STRING : Bytes = b"SDL.window.
 pub const PROP_WINDOW_CREATE_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING : Bytes = b"SDL.window.create.emscripten.keyboard_element"
 
 ///|
-pub const PROP_WINDOW_CREATE_VISIONOS_SETTINGS_STRING : Bytes = b"SDL.window.create.visionos.settings"
-
-///|
 pub const PROP_WINDOW_SHAPE_POINTER : Bytes = b"SDL.window.shape"
 
 ///|
@@ -284,12 +281,6 @@ pub const PROP_WINDOW_COCOA_METAL_VIEW_TAG_NUMBER : Bytes = b"SDL.window.cocoa.m
 
 ///|
 pub const PROP_WINDOW_OPENVR_OVERLAY_ID_NUMBER : Bytes = b"SDL.window.openvr.overlay_id"
-
-///|
-pub const PROP_WINDOW_QNX_WINDOW_POINTER : Bytes = b"SDL.window.qnx.window"
-
-///|
-pub const PROP_WINDOW_QNX_SURFACE_POINTER : Bytes = b"SDL.window.qnx.surface"
 
 ///|
 pub const PROP_WINDOW_VIVANTE_DISPLAY_POINTER : Bytes = b"SDL.window.vivante.display"
@@ -350,9 +341,6 @@ pub const PROP_WINDOW_EMSCRIPTEN_CANVAS_ID_STRING : Bytes = b"SDL.window.emscrip
 
 ///|
 pub const PROP_WINDOW_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING : Bytes = b"SDL.window.emscripten.keyboard_element"
-
-///|
-pub const PROP_WINDOW_VISIONOS_SETTINGS_STRING : Bytes = b"SDL.window.visionos.settings"
 
 ///|
 pub const WINDOW_SURFACE_VSYNC_DISABLED : UInt64 = 0

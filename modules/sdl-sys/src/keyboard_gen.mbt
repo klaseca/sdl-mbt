@@ -13,18 +13,6 @@ pub const PROP_TEXTINPUT_AUTOCORRECT_BOOLEAN : Bytes = b"SDL.textinput.autocorre
 pub const PROP_TEXTINPUT_MULTILINE_BOOLEAN : Bytes = b"SDL.textinput.multiline"
 
 ///|
-pub const PROP_TEXTINPUT_TITLE_STRING : Bytes = b"SDL.textinput.title"
-
-///|
-pub const PROP_TEXTINPUT_PLACEHOLDER_STRING : Bytes = b"SDL.textinput.placeholder"
-
-///|
-pub const PROP_TEXTINPUT_DEFAULT_TEXT_STRING : Bytes = b"SDL.textinput.default_text"
-
-///|
-pub const PROP_TEXTINPUT_MAX_LENGTH_NUMBER : Bytes = b"SDL.textinput.max_length"
-
-///|
 pub const PROP_TEXTINPUT_ANDROID_INPUTTYPE_NUMBER : Bytes = b"SDL.textinput.android.inputtype"
 
 ///|
