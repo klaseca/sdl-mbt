@@ -2,6 +2,4 @@ import {
   "klaseca/sdl",
 }
 
-options(
-  "is-main": true,
-)
+pkgtype(kind: "executable")
