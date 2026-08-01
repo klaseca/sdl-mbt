@@ -1,54 +1,68 @@
 #!/usr/bin/env node
 
-import fs from 'node:fs'
 import path from 'node:path'
-import { loadEnvFile } from 'node:process'
+import { nativeProvider, resolveNativeDependency } from './native-dependency.mjs'
 
-const packageName = 'klaseca/sdl-sys'
-const workspaceRoot = path.resolve(import.meta.dirname, '../..')
-const defaultIncludeDir = path.join(workspaceRoot, 'externals', 'SDL', 'include')
-const envFile = path.join(workspaceRoot, '.env')
+const sdlInstallLayout = {
+  includeDirectories: (installPath) => [path.join(installPath, 'include')],
+  libraryDirectories: (installPath, layout) => {
+    const baseDirs = [
+      path.join(installPath, 'lib', layout.architecture),
+      path.join(installPath, 'lib'),
+    ]
 
-if (fs.existsSync(envFile)) {
-  loadEnvFile(envFile)
+    if (layout.platform === 'windows') {
+      return [...baseDirs, path.join(installPath, layout.architecture), installPath]
+    }
+
+    return [...baseDirs, path.join(installPath, 'lib64')]
+  },
 }
 
-const toFlagPath = (file) => file.replaceAll(path.sep, '/')
-const resolveConfigPath = (file) => path.resolve(workspaceRoot, file)
+const sdl = resolveNativeDependency({
+  packageName: 'klaseca/sdl-sys',
+  headers: ['SDL3/SDL.h'],
+  providers: [
+    nativeProvider.envInstallPath('SDL3_INSTALL_PATH', sdlInstallLayout),
+    nativeProvider.pkgConfig('sdl3'),
+    nativeProvider.vcpkg(sdlInstallLayout),
+    nativeProvider.cmakePrefixPath(sdlInstallLayout),
+    nativeProvider.toolchainSearchPaths,
+  ],
+  platformAliases: {
+    win32: 'windows',
+    darwin: 'macos',
+  },
+  architectureAliases: {
+    ia32: 'x86',
+    x86_64: 'x64',
+    aarch64: 'arm64',
+  },
+  library: {
+    linkName: 'SDL3',
+    files: {
+      windows: ['SDL3.lib'],
+      macos: ['libSDL3.dylib'],
+      android: ['libSDL3.so'],
+      freebsd: ['libSDL3.so'],
+      linux: ['libSDL3.so'],
+      openbsd: ['libSDL3.so'],
+    },
+  },
+})
 
-const includeDir = resolveConfigPath(process.env.SDL3_INCLUDE_DIR ?? defaultIncludeDir)
-const libDir = process.env.SDL3_LIB_DIR ? resolveConfigPath(process.env.SDL3_LIB_DIR) : undefined
-
-function fail(message) {
-  console.error(`SDL prebuild: ${message}`)
-  process.exit(1)
-}
-
-if (!fs.existsSync(path.join(includeDir, 'SDL3', 'SDL.h'))) {
-  fail(`missing SDL headers. Set SDL3_INCLUDE_DIR or keep headers at ${defaultIncludeDir}`)
-}
-
-if (libDir == null) {
-  fail(
-    'missing SDL library directory. Set SDL3_LIB_DIR to the directory containing SDL3 library files',
-  )
-}
-
-if (!fs.existsSync(libDir)) {
-  fail(`SDL3_LIB_DIR does not exist: ${libDir}`)
-}
+const MOON_INCORRECT_LINK_FLAGS_WORKAROUND =
+  process.platform === 'win32'
+    ? {
+        link_flags: '/link',
+      }
+    : {}
 
 process.stdout.write(
   JSON.stringify({
     vars: {
-      SDL_STUB_CC_FLAGS: `-I${toFlagPath(includeDir)}`,
+      SDL_STUB_CC_FLAGS: sdl.compileFlags,
     },
-    link_configs: [
-      {
-        package: packageName,
-        link_flags: `-L${toFlagPath(libDir)}`,
-        link_libs: ['SDL3'],
-      },
-    ],
+    link_configs: [{ ...sdl.linkConfig, ...MOON_INCORRECT_LINK_FLAGS_WORKAROUND }],
   }),
 )

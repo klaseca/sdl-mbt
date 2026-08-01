@@ -12,34 +12,69 @@ texture APIs that are already present.
 
 ## Requirements
 
-- Node.js, used by the binding generator and prebuild script.
-- SDL 3 headers and native libraries.
+- Node.js, used by the prebuild script and binding generator. The supported
+  version is defined in `package.json`.
+- A shared SDL 3 development package containing matching headers and link
+  libraries.
 - If linking SDL dynamically, the SDL runtime library must be discoverable by
   the operating system loader when the built application starts.
 
-The default setup expects SDL headers in `externals/SDL/include` and reads link
-configuration from `.env`.
+The prebuild script first honors `SDL3_INSTALL_PATH`, then tries `pkg-config`,
+vcpkg, prefixes from `CMAKE_PREFIX_PATH`, and the include and library path
+environment variables used by compilers.
 
-Clone the SDL submodule and install the generator dependency before developing
-the bindings:
+Install SDL through the platform's package manager when possible. For a
+manually unpacked SDK, set `SDL3_INSTALL_PATH` to the absolute installation
+path containing `include/SDL3/SDL.h` and the `lib` directory:
+
+On Windows, the current integration requires an MSVC-compatible ABI. Download
+the `SDL3-devel-<version>-VC.zip` development archive.
+
+```sh
+SDL3_INSTALL_PATH=/opt/SDL3 moon run examples/basic_window
+```
+
+In PowerShell:
+
+```powershell
+$env:SDL3_INSTALL_PATH = "C:\Libraries\SDL3"
+moon run examples/basic_window
+```
+
+For local development, build and install the SDL submodule into a prefix:
+
+```sh
+cmake -S externals/SDL -B externals/SDL/build
+cmake --build externals/SDL/build --config Release
+cmake --install externals/SDL/build --config Release --prefix externals/SDL/out
+```
+
+Set `SDL3_INSTALL_PATH` to the absolute path of `externals/SDL/out`. Relative
+paths are rejected. This uses the same `include`/`lib` layout as any other
+manually installed SDL development package.
+
+If automatic discovery fails, set `MOON_NATIVE_RESOLVE_DEBUG=1` before running
+`moon` to print every attempted dependency source and its rejection reason to
+standard error.
+
+Current MoonBit prebuild input does not expose the compilation target, so
+automatic discovery uses the host operating system and architecture. It is
+intended for native host builds; cross-compilation needs target metadata from
+MoonBit. Set `VCPKG_TARGET_TRIPLET` when vcpkg contains multiple compatible
+triplets or its automatic choice does not match the configured compiler.
+
+Clone the SDL submodule and install the generator dependency only when
+developing or regenerating the bindings:
 
 ```sh
 git submodule update --init --recursive
 npm install
 ```
 
-Create `.env` from `.env.example`, then set `SDL3_LIB_DIR`. Relative paths in
-this file are resolved from the repository root; absolute paths are accepted as
-well.
-
-`SDL3_LIB_DIR` should point to the directory containing the SDL import library
-used by the linker. `SDL3_INCLUDE_DIR` is optional when the SDL headers are kept
-in `externals/SDL/include`.
-
 ## Runtime Shared Library
 
-The `.env` file configures compile and link flags only. It does not install or
-copy SDL's runtime library.
+Native dependency discovery configures compiler options, link libraries, and
+library search paths only. It does not install or copy SDL's runtime library.
 
 For applications linked against the shared SDL library, make sure the runtime
 library is discoverable before running the executable:
@@ -83,15 +118,9 @@ moon fmt
 
 ## Binding Generation
 
-The low-level `sdl-sys` module is generated from the SDL headers. Run the
-generator after updating SDL or changing `bindgen/sdl_sys.config.ts`:
-
-```sh
-npm run bindgen
-```
-
-Generated MoonBit and C files are written to `modules/sdl-sys/src` and use the
-`_gen` suffix. Do not edit them manually.
+The low-level `sdl-sys` module is generated from the SDL headers. See the
+[binding generation guide](bindgen/README.md) when updating SDL declarations or
+the SDL-specific binding policy.
 
 ## Documentation
 

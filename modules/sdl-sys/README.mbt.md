@@ -6,37 +6,76 @@ This module is the raw FFI layer used by `klaseca/sdl`. Most users should prefer
 the high-level `klaseca/sdl` module unless they need direct access to generated
 SDL functions, constants, opaque handles, or value structs.
 
-## Scope
-
-`sdl-sys` provides:
-
-- generated SDL constants;
-- generated `extern "c"` declarations and C stubs;
-- opaque SDL resource handles such as `Window`, `Renderer`, `Texture`, `Tray`;
-- small value structs backed by bytes, such as `Rect`, `FRect`, and `Event`;
-- manual support code for callback trampolines where needed.
-
 The generated API follows the SDL C API closely. It intentionally does less
 validation and owns fewer ergonomics than `klaseca/sdl`.
 
 ## Native Configuration
 
 The module targets native builds and uses `--moonbit-unstable-prebuild` to emit
-compiler and linker flags.
+compiler options and semantic link configuration.
 
-Configuration is read from the repository `.env` file:
+The prebuild script requires Node.js.
+
+A shared SDL installation is discovered from the first successful source in
+this order:
+
+- an explicit `SDL3_INSTALL_PATH`;
+- `pkg-config sdl3`;
+- a vcpkg installed tree selected through `VCPKG_INSTALLED_DIR` or
+  `VCPKG_ROOT`;
+- prefixes listed in `CMAKE_PREFIX_PATH`;
+- compiler include and library path environment variables.
+
+`SDL3_INSTALL_PATH` is only needed for a development package installed outside
+the standard discovery mechanisms. It must be an absolute path to an
+installation containing matching headers and link libraries:
 
 ```text
-SDL3_LIB_DIR=references/SDL3
-# SDL3_INCLUDE_DIR=externals/SDL/include
+SDL3_INSTALL_PATH/
+├── include/
+│   └── SDL3/
+│       └── SDL.h
+└── lib/
+    └── SDL3 link library
 ```
 
-`SDL3_INCLUDE_DIR` defaults to `externals/SDL/include`.
+On Windows, the current integration requires an MSVC-compatible ABI. Download
+the `SDL3-devel-<version>-VC.zip` development archive and point
+`SDL3_INSTALL_PATH` to the directory inside it that contains `include` and
+`lib`.
 
-`SDL3_LIB_DIR` is required and must point to the directory containing the SDL
-link library. On Windows the prebuild script expects `SDL3.lib` in this
-directory and passes its absolute path to the linker. On Unix-like systems it
-adds the directory to the linker search path and links `SDL3`.
+When building SDL from source, create the same layout with CMake's install step:
+
+```sh
+cmake -S path/to/SDL -B path/to/SDL/build
+cmake --build path/to/SDL/build --config Release
+cmake --install path/to/SDL/build --config Release --prefix path/to/SDL/out
+```
+
+Then set `SDL3_INSTALL_PATH` to the absolute path of `path/to/SDL/out`.
+
+The prebuild script emits the resolved library search directory and the
+semantic `SDL3` library name on every platform. It does not choose
+compiler-specific linker syntax; that translation belongs to MoonBit and the C
+compiler configured by the package.
+
+Set `MOON_NATIVE_RESOLVE_DEBUG=1` to print the detected target, every attempted
+dependency source, and the reason rejected candidates were not used. Diagnostic
+messages are written to standard error and do not affect the prebuild JSON.
+
+The resolver uses the target information supplied by MoonBit when available.
+Current MoonBit versions do not provide it to prebuild scripts, so native
+dependency discovery falls back to the host operating system and architecture.
+Cross-compilation therefore requires future MoonBit target metadata or an
+explicit target when reusing the resolver directly.
+
+`pkg-config` results are accepted only when their linker inputs can be expressed
+as semantic library names and search paths. Unsupported options such as
+framework or raw linker flags reject that discovery result instead of being
+silently discarded. On Windows, use an MSVC-compatible vcpkg triplet such as
+`x64-windows`. Set `VCPKG_TARGET_TRIPLET` when more than one compatible triplet
+is installed or when the automatically selected triplet does not match the
+configured compiler.
 
 If linking SDL dynamically, the runtime library is not enough for linking but
 must be available when the built executable starts. Use the platform's normal
@@ -44,49 +83,7 @@ loader mechanism: `PATH` or a DLL next to the executable on Windows,
 `LD_LIBRARY_PATH`/rpath/system install on Linux, and
 `DYLD_LIBRARY_PATH`/`@rpath`/application bundle packaging on macOS.
 
-## Binding Generator
-
-The generic C-to-MoonBit generator is maintained as the external
-`moonbit-bindgen` development dependency. This repository owns the SDL-specific
-header parser adapter and binding policy only.
-
-Install the pinned dependency and run the generator from the repository root:
-
-```sh
-npm install
-npm run bindgen
-```
-
-The local generator files are:
-
-```text
-bindgen/bindgen_sdl_sys.ts
-bindgen/sdl_sys.config.ts
-```
-
-`bindgen_sdl_sys.ts` connects SDL's C declaration syntax to
-`moonbit-bindgen/c`. `sdl_sys.config.ts` is a typed configuration containing the
-headers and API policies specific to this binding.
-
-Important configuration sections:
-
-- `headers`: SDL headers scanned by the generator.
-- `functions`: SDL functions to expose.
-- `valueStructs`: SDL structs represented as MoonBit byte-backed values.
-- `resources`: SDL pointer resources with destroy functions.
-- `renames`: generated name overrides.
-- `constantPrefixes`: SDL constant groups to emit.
-
-Generated files use the `_gen` suffix, for example `events_gen.mbt` and
-`events_stub_gen.c`. Do not edit these files by hand. The generated-file
-manifest at `src/.bindgen.json` lets the generator update changed output and
-remove only stale files that it previously created.
-
-Generation uses `functionMode: "explicit"` and `unsupportedPolicy: "error"`:
-only functions listed in the configuration are emitted, and an unsupported
-configured declaration fails the command instead of being silently skipped.
-
-## Naming
+## API Conventions
 
 Generated MoonBit names are lower snake case and remove the SDL prefix:
 
@@ -105,8 +102,6 @@ moonbit_sdl_poll_event_ffi
 
 Extern declarations in MoonBit refer to those C symbols directly.
 
-## Value Structs
-
 SDL value structs are represented as byte-backed MoonBit structs. For example:
 
 ```mbt
@@ -122,8 +117,6 @@ if @sdl_sys.poll_event(event) {
   let event_type = event.event_type()
 }
 ```
-
-## Resource Handles
 
 SDL pointer resources are represented as opaque MoonBit types. Generated
 constructors return resource handles backed by MoonBit external objects. Owned
@@ -142,27 +135,12 @@ if window.is_null() {
 The high-level `klaseca/sdl` module wraps these patterns with `SdlError` and
 `destroy` methods.
 
-## Manual Support Files
-
-Callback bindings that need MoonBit closure lifetime management are implemented
-manually beside generated files:
-
-- event-watch callback trampolines;
-- tray-entry callback trampolines.
-
-These files live in `modules/sdl-sys/src` without the `_gen` suffix.
-
-Pointer helpers, C-string conversion, value-struct accessors, nullable
-parameters, and texture lock/unlock declarations are generated by
-`moonbit-bindgen`.
-
 ## When To Use This Module
 
 Use `klaseca/sdl-sys` when:
 
 - a high-level wrapper does not exist yet;
 - you need direct access to an SDL constant or raw handle;
-- you are extending the high-level `klaseca/sdl` module;
-- you are improving the generator.
+- you are extending the high-level `klaseca/sdl` module.
 
 For application code, prefer `klaseca/sdl`.
