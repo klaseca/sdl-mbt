@@ -118,19 +118,19 @@ fn WindowPlacement::to_position(self : Self) -> Position {
     Positioned(position) => position
     Centered => {
       let position = sdl_windowpos(WINDOWPOS_CENTERED_MASK, 0)
-      { x: position, y: position }
+      { x: position, y: position, }
     }
     CenteredOnDisplay(display_id) => {
       let position = sdl_windowpos(WINDOWPOS_CENTERED_MASK, display_id)
-      { x: position, y: position }
+      { x: position, y: position, }
     }
     Undefined => {
       let position = sdl_windowpos(WINDOWPOS_UNDEFINED_MASK, 0)
-      { x: position, y: position }
+      { x: position, y: position, }
     }
     UndefinedOnDisplay(display_id) => {
       let position = sdl_windowpos(WINDOWPOS_UNDEFINED_MASK, display_id)
-      { x: position, y: position }
+      { x: position, y: position, }
     }
   }
 }
@@ -352,10 +352,10 @@ pub fn Window::set_placement(
 
 ///|
 pub fn Window::position(self : Self) -> Position raise SdlError {
-  let x : Ref[Int] = { val: 0 }
-  let y : Ref[Int] = { val: 0 }
+  let x : Ref[Int] = { val: 0, }
+  let y : Ref[Int] = { val: 0, }
   check_ok(@sys.get_window_position(self.raw, x, y), "SDL_GetWindowPosition")
-  { x: x.val, y: y.val }
+  { x: x.val, y: y.val, }
 }
 
 ///|
@@ -369,21 +369,21 @@ pub fn Window::set_size(
 
 ///|
 pub fn Window::size(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0 }
-  let height : Ref[Int] = { val: 0 }
+  let width : Ref[Int] = { val: 0, }
+  let height : Ref[Int] = { val: 0, }
   check_ok(@sys.get_window_size(self.raw, width, height), "SDL_GetWindowSize")
-  { width: width.val, height: height.val }
+  { width: width.val, height: height.val, }
 }
 
 ///|
 pub fn Window::size_in_pixels(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0 }
-  let height : Ref[Int] = { val: 0 }
+  let width : Ref[Int] = { val: 0, }
+  let height : Ref[Int] = { val: 0, }
   check_ok(
     @sys.get_window_size_in_pixels(self.raw, width, height),
     "SDL_GetWindowSizeInPixels",
   )
-  { width: width.val, height: height.val }
+  { width: width.val, height: height.val, }
 }
 
 ///|
@@ -400,13 +400,13 @@ pub fn Window::set_minimum_size(
 
 ///|
 pub fn Window::minimum_size(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0 }
-  let height : Ref[Int] = { val: 0 }
+  let width : Ref[Int] = { val: 0, }
+  let height : Ref[Int] = { val: 0, }
   check_ok(
     @sys.get_window_minimum_size(self.raw, width, height),
     "SDL_GetWindowMinimumSize",
   )
-  { width: width.val, height: height.val }
+  { width: width.val, height: height.val, }
 }
 
 ///|
@@ -423,13 +423,13 @@ pub fn Window::set_maximum_size(
 
 ///|
 pub fn Window::maximum_size(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0 }
-  let height : Ref[Int] = { val: 0 }
+  let width : Ref[Int] = { val: 0, }
+  let height : Ref[Int] = { val: 0, }
   check_ok(
     @sys.get_window_maximum_size(self.raw, width, height),
     "SDL_GetWindowMaximumSize",
   )
-  { width: width.val, height: height.val }
+  { width: width.val, height: height.val, }
 }
 
 ///|

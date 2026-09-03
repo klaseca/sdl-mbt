@@ -166,15 +166,15 @@ fn WindowEvent::from_raw(
 ) -> WindowEvent {
   let size = match name {
     Resized | PixelSizeChanged =>
-      Some(Size::{ width: raw.window_data1(), height: raw.window_data2() })
+      Some(Size::{ width: raw.window_data1(), height: raw.window_data2(), })
     Exposed | CloseRequested => None
   }
-  { window_id: raw.window_window_id(), name, size }
+  { window_id: raw.window_window_id(), name, size, }
 }
 
 ///|
 fn TextInputEvent::from_raw(raw : @sys.Event) -> TextInputEvent {
-  { text: @utf8.decode_lossy(raw.text_text()) }
+  { text: @utf8.decode_lossy(raw.text_text()), }
 }
 
 ///|

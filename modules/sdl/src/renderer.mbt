@@ -13,12 +13,12 @@ pub(all) struct Color {
 
 ///|
 pub fn Color::rgb(r~ : Byte, g~ : Byte, b~ : Byte) -> Color {
-  { r, g, b, a: 255 }
+  { r, g, b, a: 255, }
 }
 
 ///|
 pub fn Color::rgba(r~ : Byte, g~ : Byte, b~ : Byte, a~ : Byte) -> Color {
-  { r, g, b, a }
+  { r, g, b, a, }
 }
 
 ///|
@@ -31,7 +31,7 @@ pub(all) struct FRect {
 
 ///|
 pub fn FRect::FRect(x~ : Float, y~ : Float, w~ : Float, h~ : Float) -> FRect {
-  { x, y, w, h }
+  { x, y, w, h, }
 }
 
 ///|
@@ -49,7 +49,7 @@ pub(all) struct Rect {
 
 ///|
 pub fn Rect::Rect(x~ : Int, y~ : Int, w~ : Int, h~ : Int) -> Rect {
-  { x, y, w, h }
+  { x, y, w, h, }
 }
 
 ///|
@@ -98,7 +98,7 @@ pub fn Renderer::output_size(self : Self) -> Size raise SdlError {
     @sys.get_current_render_output_size(self.raw, width, height),
     "SDL_GetCurrentRenderOutputSize",
   )
-  { width: width.val, height: height.val }
+  { width: width.val, height: height.val, }
 }
 
 ///|

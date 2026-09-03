@@ -16,7 +16,7 @@ pub fn App::App(
   init_flags? : UInt = INIT_VIDEO,
   control_flow? : ControlFlow = Wait(16),
 ) -> App {
-  { init_flags, control_flow }
+  { init_flags, control_flow, }
 }
 
 ///|

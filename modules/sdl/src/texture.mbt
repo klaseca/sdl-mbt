@@ -87,7 +87,7 @@ pub fn Texture::Texture(
   if raw.is_null() {
     raise_last_error("SDL_CreateTexture")
   }
-  { raw, _renderer: renderer }
+  { raw, _renderer: renderer, }
 }
 
 ///|
@@ -129,10 +129,10 @@ pub fn Texture::update(
 
 ///|
 pub fn Texture::size(self : Self) -> FSize raise SdlError {
-  let width : Ref[Float] = { val: 0.0 }
-  let height : Ref[Float] = { val: 0.0 }
+  let width : Ref[Float] = { val: 0.0, }
+  let height : Ref[Float] = { val: 0.0, }
   check_ok(@sys.get_texture_size(self.raw, width, height), "SDL_GetTextureSize")
-  { width: width.val, height: height.val }
+  { width: width.val, height: height.val, }
 }
 
 ///|

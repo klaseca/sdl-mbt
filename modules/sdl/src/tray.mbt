@@ -24,7 +24,7 @@ pub struct Menu {
 
 ///|
 pub fn Menu::Menu() -> Self {
-  { elements: [] }
+  { elements: [], }
 }
 
 ///|
@@ -38,7 +38,7 @@ pub fn Menu::button(
   if !enabled {
     flags = flags + TRAYENTRY_DISABLED
   }
-  self.elements.push(Button::{ label, flags, on_click })
+  self.elements.push(Button::{ label, flags, on_click, })
   self
 }
 
@@ -57,19 +57,19 @@ pub fn Menu::checkbox(
   if !enabled {
     flags = flags + TRAYENTRY_DISABLED
   }
-  self.elements.push(Checkbox::{ label, flags, on_click })
+  self.elements.push(Checkbox::{ label, flags, on_click, })
   self
 }
 
 ///|
 pub fn Menu::separator(self : Self) -> Self {
-  self.elements.push(Separator::{  })
+  self.elements.push(Separator::{ })
   self
 }
 
 ///|
 pub fn Menu::submenu(self : Self, label~ : String, menu~ : Menu) -> Self {
-  self.elements.push(Submenu::{ label, menu })
+  self.elements.push(Submenu::{ label, menu, })
   self
 }
 
@@ -146,7 +146,7 @@ pub fn Tray::Tray(tooltip~ : String, menu? : Menu) -> Tray raise SdlError {
   if raw.is_null() {
     raise_last_error("SDL_CreateTray")
   }
-  let tray : Tray = { raw, context: { callback_handles: [] } }
+  let tray : Tray = { raw, context: { callback_handles: [], }, }
   if menu is Some(menu) {
     tray.append(menu)
   }
@@ -172,13 +172,13 @@ pub fn Tray::append(self : Self, menu : Menu) -> Unit raise SdlError {
 fn Tray::menu(self : Self) -> TrayMenu raise SdlError {
   let existing = @sys.get_tray_menu(self.raw)
   if !existing.is_null() {
-    return { raw: existing, context: self.context }
+    return { raw: existing, context: self.context, }
   }
   let raw = @sys.create_tray_menu(self.raw)
   if raw.is_null() {
     raise_last_error("SDL_CreateTrayMenu")
   }
-  { raw, context: self.context }
+  { raw, context: self.context, }
 }
 
 ///|
@@ -215,7 +215,7 @@ fn TrayMenu::insert_entry(
   if raw.is_null() {
     raise_last_error("SDL_InsertTrayEntryAt")
   }
-  { raw, context: self.context }
+  { raw, context: self.context, }
 }
 
 ///|
@@ -237,13 +237,13 @@ fn TrayEntry::set_on_click(self : Self, callback : (() -> Unit)?) -> Unit {
 fn TrayEntry::submenu(self : Self) -> TrayMenu raise SdlError {
   let existing = @sys.get_tray_submenu(self.raw)
   if !existing.is_null() {
-    return { raw: existing, context: self.context }
+    return { raw: existing, context: self.context, }
   }
   let raw = @sys.create_tray_submenu(self.raw)
   if raw.is_null() {
     raise_last_error("SDL_CreateTraySubmenu")
   }
-  { raw, context: self.context }
+  { raw, context: self.context, }
 }
 
 ///|
