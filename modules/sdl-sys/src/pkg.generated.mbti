@@ -1172,4 +1172,3 @@ pub fn Window::is_null(Self) -> Bool
 // Type aliases
 
 // Traits
-
