@@ -1136,6 +1136,7 @@ pub fn GPURenderState::to_pointer(Self) -> Pointer
 #external
 pub type Pointer
 pub fn Pointer::is_null(Self) -> Bool
+pub fn Pointer::null() -> Self
 
 type Rect
 pub fn Rect::Rect(Int, Int, Int, Int) -> Self
