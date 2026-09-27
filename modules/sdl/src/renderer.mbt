@@ -12,6 +12,12 @@ pub(all) struct Color {
 } derive(Debug, Eq)
 
 ///|
+pub extend Color with Debug::{to_repr}
+
+///|
+pub extend Color with Eq::{not_equal, equal}
+
+///|
 pub fn Color::rgb(r~ : Byte, g~ : Byte, b~ : Byte) -> Color {
   { r, g, b, a: 255, }
 }
@@ -30,6 +36,9 @@ pub(all) struct FRect {
 } derive(Debug)
 
 ///|
+pub extend FRect with Debug::{to_repr}
+
+///|
 pub fn FRect::FRect(x~ : Float, y~ : Float, w~ : Float, h~ : Float) -> FRect {
   { x, y, w, h, }
 }
@@ -46,6 +55,12 @@ pub(all) struct Rect {
   w : Int
   h : Int
 } derive(Debug, Eq)
+
+///|
+pub extend Rect with Debug::{to_repr}
+
+///|
+pub extend Rect with Eq::{not_equal, equal}
 
 ///|
 pub fn Rect::Rect(x~ : Int, y~ : Int, w~ : Int, h~ : Int) -> Rect {

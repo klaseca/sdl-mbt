@@ -12,6 +12,12 @@ pub(all) enum Property {
 } derive(Debug, Eq)
 
 ///|
+pub extend Property with Debug::{to_repr}
+
+///|
+pub extend Property with Eq::{not_equal, equal}
+
+///|
 pub fn Properties::Properties() -> Self raise SdlError {
   let raw = @sys.create_properties()
   if raw == 0 {

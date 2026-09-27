@@ -9,6 +9,12 @@ pub(all) struct KeyboardEvent {
 } derive(Debug, Eq)
 
 ///|
+pub extend KeyboardEvent with Debug::{to_repr}
+
+///|
+pub extend KeyboardEvent with Eq::{not_equal, equal}
+
+///|
 pub(all) struct MouseMotionEvent {
   window_id : UInt
   mouse_id : UInt
@@ -18,6 +24,12 @@ pub(all) struct MouseMotionEvent {
   xrel : Float
   yrel : Float
 } derive(Debug, Eq)
+
+///|
+pub extend MouseMotionEvent with Debug::{to_repr}
+
+///|
+pub extend MouseMotionEvent with Eq::{not_equal, equal}
 
 ///|
 pub(all) struct MouseButtonEvent {
@@ -30,6 +42,12 @@ pub(all) struct MouseButtonEvent {
 } derive(Debug, Eq)
 
 ///|
+pub extend MouseButtonEvent with Debug::{to_repr}
+
+///|
+pub extend MouseButtonEvent with Eq::{not_equal, equal}
+
+///|
 pub(all) struct WindowEvent {
   window_id : UInt
   name : WindowEventName
@@ -37,9 +55,21 @@ pub(all) struct WindowEvent {
 } derive(Debug, Eq)
 
 ///|
+pub extend WindowEvent with Debug::{to_repr}
+
+///|
+pub extend WindowEvent with Eq::{not_equal, equal}
+
+///|
 pub(all) struct TextInputEvent {
   text : String
 } derive(Debug, Eq)
+
+///|
+pub extend TextInputEvent with Debug::{to_repr}
+
+///|
+pub extend TextInputEvent with Eq::{not_equal, equal}
 
 ///|
 pub(all) enum WindowEventName {
@@ -48,6 +78,12 @@ pub(all) enum WindowEventName {
   PixelSizeChanged
   CloseRequested
 } derive(Debug, Eq)
+
+///|
+pub extend WindowEventName with Debug::{to_repr}
+
+///|
+pub extend WindowEventName with Eq::{not_equal, equal}
 
 ///|
 pub(all) enum Event {
@@ -64,6 +100,12 @@ pub(all) enum Event {
   WindowCloseRequested(WindowEvent)
   Other(UInt)
 } derive(Debug, Eq)
+
+///|
+pub extend Event with Debug::{to_repr}
+
+///|
+pub extend Event with Eq::{not_equal, equal}
 
 ///|
 struct EventListener {

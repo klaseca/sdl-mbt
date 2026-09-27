@@ -4,6 +4,12 @@ pub(all) suberror SdlError {
 } derive(Debug, Eq)
 
 ///|
+pub extend SdlError with Debug::{to_repr}
+
+///|
+pub extend SdlError with Eq::{not_equal, equal}
+
+///|
 fn raise_last_error(context : String) -> Unit raise SdlError {
   let message = @utf8.decode_lossy(@sys.get_error())
   if message == "" {

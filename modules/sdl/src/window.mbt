@@ -9,6 +9,12 @@ pub(all) enum WindowCloseBehavior {
 } derive(Debug, Eq)
 
 ///|
+pub extend WindowCloseBehavior with Debug::{to_repr}
+
+///|
+pub extend WindowCloseBehavior with Eq::{not_equal, equal}
+
+///|
 fn WindowCloseBehavior::to_int64(self : Self) -> Int64 {
   match self {
     ExitApp => 0
@@ -87,10 +93,22 @@ pub(all) struct Size {
 } derive(Debug, Eq)
 
 ///|
+pub extend Size with Debug::{to_repr}
+
+///|
+pub extend Size with Eq::{not_equal, equal}
+
+///|
 pub(all) struct Position {
   x : Int
   y : Int
 } derive(Debug, Eq)
+
+///|
+pub extend Position with Debug::{to_repr}
+
+///|
+pub extend Position with Eq::{not_equal, equal}
 
 ///|
 pub(all) enum WindowPlacement {
@@ -100,6 +118,12 @@ pub(all) enum WindowPlacement {
   Undefined
   UndefinedOnDisplay(UInt)
 } derive(Debug, Eq)
+
+///|
+pub extend WindowPlacement with Debug::{to_repr}
+
+///|
+pub extend WindowPlacement with Eq::{not_equal, equal}
 
 ///|
 const WINDOWPOS_UNDEFINED_MASK : UInt = 0x1FFF0000

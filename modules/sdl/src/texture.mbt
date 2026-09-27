@@ -11,12 +11,24 @@ pub(all) struct FSize {
 } derive(Debug, Eq)
 
 ///|
+pub extend FSize with Debug::{to_repr}
+
+///|
+pub extend FSize with Eq::{not_equal, equal}
+
+///|
 pub(all) enum PixelFormat {
   Rgba8888
   Abgr8888
   Bgra8888
   Bgra32
 } derive(Debug, Eq)
+
+///|
+pub extend PixelFormat with Debug::{to_repr}
+
+///|
+pub extend PixelFormat with Eq::{not_equal, equal}
 
 ///|
 fn PixelFormat::to_sys(self : Self) -> UInt {
@@ -37,6 +49,12 @@ pub(all) enum TextureAccess {
 } derive(Debug, Eq)
 
 ///|
+pub extend TextureAccess with Debug::{to_repr}
+
+///|
+pub extend TextureAccess with Eq::{not_equal, equal}
+
+///|
 fn TextureAccess::to_sys(self : Self) -> UInt {
   match self {
     Static => @sys.TEXTUREACCESS_STATIC
@@ -55,6 +73,12 @@ pub(all) enum BlendMode {
   Mod
   Mul
 } derive(Debug, Eq)
+
+///|
+pub extend BlendMode with Debug::{to_repr}
+
+///|
+pub extend BlendMode with Eq::{not_equal, equal}
 
 ///|
 fn BlendMode::to_sys(self : Self) -> UInt {

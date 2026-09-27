@@ -53,6 +53,9 @@ pub fn quit() -> Unit
 pub(all) suberror SdlError {
   SdlError(String)
 } derive(Eq, @debug.Debug)
+pub fn SdlError::equal(Self, Self) -> Bool
+pub fn SdlError::not_equal(Self, Self) -> Bool
+pub fn SdlError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 type App
@@ -71,6 +74,9 @@ pub(all) enum BlendMode {
   Mod
   Mul
 } derive(Eq, @debug.Debug)
+pub fn BlendMode::equal(Self, Self) -> Bool
+pub fn BlendMode::not_equal(Self, Self) -> Bool
+pub fn BlendMode::to_repr(Self) -> @debug.Repr
 
 pub type Clipboard
 pub fn Clipboard::has_text() -> Bool
@@ -83,14 +89,20 @@ pub(all) struct Color {
   b : Byte
   a : Byte
 } derive(Eq, @debug.Debug)
+pub fn Color::equal(Self, Self) -> Bool
+pub fn Color::not_equal(Self, Self) -> Bool
 pub fn Color::rgb(r~ : Byte, g~ : Byte, b~ : Byte) -> Self
 pub fn Color::rgba(r~ : Byte, g~ : Byte, b~ : Byte, a~ : Byte) -> Self
+pub fn Color::to_repr(Self) -> @debug.Repr
 
 pub(all) enum ControlFlow {
   Poll
   Wait(Int)
   Exit
 } derive(Eq, @debug.Debug)
+pub fn ControlFlow::equal(Self, Self) -> Bool
+pub fn ControlFlow::not_equal(Self, Self) -> Bool
+pub fn ControlFlow::to_repr(Self) -> @debug.Repr
 
 pub(all) enum Event {
   Quit
@@ -106,6 +118,9 @@ pub(all) enum Event {
   WindowCloseRequested(WindowEvent)
   Other(UInt)
 } derive(Eq, @debug.Debug)
+pub fn Event::equal(Self, Self) -> Bool
+pub fn Event::not_equal(Self, Self) -> Bool
+pub fn Event::to_repr(Self) -> @debug.Repr
 
 type EventListener
 pub fn EventListener::dispose(Self) -> Unit
@@ -117,11 +132,15 @@ pub(all) struct FRect {
   h : Float
 } derive(@debug.Debug)
 pub fn FRect::FRect(x~ : Float, y~ : Float, w~ : Float, h~ : Float) -> Self
+pub fn FRect::to_repr(Self) -> @debug.Repr
 
 pub(all) struct FSize {
   width : Float
   height : Float
 } derive(Eq, @debug.Debug)
+pub fn FSize::equal(Self, Self) -> Bool
+pub fn FSize::not_equal(Self, Self) -> Bool
+pub fn FSize::to_repr(Self) -> @debug.Repr
 
 pub(all) struct KeyboardEvent {
   window_id : UInt
@@ -131,6 +150,9 @@ pub(all) struct KeyboardEvent {
   modifiers : UInt16
   repeat : Bool
 } derive(Eq, @debug.Debug)
+pub fn KeyboardEvent::equal(Self, Self) -> Bool
+pub fn KeyboardEvent::not_equal(Self, Self) -> Bool
+pub fn KeyboardEvent::to_repr(Self) -> @debug.Repr
 
 pub struct Menu {
   // private fields
@@ -150,6 +172,9 @@ pub(all) struct MouseButtonEvent {
   x : Float
   y : Float
 } derive(Eq, @debug.Debug)
+pub fn MouseButtonEvent::equal(Self, Self) -> Bool
+pub fn MouseButtonEvent::not_equal(Self, Self) -> Bool
+pub fn MouseButtonEvent::to_repr(Self) -> @debug.Repr
 
 pub(all) struct MouseMotionEvent {
   window_id : UInt
@@ -160,6 +185,9 @@ pub(all) struct MouseMotionEvent {
   xrel : Float
   yrel : Float
 } derive(Eq, @debug.Debug)
+pub fn MouseMotionEvent::equal(Self, Self) -> Bool
+pub fn MouseMotionEvent::not_equal(Self, Self) -> Bool
+pub fn MouseMotionEvent::to_repr(Self) -> @debug.Repr
 
 pub(all) enum PixelFormat {
   Rgba8888
@@ -167,11 +195,17 @@ pub(all) enum PixelFormat {
   Bgra8888
   Bgra32
 } derive(Eq, @debug.Debug)
+pub fn PixelFormat::equal(Self, Self) -> Bool
+pub fn PixelFormat::not_equal(Self, Self) -> Bool
+pub fn PixelFormat::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Position {
   x : Int
   y : Int
 } derive(Eq, @debug.Debug)
+pub fn Position::equal(Self, Self) -> Bool
+pub fn Position::not_equal(Self, Self) -> Bool
+pub fn Position::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Properties {
   raw : UInt
@@ -189,6 +223,9 @@ pub(all) enum Property {
   FloatProperty(name~ : Bytes, value~ : Float)
   BooleanProperty(name~ : Bytes, value~ : Bool)
 } derive(Eq, @debug.Debug)
+pub fn Property::equal(Self, Self) -> Bool
+pub fn Property::not_equal(Self, Self) -> Bool
+pub fn Property::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Rect {
   x : Int
@@ -197,6 +234,9 @@ pub(all) struct Rect {
   h : Int
 } derive(Eq, @debug.Debug)
 pub fn Rect::Rect(x~ : Int, y~ : Int, w~ : Int, h~ : Int) -> Self
+pub fn Rect::equal(Self, Self) -> Bool
+pub fn Rect::not_equal(Self, Self) -> Bool
+pub fn Rect::to_repr(Self) -> @debug.Repr
 
 type Renderer
 pub fn Renderer::Renderer(Window, name? : String) -> Self raise SdlError
@@ -215,10 +255,16 @@ pub(all) struct Size {
   width : Int
   height : Int
 } derive(Eq, @debug.Debug)
+pub fn Size::equal(Self, Self) -> Bool
+pub fn Size::not_equal(Self, Self) -> Bool
+pub fn Size::to_repr(Self) -> @debug.Repr
 
 pub(all) struct TextInputEvent {
   text : String
 } derive(Eq, @debug.Debug)
+pub fn TextInputEvent::equal(Self, Self) -> Bool
+pub fn TextInputEvent::not_equal(Self, Self) -> Bool
+pub fn TextInputEvent::to_repr(Self) -> @debug.Repr
 
 type Texture
 pub fn Texture::Texture(Renderer, width~ : Int, height~ : Int, format? : PixelFormat, access? : TextureAccess) -> Self raise SdlError
@@ -235,6 +281,9 @@ pub(all) enum TextureAccess {
   Streaming
   Target
 } derive(Eq, @debug.Debug)
+pub fn TextureAccess::equal(Self, Self) -> Bool
+pub fn TextureAccess::not_equal(Self, Self) -> Bool
+pub fn TextureAccess::to_repr(Self) -> @debug.Repr
 
 type Tray
 pub fn Tray::Tray(tooltip~ : String, menu? : Menu) -> Self raise SdlError
@@ -290,12 +339,18 @@ pub(all) enum WindowCloseBehavior {
   Hide
   Ignore
 } derive(Eq, @debug.Debug)
+pub fn WindowCloseBehavior::equal(Self, Self) -> Bool
+pub fn WindowCloseBehavior::not_equal(Self, Self) -> Bool
+pub fn WindowCloseBehavior::to_repr(Self) -> @debug.Repr
 
 pub(all) struct WindowEvent {
   window_id : UInt
   name : WindowEventName
   size : Size?
 } derive(Eq, @debug.Debug)
+pub fn WindowEvent::equal(Self, Self) -> Bool
+pub fn WindowEvent::not_equal(Self, Self) -> Bool
+pub fn WindowEvent::to_repr(Self) -> @debug.Repr
 
 pub(all) enum WindowEventName {
   Exposed
@@ -303,6 +358,9 @@ pub(all) enum WindowEventName {
   PixelSizeChanged
   CloseRequested
 } derive(Eq, @debug.Debug)
+pub fn WindowEventName::equal(Self, Self) -> Bool
+pub fn WindowEventName::not_equal(Self, Self) -> Bool
+pub fn WindowEventName::to_repr(Self) -> @debug.Repr
 
 pub(all) enum WindowPlacement {
   Positioned(Position)
@@ -311,6 +369,9 @@ pub(all) enum WindowPlacement {
   Undefined
   UndefinedOnDisplay(UInt)
 } derive(Eq, @debug.Debug)
+pub fn WindowPlacement::equal(Self, Self) -> Bool
+pub fn WindowPlacement::not_equal(Self, Self) -> Bool
+pub fn WindowPlacement::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

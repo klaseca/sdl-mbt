@@ -6,6 +6,12 @@ pub(all) enum ControlFlow {
 } derive(Debug, Eq)
 
 ///|
+pub extend ControlFlow with Debug::{to_repr}
+
+///|
+pub extend ControlFlow with Eq::{not_equal, equal}
+
+///|
 struct App {
   init_flags : UInt
   mut control_flow : ControlFlow
