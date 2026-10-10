@@ -18,6 +18,11 @@ formatter(
   ],
 )
 
+import {
+  "klaseca/sdl-sys" @sys,
+  "moonbitlang/core/env",
+} for "test"
+
 options(
   link: { "native": { "stub-cc-flags": "${build.SDL_STUB_CC_FLAGS}" } },
   "native-stub": [

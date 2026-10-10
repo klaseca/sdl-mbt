@@ -239,11 +239,15 @@ fn WindowEventName::matches(
 }
 
 ///|
+/// Dispose on the main thread before SDL shutdown. Queued callbacks are cancelled.
+/// Repeated disposal is harmless, including from the listener's own callback.
 pub fn EventListener::dispose(self : Self) -> Unit {
   @sys.remove_event_watch(self.raw)
 }
 
 ///|
+/// Register after SDL initialization on the main thread. Events raised there run
+/// synchronously; events raised on other threads run during main-thread pumping.
 pub fn add_event_watch(
   callback : (Event) -> Unit,
 ) -> EventListener raise SdlError {
@@ -258,6 +262,8 @@ pub fn add_event_watch(
 }
 
 ///|
+/// Observe this window on the main thread. Synchronous expose/resize callbacks
+/// also run during the platform's modal resize loop.
 pub fn Window::on(
   self : Self,
   name : WindowEventName,

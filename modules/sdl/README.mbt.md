@@ -12,10 +12,8 @@ The API is still young and may change while the binding grows.
 
 Add the module as a dependency from another MoonBit module:
 
-```moonbit
-import {
-  "klaseca/sdl@0.0.1",
-}
+```sh
+moon add klaseca/sdl
 ```
 
 Native builds also need the SDL setup required by `klaseca/sdl-sys`: headers,
@@ -135,6 +133,13 @@ let resized = window.on(Resized, event => {
 })
 defer resized.dispose()
 ```
+
+Register and dispose listeners on the main thread after SDL initialization, and
+dispose them before SDL shutdown. Events raised on the main thread invoke listeners
+synchronously, including expose/resize events during a platform modal resize loop.
+Events raised on other threads are delivered during main-thread event processing
+(`poll_event`, `App::run_loop`, or an SDL event pump). Disposal cancels pending
+delivery and can also be called from a callback; repeated disposal is harmless.
 
 Currently supported window event names are:
 

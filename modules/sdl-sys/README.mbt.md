@@ -9,6 +9,14 @@ SDL functions, constants, opaque handles, or value structs.
 The generated API follows the SDL C API closely. It intentionally does less
 validation and owns fewer ergonomics than `klaseca/sdl`.
 
+## Installation
+
+Add the module as a dependency from another MoonBit module:
+
+```sh
+moon add klaseca/sdl-sys
+```
+
 ## Native Configuration
 
 The module targets native builds and uses `--moonbit-unstable-prebuild` to emit
@@ -84,6 +92,17 @@ loader mechanism: `PATH` or a DLL next to the executable on Windows,
 `DYLD_LIBRARY_PATH`/`@rpath`/application bundle packaging on macOS.
 
 ## API Conventions
+
+Register and remove event watches on the main thread after SDL initialization and
+before SDL shutdown. Main-thread events invoke the callback synchronously;
+background events are queued for the main-thread SDL event pump. Removal cancels
+queued delivery and is idempotent, including from the callback itself.
+
+Event-watch Bytes own copies of SDL's text, editing candidates, drop strings, and
+clipboard MIME types. User event data pointers keep their caller-defined lifetime.
+
+Background delivery preserves pending callback order when a callback generates
+another event or pumps SDL events.
 
 Generated MoonBit names are lower snake case and remove the SDL prefix:
 
