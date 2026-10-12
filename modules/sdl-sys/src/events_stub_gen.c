@@ -136,6 +136,11 @@ moonbit_bytes_t moonbit_sdl_event_text_text(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
+void moonbit_sdl_event_set_event_type(moonbit_bytes_t self, Uint32 value) {
+  ((SDL_Event *)self)->type = value;
+}
+
+MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_poll_event_ffi(moonbit_bytes_t event) {
   return SDL_PollEvent(((SDL_Event *)event));
 }
@@ -143,4 +148,14 @@ int32_t moonbit_sdl_poll_event_ffi(moonbit_bytes_t event) {
 MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_wait_event_timeout_ffi(moonbit_bytes_t event, Sint32 timeoutMS) {
   return SDL_WaitEventTimeout(((SDL_Event *)event), timeoutMS);
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_push_event_ffi(moonbit_bytes_t event) {
+  return SDL_PushEvent(((SDL_Event *)event));
+}
+
+MOONBIT_FFI_EXPORT
+Uint32 moonbit_sdl_register_events(int32_t numevents) {
+  return SDL_RegisterEvents(numevents);
 }

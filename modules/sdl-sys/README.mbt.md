@@ -17,6 +17,22 @@ Add the module as a dependency from another MoonBit module:
 moon add klaseca/sdl-sys
 ```
 
+## Application events
+
+`register_events(count)` reserves application event types and returns zero on
+failure. `push_event(event)` sends a prepared `Event` to SDL's queue and returns
+false if the event is filtered or SDL cannot enqueue it. Register application
+event types instead of choosing values that might conflict with another library.
+
+`Event()` creates zero-initialized native storage. `set_event_type` sets its
+type; `event_type` reads it after delivery. Event contents and payload lifetime
+are the caller's responsibility.
+
+A background C producer can create its own `SDL_Event` and call
+`SDL_PushEvent(&event)` directly without allocating MoonBit objects or accessing
+their reference counts. The event-watch bridge delivers its MoonBit callbacks
+on the main thread.
+
 ## Native Configuration
 
 The module targets native builds and uses `--moonbit-unstable-prebuild` to emit

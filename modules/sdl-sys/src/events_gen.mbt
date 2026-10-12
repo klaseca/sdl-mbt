@@ -235,6 +235,15 @@ pub fn Event::text_text(self : Self) -> Bytes {
 }
 
 ///|
+#borrow(bytes)
+extern "c" fn event_set_event_type(bytes : Bytes, value : UInt) -> Unit = "moonbit_sdl_event_set_event_type"
+
+///|
+pub fn Event::set_event_type(self : Self, value : UInt) -> Unit {
+  event_set_event_type(self.to_bytes(), value)
+}
+
+///|
 pub const EVENT_FIRST : UInt = 0
 
 ///|
@@ -611,3 +620,15 @@ extern "c" fn wait_event_timeout_ffi(event : Bytes, timeoutMS : Int) -> Bool = "
 pub fn wait_event_timeout(event : Event, timeoutMS : Int) -> Bool {
   wait_event_timeout_ffi(event.to_bytes(), timeoutMS)
 }
+
+///|
+#borrow(event)
+extern "c" fn push_event_ffi(event : Bytes) -> Bool = "moonbit_sdl_push_event_ffi"
+
+///|
+pub fn push_event(event : Event) -> Bool {
+  push_event_ffi(event.to_bytes())
+}
+
+///|
+pub extern "c" fn register_events(numevents : Int) -> UInt = "moonbit_sdl_register_events"

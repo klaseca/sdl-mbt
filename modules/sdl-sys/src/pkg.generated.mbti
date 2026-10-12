@@ -992,9 +992,13 @@ pub fn minimize_window(Window) -> Bool
 
 pub fn poll_event(Event) -> Bool
 
+pub fn push_event(Event) -> Bool
+
 pub fn quit() -> Unit
 
 pub fn raise_window(Window) -> Bool
+
+pub fn register_events(Int) -> UInt
 
 pub fn remove_event_watch(EventWatch) -> Unit
 
@@ -1111,6 +1115,7 @@ pub fn Event::motion_x(Self) -> Float
 pub fn Event::motion_xrel(Self) -> Float
 pub fn Event::motion_y(Self) -> Float
 pub fn Event::motion_yrel(Self) -> Float
+pub fn Event::set_event_type(Self, UInt) -> Unit
 pub fn Event::text_text(Self) -> Bytes
 pub fn Event::to_bytes(Self) -> Bytes
 pub fn Event::window_data1(Self) -> Int
