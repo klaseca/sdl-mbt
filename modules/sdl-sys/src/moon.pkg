@@ -7,6 +7,7 @@ formatter(
     "init_gen.mbt",
     "keyboard_gen.mbt",
     "messagebox_gen.mbt",
+    "mouse_gen.mbt",
     "pixels_gen.mbt",
     "pointer_gen.mbt",
     "properties_gen.mbt",

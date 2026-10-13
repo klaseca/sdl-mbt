@@ -86,6 +86,36 @@ float moonbit_sdl_event_motion_yrel(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
+SDL_WindowID moonbit_sdl_event_wheel_window_id(moonbit_bytes_t self) {
+  return ((SDL_Event *)self)->wheel.windowID;
+}
+
+MOONBIT_FFI_EXPORT
+float moonbit_sdl_event_wheel_x(moonbit_bytes_t self) {
+  return ((SDL_Event *)self)->wheel.x;
+}
+
+MOONBIT_FFI_EXPORT
+float moonbit_sdl_event_wheel_y(moonbit_bytes_t self) {
+  return ((SDL_Event *)self)->wheel.y;
+}
+
+MOONBIT_FFI_EXPORT
+SDL_MouseWheelDirection moonbit_sdl_event_wheel_direction(moonbit_bytes_t self) {
+  return ((SDL_Event *)self)->wheel.direction;
+}
+
+MOONBIT_FFI_EXPORT
+float moonbit_sdl_event_wheel_mouse_x(moonbit_bytes_t self) {
+  return ((SDL_Event *)self)->wheel.mouse_x;
+}
+
+MOONBIT_FFI_EXPORT
+float moonbit_sdl_event_wheel_mouse_y(moonbit_bytes_t self) {
+  return ((SDL_Event *)self)->wheel.mouse_y;
+}
+
+MOONBIT_FFI_EXPORT
 SDL_WindowID moonbit_sdl_event_button_window_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->button.windowID;
 }

@@ -33,6 +33,14 @@ A background C producer can create its own `SDL_Event` and call
 their reference counts. The event-watch bridge delivers its MoonBit callbacks
 on the main thread.
 
+## Mouse wheel events
+
+For `EVENT_MOUSE_WHEEL`, `Event` exposes `wheel_window_id`, fractional
+`wheel_x`/`wheel_y`, `wheel_direction` and the window-relative pointer coordinates
+`wheel_mouse_x`/`wheel_mouse_y`. Compare direction with `MOUSEWHEEL_NORMAL` or
+`MOUSEWHEEL_FLIPPED`. These accessors are generated from `SDL_Event`; applications
+do not need to interpret its native byte layout.
+
 ## Native Configuration
 
 The module targets native builds and uses `--moonbit-unstable-prebuild` to emit

@@ -304,6 +304,10 @@ pub const MESSAGEBOX_INFORMATION : UInt = 0x00000040
 
 pub const MESSAGEBOX_WARNING : UInt = 0x00000020
 
+pub const MOUSEWHEEL_FLIPPED : UInt = 1
+
+pub const MOUSEWHEEL_NORMAL : UInt = 0
+
 pub const PIXELFORMAT_ABGR128_FLOAT : UInt = 0x1b608010
 
 pub const PIXELFORMAT_ABGR1555 : UInt = 0x15731002
@@ -1088,6 +1092,11 @@ pub fn wait_event_timeout(Event, Int) -> Bool
 
 // Types and methods
 #external
+pub type Cursor
+pub fn Cursor::is_null(Self) -> Bool
+pub fn Cursor::to_pointer(Self) -> Pointer
+
+#external
 pub type DisplayModeData
 pub fn DisplayModeData::is_null(Self) -> Bool
 pub fn DisplayModeData::to_pointer(Self) -> Pointer
@@ -1118,6 +1127,12 @@ pub fn Event::motion_yrel(Self) -> Float
 pub fn Event::set_event_type(Self, UInt) -> Unit
 pub fn Event::text_text(Self) -> Bytes
 pub fn Event::to_bytes(Self) -> Bytes
+pub fn Event::wheel_direction(Self) -> UInt
+pub fn Event::wheel_mouse_x(Self) -> Float
+pub fn Event::wheel_mouse_y(Self) -> Float
+pub fn Event::wheel_window_id(Self) -> UInt
+pub fn Event::wheel_x(Self) -> Float
+pub fn Event::wheel_y(Self) -> Float
 pub fn Event::window_data1(Self) -> Int
 pub fn Event::window_data2(Self) -> Int
 pub fn Event::window_window_id(Self) -> UInt

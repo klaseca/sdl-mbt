@@ -14,6 +14,7 @@
     "keyboard_stub_gen.c",
     "messagebox_gen.mbt",
     "messagebox_stub_gen.c",
+    "mouse_gen.mbt",
     "pixels_gen.mbt",
     "pointer_gen.mbt",
     "pointer_stub_gen.c",

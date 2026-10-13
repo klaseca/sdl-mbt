@@ -146,6 +146,60 @@ pub fn Event::motion_yrel(self : Self) -> Float {
 
 ///|
 #borrow(bytes)
+extern "c" fn event_wheel_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_wheel_window_id"
+
+///|
+pub fn Event::wheel_window_id(self : Self) -> UInt {
+  event_wheel_window_id(self.to_bytes())
+}
+
+///|
+#borrow(bytes)
+extern "c" fn event_wheel_x(bytes : Bytes) -> Float = "moonbit_sdl_event_wheel_x"
+
+///|
+pub fn Event::wheel_x(self : Self) -> Float {
+  event_wheel_x(self.to_bytes())
+}
+
+///|
+#borrow(bytes)
+extern "c" fn event_wheel_y(bytes : Bytes) -> Float = "moonbit_sdl_event_wheel_y"
+
+///|
+pub fn Event::wheel_y(self : Self) -> Float {
+  event_wheel_y(self.to_bytes())
+}
+
+///|
+#borrow(bytes)
+extern "c" fn event_wheel_direction(bytes : Bytes) -> UInt = "moonbit_sdl_event_wheel_direction"
+
+///|
+pub fn Event::wheel_direction(self : Self) -> UInt {
+  event_wheel_direction(self.to_bytes())
+}
+
+///|
+#borrow(bytes)
+extern "c" fn event_wheel_mouse_x(bytes : Bytes) -> Float = "moonbit_sdl_event_wheel_mouse_x"
+
+///|
+pub fn Event::wheel_mouse_x(self : Self) -> Float {
+  event_wheel_mouse_x(self.to_bytes())
+}
+
+///|
+#borrow(bytes)
+extern "c" fn event_wheel_mouse_y(bytes : Bytes) -> Float = "moonbit_sdl_event_wheel_mouse_y"
+
+///|
+pub fn Event::wheel_mouse_y(self : Self) -> Float {
+  event_wheel_mouse_y(self.to_bytes())
+}
+
+///|
+#borrow(bytes)
 extern "c" fn event_button_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_button_window_id"
 
 ///|
