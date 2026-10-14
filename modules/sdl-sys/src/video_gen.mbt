@@ -349,6 +349,18 @@ pub const WINDOW_SURFACE_VSYNC_DISABLED : UInt64 = 0
 pub const WINDOW_SURFACE_VSYNC_ADAPTIVE : Int = -1
 
 ///|
+pub const SYSTEM_THEME_UNKNOWN : Int = 0
+
+///|
+pub const SYSTEM_THEME_LIGHT : Int = 1
+
+///|
+pub const SYSTEM_THEME_DARK : Int = 2
+
+///|
+pub extern "c" fn get_system_theme() -> Int = "moonbit_sdl_get_system_theme"
+
+///|
 #borrow(title)
 pub extern "c" fn create_window(title : Bytes, w : Int, h : Int, flags : UInt64) -> Window = "moonbit_sdl_create_window"
 

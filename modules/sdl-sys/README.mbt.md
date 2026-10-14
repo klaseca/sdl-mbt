@@ -33,6 +33,13 @@ A background C producer can create its own `SDL_Event` and call
 their reference counts. The event-watch bridge delivers its MoonBit callbacks
 on the main thread.
 
+## System theme
+
+`get_system_theme()` returns `SYSTEM_THEME_LIGHT`, `SYSTEM_THEME_DARK` or
+`SYSTEM_THEME_UNKNOWN`. Read it on the main thread after video initialization,
+and again when SDL delivers `EVENT_SYSTEM_THEME_CHANGED`; no polling is needed.
+The getter and constants are generated from SDL's video header.
+
 ## Mouse wheel events
 
 For `EVENT_MOUSE_WHEEL`, `Event` exposes `wheel_window_id`, fractional

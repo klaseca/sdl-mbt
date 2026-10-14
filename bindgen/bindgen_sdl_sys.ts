@@ -21,7 +21,9 @@ const source = createSourceCRegex({
   headerInclude: (file) => `<SDL3/${file}>`,
   functionPattern: /extern SDL_DECLSPEC (.*?) SDLCALL (SDL_\w+)\((.*?)\);/g,
   constantType: (name) => {
-    if (name.endsWith('_ADAPTIVE')) return 'Int'
+    if (name.endsWith('_ADAPTIVE') || name.startsWith('SDL_SYSTEM_THEME_')) {
+      return 'Int'
+    }
     return name.startsWith('SDL_WINDOW_') ? 'UInt64' : 'UInt'
   },
 })

@@ -822,6 +822,12 @@ pub const PROP_WINDOW_X11_SCREEN_NUMBER : Bytes = b"SDL.window.x11.screen"
 
 pub const PROP_WINDOW_X11_WINDOW_NUMBER : Bytes = b"SDL.window.x11.window"
 
+pub const SYSTEM_THEME_DARK : Int = 2
+
+pub const SYSTEM_THEME_LIGHT : Int = 1
+
+pub const SYSTEM_THEME_UNKNOWN : Int = 0
+
 pub const TEXTUREACCESS_STATIC : UInt = 0
 
 pub const TEXTUREACCESS_STREAMING : UInt = 1
@@ -939,6 +945,8 @@ pub fn get_float_property(UInt, Bytes, Float) -> Float
 pub fn get_number_property(UInt, Bytes, Int64) -> Int64
 
 pub fn get_string_property(UInt, Bytes, Bytes) -> Bytes
+
+pub fn get_system_theme() -> Int
 
 pub fn get_texture_size(Texture, @ref.Ref[Float], @ref.Ref[Float]) -> Bool
 

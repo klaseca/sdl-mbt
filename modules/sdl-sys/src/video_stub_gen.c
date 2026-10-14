@@ -66,6 +66,11 @@ int32_t moonbit_sdl_window_is_null(void *self) {
 }
 
 MOONBIT_FFI_EXPORT
+SDL_SystemTheme moonbit_sdl_get_system_theme(void) {
+  return SDL_GetSystemTheme();
+}
+
+MOONBIT_FFI_EXPORT
 void * moonbit_sdl_create_window(moonbit_bytes_t title, int32_t w, int32_t h, SDL_WindowFlags flags) {
   return moonbit_sdl_window_make_owned(SDL_CreateWindow((const char *)title, w, h, flags));
 }
