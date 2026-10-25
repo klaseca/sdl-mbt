@@ -71,32 +71,32 @@ SDL_SystemTheme moonbit_sdl_get_system_theme(void) {
 }
 
 MOONBIT_FFI_EXPORT
-void * moonbit_sdl_create_window(moonbit_bytes_t title, int32_t w, int32_t h, SDL_WindowFlags flags) {
+void * moonbit_sdl_create_window(moonbit_bytes_t title, int32_t w, int32_t h, uint64_t flags) {
   return moonbit_sdl_window_make_owned(SDL_CreateWindow((const char *)title, w, h, flags));
 }
 
 MOONBIT_FFI_EXPORT
-void * moonbit_sdl_create_window_with_properties(SDL_PropertiesID props) {
+void * moonbit_sdl_create_window_with_properties(uint32_t props) {
   return moonbit_sdl_window_make_owned(SDL_CreateWindowWithProperties(props));
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowID moonbit_sdl_get_window_id(void * window) {
+uint32_t moonbit_sdl_get_window_id(void * window) {
   return SDL_GetWindowID(moonbit_sdl_window_ptr(window));
 }
 
 MOONBIT_FFI_EXPORT
-void * moonbit_sdl_get_window_from_id(SDL_WindowID id) {
+void * moonbit_sdl_get_window_from_id(uint32_t id) {
   return moonbit_sdl_window_make_unmanaged(SDL_GetWindowFromID(id));
 }
 
 MOONBIT_FFI_EXPORT
-SDL_PropertiesID moonbit_sdl_get_window_properties(void * window) {
+uint32_t moonbit_sdl_get_window_properties(void * window) {
   return SDL_GetWindowProperties(moonbit_sdl_window_ptr(window));
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowFlags moonbit_sdl_get_window_flags(void * window) {
+uint64_t moonbit_sdl_get_window_flags(void * window) {
   return SDL_GetWindowFlags(moonbit_sdl_window_ptr(window));
 }
 

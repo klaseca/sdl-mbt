@@ -16,17 +16,17 @@ moonbit_bytes_t moonbit_sdl_event_make(void) {
 }
 
 MOONBIT_FFI_EXPORT
-Uint32 moonbit_sdl_event_event_type(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_event_type(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->type;
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowID moonbit_sdl_event_key_window_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_key_window_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->key.windowID;
 }
 
 MOONBIT_FFI_EXPORT
-SDL_KeyboardID moonbit_sdl_event_key_keyboard_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_key_keyboard_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->key.which;
 }
 
@@ -36,12 +36,12 @@ SDL_Scancode moonbit_sdl_event_key_scancode(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
-SDL_Keycode moonbit_sdl_event_key_keycode(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_key_keycode(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->key.key;
 }
 
 MOONBIT_FFI_EXPORT
-SDL_Keymod moonbit_sdl_event_key_modifiers(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_key_modifiers(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->key.mod;
 }
 
@@ -51,17 +51,17 @@ int32_t moonbit_sdl_event_key_repeat(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowID moonbit_sdl_event_motion_window_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_motion_window_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->motion.windowID;
 }
 
 MOONBIT_FFI_EXPORT
-SDL_MouseID moonbit_sdl_event_motion_mouse_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_motion_mouse_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->motion.which;
 }
 
 MOONBIT_FFI_EXPORT
-SDL_MouseButtonFlags moonbit_sdl_event_motion_state(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_motion_state(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->motion.state;
 }
 
@@ -86,7 +86,7 @@ float moonbit_sdl_event_motion_yrel(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowID moonbit_sdl_event_wheel_window_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_wheel_window_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->wheel.windowID;
 }
 
@@ -116,22 +116,22 @@ float moonbit_sdl_event_wheel_mouse_y(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowID moonbit_sdl_event_button_window_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_button_window_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->button.windowID;
 }
 
 MOONBIT_FFI_EXPORT
-SDL_MouseID moonbit_sdl_event_button_mouse_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_button_mouse_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->button.which;
 }
 
 MOONBIT_FFI_EXPORT
-Uint8 moonbit_sdl_event_button_button(moonbit_bytes_t self) {
+uint8_t moonbit_sdl_event_button_button(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->button.button;
 }
 
 MOONBIT_FFI_EXPORT
-Uint8 moonbit_sdl_event_button_clicks(moonbit_bytes_t self) {
+uint8_t moonbit_sdl_event_button_clicks(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->button.clicks;
 }
 
@@ -146,17 +146,17 @@ float moonbit_sdl_event_button_y(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
-SDL_WindowID moonbit_sdl_event_window_window_id(moonbit_bytes_t self) {
+uint32_t moonbit_sdl_event_window_window_id(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->window.windowID;
 }
 
 MOONBIT_FFI_EXPORT
-Sint32 moonbit_sdl_event_window_data1(moonbit_bytes_t self) {
+int32_t moonbit_sdl_event_window_data1(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->window.data1;
 }
 
 MOONBIT_FFI_EXPORT
-Sint32 moonbit_sdl_event_window_data2(moonbit_bytes_t self) {
+int32_t moonbit_sdl_event_window_data2(moonbit_bytes_t self) {
   return ((SDL_Event *)self)->window.data2;
 }
 
@@ -166,7 +166,7 @@ moonbit_bytes_t moonbit_sdl_event_text_text(moonbit_bytes_t self) {
 }
 
 MOONBIT_FFI_EXPORT
-void moonbit_sdl_event_set_event_type(moonbit_bytes_t self, Uint32 value) {
+void moonbit_sdl_event_set_event_type(moonbit_bytes_t self, uint32_t value) {
   ((SDL_Event *)self)->type = value;
 }
 
@@ -176,7 +176,7 @@ int32_t moonbit_sdl_poll_event_ffi(moonbit_bytes_t event) {
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_wait_event_timeout_ffi(moonbit_bytes_t event, Sint32 timeoutMS) {
+int32_t moonbit_sdl_wait_event_timeout_ffi(moonbit_bytes_t event, int32_t timeoutMS) {
   return SDL_WaitEventTimeout(((SDL_Event *)event), timeoutMS);
 }
 
@@ -186,6 +186,6 @@ int32_t moonbit_sdl_push_event_ffi(moonbit_bytes_t event) {
 }
 
 MOONBIT_FFI_EXPORT
-Uint32 moonbit_sdl_register_events(int32_t numevents) {
+uint32_t moonbit_sdl_register_events(int32_t numevents) {
   return SDL_RegisterEvents(numevents);
 }

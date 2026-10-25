@@ -41,4 +41,4 @@ pub const MESSAGEBOX_COLOR_COUNT : UInt = 5
 
 ///|
 #borrow(title, message, window)
-pub extern "c" fn show_simple_message_box(flags : UInt, title : Bytes, message : Bytes, window : Window) -> Bool = "moonbit_sdl_show_simple_message_box"
+pub extern "c" fn show_simple_message_box(flags : UInt32, title : Bytes, message : Bytes, window : Window) -> Bool = "moonbit_sdl_show_simple_message_box"

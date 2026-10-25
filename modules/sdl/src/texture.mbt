@@ -31,7 +31,7 @@ pub extend PixelFormat with Debug::{to_repr}
 pub extend PixelFormat with Eq::{not_equal, equal}
 
 ///|
-fn PixelFormat::to_sys(self : Self) -> UInt {
+fn PixelFormat::to_sys(self : Self) -> UInt32 {
   match self {
     Rgba8888 => @sys.PIXELFORMAT_RGBA8888
     Abgr8888 => @sys.PIXELFORMAT_ABGR8888
@@ -55,7 +55,7 @@ pub extend TextureAccess with Debug::{to_repr}
 pub extend TextureAccess with Eq::{not_equal, equal}
 
 ///|
-fn TextureAccess::to_sys(self : Self) -> UInt {
+fn TextureAccess::to_sys(self : Self) -> UInt32 {
   match self {
     Static => @sys.TEXTUREACCESS_STATIC
     Streaming => @sys.TEXTUREACCESS_STREAMING
@@ -81,7 +81,7 @@ pub extend BlendMode with Debug::{to_repr}
 pub extend BlendMode with Eq::{not_equal, equal}
 
 ///|
-fn BlendMode::to_sys(self : Self) -> UInt {
+fn BlendMode::to_sys(self : Self) -> UInt32 {
   match self {
     NoBlend => @sys.BLENDMODE_NONE
     Blend => @sys.BLENDMODE_BLEND
@@ -96,10 +96,10 @@ fn BlendMode::to_sys(self : Self) -> UInt {
 ///|
 pub fn Texture::Texture(
   renderer : Renderer,
-  width~ : Int,
-  height~ : Int,
-  format? : PixelFormat = Rgba8888,
-  access? : TextureAccess = Static,
+  width~ : Int32,
+  height~ : Int32,
+  format~ : PixelFormat = Rgba8888,
+  access~ : TextureAccess = Static,
 ) -> Texture raise SdlError {
   let raw = @sys.create_texture(
     renderer.raw(),
@@ -117,10 +117,10 @@ pub fn Texture::Texture(
 ///|
 pub fn Renderer::create_texture(
   self : Self,
-  width~ : Int,
-  height~ : Int,
-  format? : PixelFormat = Rgba8888,
-  access? : TextureAccess = Static,
+  width~ : Int32,
+  height~ : Int32,
+  format~ : PixelFormat = Rgba8888,
+  access~ : TextureAccess = Static,
 ) -> Texture raise SdlError {
   Texture(self, width~, height~, format~, access~)
 }
@@ -134,7 +134,7 @@ pub fn Texture::destroy(self : Self) -> Unit {
 pub fn Texture::update(
   self : Self,
   pixels~ : Bytes,
-  pitch~ : Int,
+  pitch~ : Int32,
   rect? : Rect,
 ) -> Unit raise SdlError {
   let sys_rect = match rect {

@@ -146,17 +146,17 @@ int32_t moonbit_sdl_get_texture_size(void * texture, float * w, float * h) {
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_set_texture_color_mod(void * texture, Uint8 r, Uint8 g, Uint8 b) {
+int32_t moonbit_sdl_set_texture_color_mod(void * texture, uint8_t r, uint8_t g, uint8_t b) {
   return SDL_SetTextureColorMod(moonbit_sdl_texture_ptr(texture), r, g, b);
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_set_texture_alpha_mod(void * texture, Uint8 alpha) {
+int32_t moonbit_sdl_set_texture_alpha_mod(void * texture, uint8_t alpha) {
   return SDL_SetTextureAlphaMod(moonbit_sdl_texture_ptr(texture), alpha);
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_set_texture_blend_mode(void * texture, SDL_BlendMode blendMode) {
+int32_t moonbit_sdl_set_texture_blend_mode(void * texture, uint32_t blendMode) {
   return SDL_SetTextureBlendMode(moonbit_sdl_texture_ptr(texture), blendMode);
 }
 
@@ -181,7 +181,7 @@ void moonbit_sdl_unlock_texture(void * texture) {
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_set_render_draw_color(void * renderer, Uint8 r, Uint8 g, Uint8 b, Uint8 a) {
+int32_t moonbit_sdl_set_render_draw_color(void * renderer, uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
   return SDL_SetRenderDrawColor(moonbit_sdl_renderer_ptr(renderer), r, g, b, a);
 }
 

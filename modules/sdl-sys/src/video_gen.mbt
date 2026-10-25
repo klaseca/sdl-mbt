@@ -362,21 +362,21 @@ pub extern "c" fn get_system_theme() -> Int = "moonbit_sdl_get_system_theme"
 
 ///|
 #borrow(title)
-pub extern "c" fn create_window(title : Bytes, w : Int, h : Int, flags : UInt64) -> Window = "moonbit_sdl_create_window"
+pub extern "c" fn create_window(title : Bytes, w : Int32, h : Int32, flags : UInt64) -> Window = "moonbit_sdl_create_window"
 
 ///|
-pub extern "c" fn create_window_with_properties(props : UInt) -> Window = "moonbit_sdl_create_window_with_properties"
-
-///|
-#borrow(window)
-pub extern "c" fn get_window_id(window : Window) -> UInt = "moonbit_sdl_get_window_id"
-
-///|
-pub extern "c" fn get_window_from_id(id : UInt) -> Window = "moonbit_sdl_get_window_from_id"
+pub extern "c" fn create_window_with_properties(props : UInt32) -> Window = "moonbit_sdl_create_window_with_properties"
 
 ///|
 #borrow(window)
-pub extern "c" fn get_window_properties(window : Window) -> UInt = "moonbit_sdl_get_window_properties"
+pub extern "c" fn get_window_id(window : Window) -> UInt32 = "moonbit_sdl_get_window_id"
+
+///|
+pub extern "c" fn get_window_from_id(id : UInt32) -> Window = "moonbit_sdl_get_window_from_id"
+
+///|
+#borrow(window)
+pub extern "c" fn get_window_properties(window : Window) -> UInt32 = "moonbit_sdl_get_window_properties"
 
 ///|
 #borrow(window)
@@ -392,39 +392,39 @@ pub extern "c" fn get_window_title(window : Window) -> Bytes = "moonbit_sdl_get_
 
 ///|
 #borrow(window)
-pub extern "c" fn set_window_position(window : Window, x : Int, y : Int) -> Bool = "moonbit_sdl_set_window_position"
+pub extern "c" fn set_window_position(window : Window, x : Int32, y : Int32) -> Bool = "moonbit_sdl_set_window_position"
 
 ///|
 #borrow(window, x, y)
-pub extern "c" fn get_window_position(window : Window, x : Ref[Int], y : Ref[Int]) -> Bool = "moonbit_sdl_get_window_position"
+pub extern "c" fn get_window_position(window : Window, x : Ref[Int32], y : Ref[Int32]) -> Bool = "moonbit_sdl_get_window_position"
 
 ///|
 #borrow(window)
-pub extern "c" fn set_window_size(window : Window, w : Int, h : Int) -> Bool = "moonbit_sdl_set_window_size"
+pub extern "c" fn set_window_size(window : Window, w : Int32, h : Int32) -> Bool = "moonbit_sdl_set_window_size"
 
 ///|
 #borrow(window, w, h)
-pub extern "c" fn get_window_size(window : Window, w : Ref[Int], h : Ref[Int]) -> Bool = "moonbit_sdl_get_window_size"
+pub extern "c" fn get_window_size(window : Window, w : Ref[Int32], h : Ref[Int32]) -> Bool = "moonbit_sdl_get_window_size"
 
 ///|
 #borrow(window, w, h)
-pub extern "c" fn get_window_size_in_pixels(window : Window, w : Ref[Int], h : Ref[Int]) -> Bool = "moonbit_sdl_get_window_size_in_pixels"
+pub extern "c" fn get_window_size_in_pixels(window : Window, w : Ref[Int32], h : Ref[Int32]) -> Bool = "moonbit_sdl_get_window_size_in_pixels"
 
 ///|
 #borrow(window)
-pub extern "c" fn set_window_minimum_size(window : Window, min_w : Int, min_h : Int) -> Bool = "moonbit_sdl_set_window_minimum_size"
+pub extern "c" fn set_window_minimum_size(window : Window, min_w : Int32, min_h : Int32) -> Bool = "moonbit_sdl_set_window_minimum_size"
 
 ///|
 #borrow(window, w, h)
-pub extern "c" fn get_window_minimum_size(window : Window, w : Ref[Int], h : Ref[Int]) -> Bool = "moonbit_sdl_get_window_minimum_size"
+pub extern "c" fn get_window_minimum_size(window : Window, w : Ref[Int32], h : Ref[Int32]) -> Bool = "moonbit_sdl_get_window_minimum_size"
 
 ///|
 #borrow(window)
-pub extern "c" fn set_window_maximum_size(window : Window, max_w : Int, max_h : Int) -> Bool = "moonbit_sdl_set_window_maximum_size"
+pub extern "c" fn set_window_maximum_size(window : Window, max_w : Int32, max_h : Int32) -> Bool = "moonbit_sdl_set_window_maximum_size"
 
 ///|
 #borrow(window, w, h)
-pub extern "c" fn get_window_maximum_size(window : Window, w : Ref[Int], h : Ref[Int]) -> Bool = "moonbit_sdl_get_window_maximum_size"
+pub extern "c" fn get_window_maximum_size(window : Window, w : Ref[Int32], h : Ref[Int32]) -> Bool = "moonbit_sdl_get_window_maximum_size"
 
 ///|
 #borrow(window)
@@ -492,7 +492,7 @@ pub extern "c" fn get_window_opacity(window : Window) -> Float = "moonbit_sdl_ge
 
 ///|
 #borrow(window)
-pub extern "c" fn show_window_system_menu(window : Window, x : Int, y : Int) -> Bool = "moonbit_sdl_show_window_system_menu"
+pub extern "c" fn show_window_system_menu(window : Window, x : Int32, y : Int32) -> Bool = "moonbit_sdl_show_window_system_menu"
 
 ///|
 #borrow(window)

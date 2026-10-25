@@ -1,6 +1,6 @@
 ///|
 pub(all) struct Properties {
-  raw : UInt
+  raw : UInt32
 }
 
 ///|
@@ -103,6 +103,6 @@ pub fn Properties::set_property(
 }
 
 ///|
-pub fn Properties::raw(self : Self) -> UInt {
+pub fn Properties::raw(self : Self) -> UInt32 {
   self.raw
 }

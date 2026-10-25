@@ -14,7 +14,7 @@ let call_tray_callback : FuncRef[(() -> Unit) -> Unit] = fn(callback) {
 
 ///|
 priv trait MenuElement {
-  fn insert(Self, TrayMenu, Int) -> Unit raise SdlError
+  fn insert(Self, TrayMenu, Int32) -> Unit raise SdlError
 }
 
 ///|
@@ -32,7 +32,7 @@ pub fn Menu::button(
   self : Self,
   label~ : String,
   on_click? : () -> Unit,
-  enabled? : Bool = true,
+  enabled~ : Bool = true,
 ) -> Self {
   let mut flags = TRAYENTRY_BUTTON
   if !enabled {
@@ -47,8 +47,8 @@ pub fn Menu::checkbox(
   self : Self,
   label~ : String,
   on_click? : () -> Unit,
-  checked? : Bool = false,
-  enabled? : Bool = true,
+  checked~ : Bool = false,
+  enabled~ : Bool = true,
 ) -> Self {
   let mut flags = TRAYENTRY_CHECKBOX
   if checked {
@@ -82,7 +82,7 @@ pub fn Menu::append(self : Self, menu : Menu) -> Self {
 ///|
 priv struct Button {
   label : String
-  flags : UInt
+  flags : UInt32
   on_click : (() -> Unit)?
 }
 
@@ -95,7 +95,7 @@ impl MenuElement for Button with fn insert(self, menu, pos) {
 ///|
 priv struct Checkbox {
   label : String
-  flags : UInt
+  flags : UInt32
   on_click : (() -> Unit)?
 }
 
@@ -196,7 +196,7 @@ priv struct TrayMenu {
 fn TrayMenu::insert_menu(
   self : Self,
   menu : Menu,
-  pos? : Int = -1,
+  pos~ : Int32 = -1,
 ) -> Unit raise SdlError {
   for i, element in menu.elements {
     let element_pos = if pos < 0 { -1 } else { pos + i }
@@ -208,8 +208,8 @@ fn TrayMenu::insert_menu(
 fn TrayMenu::insert_entry(
   self : Self,
   label : Bytes,
-  flags : UInt,
-  pos? : Int = -1,
+  flags : UInt32,
+  pos~ : Int32 = -1,
 ) -> TrayEntry raise SdlError {
   let raw = @sys.insert_tray_entry_at(self.raw, pos, label, flags)
   if raw.is_null() {

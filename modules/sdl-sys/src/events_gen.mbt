@@ -20,55 +20,55 @@ pub fn Event::to_bytes(self : Self) -> Bytes {
 
 ///|
 #borrow(bytes)
-extern "c" fn event_event_type(bytes : Bytes) -> UInt = "moonbit_sdl_event_event_type"
+extern "c" fn event_event_type(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_event_type"
 
 ///|
-pub fn Event::event_type(self : Self) -> UInt {
+pub fn Event::event_type(self : Self) -> UInt32 {
   event_event_type(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_key_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_key_window_id"
+extern "c" fn event_key_window_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_key_window_id"
 
 ///|
-pub fn Event::key_window_id(self : Self) -> UInt {
+pub fn Event::key_window_id(self : Self) -> UInt32 {
   event_key_window_id(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_key_keyboard_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_key_keyboard_id"
+extern "c" fn event_key_keyboard_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_key_keyboard_id"
 
 ///|
-pub fn Event::key_keyboard_id(self : Self) -> UInt {
+pub fn Event::key_keyboard_id(self : Self) -> UInt32 {
   event_key_keyboard_id(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_key_scancode(bytes : Bytes) -> Int = "moonbit_sdl_event_key_scancode"
+extern "c" fn event_key_scancode(bytes : Bytes) -> Int32 = "moonbit_sdl_event_key_scancode"
 
 ///|
-pub fn Event::key_scancode(self : Self) -> Int {
+pub fn Event::key_scancode(self : Self) -> Int32 {
   event_key_scancode(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_key_keycode(bytes : Bytes) -> UInt = "moonbit_sdl_event_key_keycode"
+extern "c" fn event_key_keycode(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_key_keycode"
 
 ///|
-pub fn Event::key_keycode(self : Self) -> UInt {
+pub fn Event::key_keycode(self : Self) -> UInt32 {
   event_key_keycode(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_key_modifiers(bytes : Bytes) -> UInt16 = "moonbit_sdl_event_key_modifiers"
+extern "c" fn event_key_modifiers(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_key_modifiers"
 
 ///|
-pub fn Event::key_modifiers(self : Self) -> UInt16 {
+pub fn Event::key_modifiers(self : Self) -> UInt32 {
   event_key_modifiers(self.to_bytes())
 }
 
@@ -83,28 +83,28 @@ pub fn Event::key_repeat(self : Self) -> Bool {
 
 ///|
 #borrow(bytes)
-extern "c" fn event_motion_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_motion_window_id"
+extern "c" fn event_motion_window_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_motion_window_id"
 
 ///|
-pub fn Event::motion_window_id(self : Self) -> UInt {
+pub fn Event::motion_window_id(self : Self) -> UInt32 {
   event_motion_window_id(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_motion_mouse_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_motion_mouse_id"
+extern "c" fn event_motion_mouse_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_motion_mouse_id"
 
 ///|
-pub fn Event::motion_mouse_id(self : Self) -> UInt {
+pub fn Event::motion_mouse_id(self : Self) -> UInt32 {
   event_motion_mouse_id(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_motion_state(bytes : Bytes) -> UInt = "moonbit_sdl_event_motion_state"
+extern "c" fn event_motion_state(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_motion_state"
 
 ///|
-pub fn Event::motion_state(self : Self) -> UInt {
+pub fn Event::motion_state(self : Self) -> UInt32 {
   event_motion_state(self.to_bytes())
 }
 
@@ -146,10 +146,10 @@ pub fn Event::motion_yrel(self : Self) -> Float {
 
 ///|
 #borrow(bytes)
-extern "c" fn event_wheel_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_wheel_window_id"
+extern "c" fn event_wheel_window_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_wheel_window_id"
 
 ///|
-pub fn Event::wheel_window_id(self : Self) -> UInt {
+pub fn Event::wheel_window_id(self : Self) -> UInt32 {
   event_wheel_window_id(self.to_bytes())
 }
 
@@ -200,19 +200,19 @@ pub fn Event::wheel_mouse_y(self : Self) -> Float {
 
 ///|
 #borrow(bytes)
-extern "c" fn event_button_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_button_window_id"
+extern "c" fn event_button_window_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_button_window_id"
 
 ///|
-pub fn Event::button_window_id(self : Self) -> UInt {
+pub fn Event::button_window_id(self : Self) -> UInt32 {
   event_button_window_id(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_button_mouse_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_button_mouse_id"
+extern "c" fn event_button_mouse_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_button_mouse_id"
 
 ///|
-pub fn Event::button_mouse_id(self : Self) -> UInt {
+pub fn Event::button_mouse_id(self : Self) -> UInt32 {
   event_button_mouse_id(self.to_bytes())
 }
 
@@ -254,28 +254,28 @@ pub fn Event::button_y(self : Self) -> Float {
 
 ///|
 #borrow(bytes)
-extern "c" fn event_window_window_id(bytes : Bytes) -> UInt = "moonbit_sdl_event_window_window_id"
+extern "c" fn event_window_window_id(bytes : Bytes) -> UInt32 = "moonbit_sdl_event_window_window_id"
 
 ///|
-pub fn Event::window_window_id(self : Self) -> UInt {
+pub fn Event::window_window_id(self : Self) -> UInt32 {
   event_window_window_id(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_window_data1(bytes : Bytes) -> Int = "moonbit_sdl_event_window_data1"
+extern "c" fn event_window_data1(bytes : Bytes) -> Int32 = "moonbit_sdl_event_window_data1"
 
 ///|
-pub fn Event::window_data1(self : Self) -> Int {
+pub fn Event::window_data1(self : Self) -> Int32 {
   event_window_data1(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn event_window_data2(bytes : Bytes) -> Int = "moonbit_sdl_event_window_data2"
+extern "c" fn event_window_data2(bytes : Bytes) -> Int32 = "moonbit_sdl_event_window_data2"
 
 ///|
-pub fn Event::window_data2(self : Self) -> Int {
+pub fn Event::window_data2(self : Self) -> Int32 {
   event_window_data2(self.to_bytes())
 }
 
@@ -290,10 +290,10 @@ pub fn Event::text_text(self : Self) -> Bytes {
 
 ///|
 #borrow(bytes)
-extern "c" fn event_set_event_type(bytes : Bytes, value : UInt) -> Unit = "moonbit_sdl_event_set_event_type"
+extern "c" fn event_set_event_type(bytes : Bytes, value : UInt32) -> Unit = "moonbit_sdl_event_set_event_type"
 
 ///|
-pub fn Event::set_event_type(self : Self, value : UInt) -> Unit {
+pub fn Event::set_event_type(self : Self, value : UInt32) -> Unit {
   event_set_event_type(self.to_bytes(), value)
 }
 
@@ -668,10 +668,10 @@ pub fn poll_event(event : Event) -> Bool {
 
 ///|
 #borrow(event)
-extern "c" fn wait_event_timeout_ffi(event : Bytes, timeoutMS : Int) -> Bool = "moonbit_sdl_wait_event_timeout_ffi"
+extern "c" fn wait_event_timeout_ffi(event : Bytes, timeoutMS : Int32) -> Bool = "moonbit_sdl_wait_event_timeout_ffi"
 
 ///|
-pub fn wait_event_timeout(event : Event, timeoutMS : Int) -> Bool {
+pub fn wait_event_timeout(event : Event, timeoutMS : Int32) -> Bool {
   wait_event_timeout_ffi(event.to_bytes(), timeoutMS)
 }
 
@@ -685,4 +685,4 @@ pub fn push_event(event : Event) -> Bool {
 }
 
 ///|
-pub extern "c" fn register_events(numevents : Int) -> UInt = "moonbit_sdl_register_events"
+pub extern "c" fn register_events(numevents : Int32) -> UInt32 = "moonbit_sdl_register_events"

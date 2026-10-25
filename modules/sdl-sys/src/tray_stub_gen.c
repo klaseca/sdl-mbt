@@ -97,7 +97,7 @@ void moonbit_sdl_remove_tray_entry(SDL_TrayEntry * entry) {
 }
 
 MOONBIT_FFI_EXPORT
-SDL_TrayEntry * moonbit_sdl_insert_tray_entry_at(SDL_TrayMenu * menu, int32_t pos, moonbit_bytes_t label, SDL_TrayEntryFlags flags) {
+SDL_TrayEntry * moonbit_sdl_insert_tray_entry_at(SDL_TrayMenu * menu, int32_t pos, moonbit_bytes_t label, uint32_t flags) {
   return SDL_InsertTrayEntryAt(menu, pos, (Moonbit_array_length(label) == 0 ? NULL : (const char *)label), flags);
 }
 

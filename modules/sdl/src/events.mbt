@@ -1,10 +1,10 @@
 ///|
 pub(all) struct KeyboardEvent {
-  window_id : UInt
-  keyboard_id : UInt
-  scancode : Int
-  keycode : UInt
-  modifiers : UInt16
+  window_id : UInt32
+  keyboard_id : UInt32
+  scancode : Int32
+  keycode : UInt32
+  modifiers : UInt32
   repeat : Bool
 } derive(Debug, Eq)
 
@@ -16,9 +16,9 @@ pub extend KeyboardEvent with Eq::{not_equal, equal}
 
 ///|
 pub(all) struct MouseMotionEvent {
-  window_id : UInt
-  mouse_id : UInt
-  state : UInt
+  window_id : UInt32
+  mouse_id : UInt32
+  state : UInt32
   x : Float
   y : Float
   xrel : Float
@@ -33,8 +33,8 @@ pub extend MouseMotionEvent with Eq::{not_equal, equal}
 
 ///|
 pub(all) struct MouseButtonEvent {
-  window_id : UInt
-  mouse_id : UInt
+  window_id : UInt32
+  mouse_id : UInt32
   button : Byte
   clicks : Byte
   x : Float
@@ -49,7 +49,7 @@ pub extend MouseButtonEvent with Eq::{not_equal, equal}
 
 ///|
 pub(all) struct WindowEvent {
-  window_id : UInt
+  window_id : UInt32
   name : WindowEventName
   size : Size?
 } derive(Debug, Eq)
@@ -98,7 +98,7 @@ pub(all) enum Event {
   WindowResized(WindowEvent)
   WindowPixelSizeChanged(WindowEvent)
   WindowCloseRequested(WindowEvent)
-  Other(UInt)
+  Other(UInt32)
 } derive(Debug, Eq)
 
 ///|
@@ -131,7 +131,7 @@ pub fn poll_event() -> Event? {
 }
 
 ///|
-fn wait_event_timeout(timeout_ms : Int) -> Event? {
+fn wait_event_timeout(timeout_ms : Int32) -> Event? {
   let raw = @sys.Event()
   if @sys.wait_event_timeout(raw, timeout_ms) {
     Some(Event::from_raw(raw))
@@ -223,7 +223,7 @@ fn TextInputEvent::from_raw(raw : @sys.Event) -> TextInputEvent {
 fn WindowEventName::matches(
   self : Self,
   event : Event,
-  window_id : UInt,
+  window_id : UInt32,
 ) -> WindowEvent? {
   let window_event = match event {
     WindowExposed(event) if self == Exposed => Some(event)
@@ -278,6 +278,6 @@ pub fn Window::on(
 }
 
 ///|
-pub fn delay(milliseconds : UInt) -> Unit {
+pub fn delay(milliseconds : UInt32) -> Unit {
   @sys.delay(milliseconds)
 }

@@ -43,7 +43,7 @@ test "event watch registration requires SDL initialization" {
 test "event watches deliver ordered resize events and retain their bytes" {
   with_event_window(window => {
     let window_id = @sys.get_window_id(window)
-    let observed : Array[(String, Int, Int)] = []
+    let observed : Array[(String, Int32, Int32)] = []
     let retained : Array[Bytes] = []
     let first = @sys.add_event_watch(call_watch, fn(bytes) {
       let event = @sys.Event::from_bytes(bytes)

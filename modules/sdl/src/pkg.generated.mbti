@@ -7,43 +7,43 @@ import {
 }
 
 // Values
-pub const INIT_AUDIO : UInt = 0x00000010
+pub const INIT_AUDIO : UInt32 = 0x00000010
 
-pub const INIT_CAMERA : UInt = 0x00010000
+pub const INIT_CAMERA : UInt32 = 0x00010000
 
-pub const INIT_EVENTS : UInt = 0x00004000
+pub const INIT_EVENTS : UInt32 = 0x00004000
 
-pub const INIT_GAMEPAD : UInt = 0x00002000
+pub const INIT_GAMEPAD : UInt32 = 0x00002000
 
-pub const INIT_HAPTIC : UInt = 0x00001000
+pub const INIT_HAPTIC : UInt32 = 0x00001000
 
-pub const INIT_JOYSTICK : UInt = 0x00000200
+pub const INIT_JOYSTICK : UInt32 = 0x00000200
 
-pub const INIT_SENSOR : UInt = 0x00008000
+pub const INIT_SENSOR : UInt32 = 0x00008000
 
-pub const INIT_VIDEO : UInt = 0x00000020
+pub const INIT_VIDEO : UInt32 = 0x00000020
 
-pub const MESSAGEBOX_ERROR : UInt = 0x00000010
+pub const MESSAGEBOX_ERROR : UInt32 = 0x00000010
 
-pub const MESSAGEBOX_INFORMATION : UInt = 0x00000040
+pub const MESSAGEBOX_INFORMATION : UInt32 = 0x00000040
 
-pub const MESSAGEBOX_WARNING : UInt = 0x00000020
+pub const MESSAGEBOX_WARNING : UInt32 = 0x00000020
 
-pub const TRAYENTRY_BUTTON : UInt = 0x00000001
+pub const TRAYENTRY_BUTTON : UInt32 = 0x00000001
 
-pub const TRAYENTRY_CHECKBOX : UInt = 0x00000002
+pub const TRAYENTRY_CHECKBOX : UInt32 = 0x00000002
 
-pub const TRAYENTRY_CHECKED : UInt = 0x40000000
+pub const TRAYENTRY_CHECKED : UInt32 = 0x40000000
 
-pub const TRAYENTRY_DISABLED : UInt = 0x80000000
+pub const TRAYENTRY_DISABLED : UInt32 = 0x80000000
 
-pub const TRAYENTRY_SUBMENU : UInt = 0x00000004
+pub const TRAYENTRY_SUBMENU : UInt32 = 0x00000004
 
 pub fn add_event_watch((Event) -> Unit) -> EventListener raise SdlError
 
-pub fn delay(UInt) -> Unit
+pub fn delay(UInt32) -> Unit
 
-pub fn init_lib(UInt) -> Unit raise SdlError
+pub fn init_lib(UInt32) -> Unit raise SdlError
 
 pub fn poll_event() -> Event?
 
@@ -59,7 +59,7 @@ pub fn SdlError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 type App
-pub fn App::App(init_flags? : UInt, control_flow? : ControlFlow) -> Self
+pub fn App::App(init_flags? : UInt32, control_flow? : ControlFlow) -> Self
 pub fn App::exit(Self) -> Unit
 pub fn App::is_running(Self) -> Bool
 pub fn App::run(Self, (Self) -> Unit raise SdlError) -> Unit raise SdlError
@@ -97,7 +97,7 @@ pub fn Color::to_repr(Self) -> @debug.Repr
 
 pub(all) enum ControlFlow {
   Poll
-  Wait(Int)
+  Wait(Int32)
   Exit
 } derive(Eq, @debug.Debug)
 pub fn ControlFlow::equal(Self, Self) -> Bool
@@ -116,7 +116,7 @@ pub(all) enum Event {
   WindowResized(WindowEvent)
   WindowPixelSizeChanged(WindowEvent)
   WindowCloseRequested(WindowEvent)
-  Other(UInt)
+  Other(UInt32)
 } derive(Eq, @debug.Debug)
 pub fn Event::equal(Self, Self) -> Bool
 pub fn Event::not_equal(Self, Self) -> Bool
@@ -143,11 +143,11 @@ pub fn FSize::not_equal(Self, Self) -> Bool
 pub fn FSize::to_repr(Self) -> @debug.Repr
 
 pub(all) struct KeyboardEvent {
-  window_id : UInt
-  keyboard_id : UInt
-  scancode : Int
-  keycode : UInt
-  modifiers : UInt16
+  window_id : UInt32
+  keyboard_id : UInt32
+  scancode : Int32
+  keycode : UInt32
+  modifiers : UInt32
   repeat : Bool
 } derive(Eq, @debug.Debug)
 pub fn KeyboardEvent::equal(Self, Self) -> Bool
@@ -165,8 +165,8 @@ pub fn Menu::separator(Self) -> Self
 pub fn Menu::submenu(Self, label~ : String, menu~ : Self) -> Self
 
 pub(all) struct MouseButtonEvent {
-  window_id : UInt
-  mouse_id : UInt
+  window_id : UInt32
+  mouse_id : UInt32
   button : Byte
   clicks : Byte
   x : Float
@@ -177,9 +177,9 @@ pub fn MouseButtonEvent::not_equal(Self, Self) -> Bool
 pub fn MouseButtonEvent::to_repr(Self) -> @debug.Repr
 
 pub(all) struct MouseMotionEvent {
-  window_id : UInt
-  mouse_id : UInt
-  state : UInt
+  window_id : UInt32
+  mouse_id : UInt32
+  state : UInt32
   x : Float
   y : Float
   xrel : Float
@@ -200,19 +200,19 @@ pub fn PixelFormat::not_equal(Self, Self) -> Bool
 pub fn PixelFormat::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Position {
-  x : Int
-  y : Int
+  x : Int32
+  y : Int32
 } derive(Eq, @debug.Debug)
 pub fn Position::equal(Self, Self) -> Bool
 pub fn Position::not_equal(Self, Self) -> Bool
 pub fn Position::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Properties {
-  raw : UInt
+  raw : UInt32
 }
 pub fn Properties::Properties() -> Self raise SdlError
 pub fn Properties::destroy(Self) -> Unit
-pub fn Properties::raw(Self) -> UInt
+pub fn Properties::raw(Self) -> UInt32
 pub fn Properties::set_boolean(Self, name~ : Bytes, value~ : Bool?) -> Unit raise SdlError
 pub fn Properties::set_property(Self, Property) -> Unit raise SdlError
 pub fn Properties::set_string(Self, name~ : Bytes, value~ : String?) -> Unit raise SdlError
@@ -228,12 +228,12 @@ pub fn Property::not_equal(Self, Self) -> Bool
 pub fn Property::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Rect {
-  x : Int
-  y : Int
-  w : Int
-  h : Int
+  x : Int32
+  y : Int32
+  w : Int32
+  h : Int32
 } derive(Eq, @debug.Debug)
-pub fn Rect::Rect(x~ : Int, y~ : Int, w~ : Int, h~ : Int) -> Self
+pub fn Rect::Rect(x~ : Int32, y~ : Int32, w~ : Int32, h~ : Int32) -> Self
 pub fn Rect::equal(Self, Self) -> Bool
 pub fn Rect::not_equal(Self, Self) -> Bool
 pub fn Rect::to_repr(Self) -> @debug.Repr
@@ -241,7 +241,7 @@ pub fn Rect::to_repr(Self) -> @debug.Repr
 type Renderer
 pub fn Renderer::Renderer(Window, name? : String) -> Self raise SdlError
 pub fn Renderer::clear(Self) -> Unit raise SdlError
-pub fn Renderer::create_texture(Self, width~ : Int, height~ : Int, format? : PixelFormat, access? : TextureAccess) -> Texture raise SdlError
+pub fn Renderer::create_texture(Self, width~ : Int32, height~ : Int32, format? : PixelFormat, access? : TextureAccess) -> Texture raise SdlError
 pub fn Renderer::destroy(Self) -> Unit
 pub fn Renderer::fill_frect(Self, FRect) -> Unit raise SdlError
 pub fn Renderer::fill_rect(Self, x~ : Float, y~ : Float, w~ : Float, h~ : Float) -> Unit raise SdlError
@@ -252,8 +252,8 @@ pub fn Renderer::render_texture(Self, Texture, src? : FRect, dst? : FRect) -> Un
 pub fn Renderer::set_draw_color(Self, Color) -> Unit raise SdlError
 
 pub(all) struct Size {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
 } derive(Eq, @debug.Debug)
 pub fn Size::equal(Self, Self) -> Bool
 pub fn Size::not_equal(Self, Self) -> Bool
@@ -267,14 +267,14 @@ pub fn TextInputEvent::not_equal(Self, Self) -> Bool
 pub fn TextInputEvent::to_repr(Self) -> @debug.Repr
 
 type Texture
-pub fn Texture::Texture(Renderer, width~ : Int, height~ : Int, format? : PixelFormat, access? : TextureAccess) -> Self raise SdlError
+pub fn Texture::Texture(Renderer, width~ : Int32, height~ : Int32, format? : PixelFormat, access? : TextureAccess) -> Self raise SdlError
 pub fn Texture::destroy(Self) -> Unit
 pub fn Texture::raw(Self) -> @sdl-sys.Texture
 pub fn Texture::set_alpha_mod(Self, Byte) -> Unit raise SdlError
 pub fn Texture::set_blend_mode(Self, BlendMode) -> Unit raise SdlError
 pub fn Texture::set_color_mod(Self, Color) -> Unit raise SdlError
 pub fn Texture::size(Self) -> FSize raise SdlError
-pub fn Texture::update(Self, pixels~ : Bytes, pitch~ : Int, rect? : Rect) -> Unit raise SdlError
+pub fn Texture::update(Self, pixels~ : Bytes, pitch~ : Int32, rect? : Rect) -> Unit raise SdlError
 
 pub(all) enum TextureAccess {
   Static
@@ -294,11 +294,11 @@ pub fn Tray::set_tooltip(Self, String) -> Unit
 pub fn Tray::update() -> Unit
 
 type Window
-pub fn Window::Window(title~ : String, width~ : Int, height~ : Int, placement? : WindowPlacement, hidden? : Bool, resizable? : Bool, borderless? : Bool, always_on_top? : Bool, high_pixel_density? : Bool, constrain_popup? : Bool, external_graphics_context? : Bool, fullscreen? : Bool, maximized? : Bool, minimized? : Bool, menu? : Bool, modal? : Bool, mouse_grabbed? : Bool, focusable? : Bool, opengl? : Bool, metal? : Bool, vulkan? : Bool, transparent? : Bool, tooltip? : Bool, utility? : Bool, custom_properties? : Array[Property], close_behavior? : WindowCloseBehavior) -> Self raise SdlError
+pub fn Window::Window(title~ : String, width~ : Int32, height~ : Int32, placement? : WindowPlacement, hidden? : Bool, resizable? : Bool, borderless? : Bool, always_on_top? : Bool, high_pixel_density? : Bool, constrain_popup? : Bool, external_graphics_context? : Bool, fullscreen? : Bool, maximized? : Bool, minimized? : Bool, menu? : Bool, modal? : Bool, mouse_grabbed? : Bool, focusable? : Bool, opengl? : Bool, metal? : Bool, vulkan? : Bool, transparent? : Bool, tooltip? : Bool, utility? : Bool, custom_properties? : Array[Property], close_behavior? : WindowCloseBehavior) -> Self raise SdlError
 pub fn Window::destroy(Self) -> Unit
 pub fn Window::flags(Self) -> UInt64
 pub fn Window::hide(Self) -> Unit raise SdlError
-pub fn Window::id(Self) -> UInt raise SdlError
+pub fn Window::id(Self) -> UInt32 raise SdlError
 pub fn Window::keyboard_grab(Self) -> Bool
 pub fn Window::maximize(Self) -> Unit raise SdlError
 pub fn Window::maximum_size(Self) -> Size raise SdlError
@@ -316,18 +316,18 @@ pub fn Window::set_bordered(Self, Bool) -> Unit raise SdlError
 pub fn Window::set_close_behavior(Self, WindowCloseBehavior) -> Unit raise SdlError
 pub fn Window::set_fullscreen(Self, Bool) -> Unit raise SdlError
 pub fn Window::set_keyboard_grab(Self, Bool) -> Unit raise SdlError
-pub fn Window::set_maximum_size(Self, width~ : Int, height~ : Int) -> Unit raise SdlError
-pub fn Window::set_minimum_size(Self, width~ : Int, height~ : Int) -> Unit raise SdlError
+pub fn Window::set_maximum_size(Self, width~ : Int32, height~ : Int32) -> Unit raise SdlError
+pub fn Window::set_minimum_size(Self, width~ : Int32, height~ : Int32) -> Unit raise SdlError
 pub fn Window::set_mouse_grab(Self, Bool) -> Unit raise SdlError
 pub fn Window::set_opacity(Self, Float) -> Unit raise SdlError
 pub fn Window::set_placement(Self, WindowPlacement) -> Unit raise SdlError
-pub fn Window::set_position(Self, x~ : Int, y~ : Int) -> Unit raise SdlError
+pub fn Window::set_position(Self, x~ : Int32, y~ : Int32) -> Unit raise SdlError
 pub fn Window::set_resizable(Self, Bool) -> Unit raise SdlError
-pub fn Window::set_size(Self, width~ : Int, height~ : Int) -> Unit raise SdlError
+pub fn Window::set_size(Self, width~ : Int32, height~ : Int32) -> Unit raise SdlError
 pub fn Window::set_title(Self, String) -> Unit raise SdlError
 pub fn Window::show(Self) -> Unit raise SdlError
-pub fn Window::show_simple_message_box(Self, title~ : String, message~ : String, flags? : UInt) -> Unit raise SdlError
-pub fn Window::show_system_menu(Self, x~ : Int, y~ : Int) -> Unit raise SdlError
+pub fn Window::show_simple_message_box(Self, title~ : String, message~ : String, flags? : UInt32) -> Unit raise SdlError
+pub fn Window::show_system_menu(Self, x~ : Int32, y~ : Int32) -> Unit raise SdlError
 pub fn Window::size(Self) -> Size raise SdlError
 pub fn Window::size_in_pixels(Self) -> Size raise SdlError
 pub fn Window::start_text_input(Self) -> Unit raise SdlError
@@ -344,7 +344,7 @@ pub fn WindowCloseBehavior::not_equal(Self, Self) -> Bool
 pub fn WindowCloseBehavior::to_repr(Self) -> @debug.Repr
 
 pub(all) struct WindowEvent {
-  window_id : UInt
+  window_id : UInt32
   name : WindowEventName
   size : Size?
 } derive(Eq, @debug.Debug)
@@ -365,9 +365,9 @@ pub fn WindowEventName::to_repr(Self) -> @debug.Repr
 pub(all) enum WindowPlacement {
   Positioned(Position)
   Centered
-  CenteredOnDisplay(UInt)
+  CenteredOnDisplay(UInt32)
   Undefined
-  UndefinedOnDisplay(UInt)
+  UndefinedOnDisplay(UInt32)
 } derive(Eq, @debug.Debug)
 pub fn WindowPlacement::equal(Self, Self) -> Bool
 pub fn WindowPlacement::not_equal(Self, Self) -> Bool

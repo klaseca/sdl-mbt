@@ -50,10 +50,10 @@ fn FRect::to_sys(self : Self) -> @sys.FRect {
 
 ///|
 pub(all) struct Rect {
-  x : Int
-  y : Int
-  w : Int
-  h : Int
+  x : Int32
+  y : Int32
+  w : Int32
+  h : Int32
 } derive(Debug, Eq)
 
 ///|
@@ -63,7 +63,7 @@ pub extend Rect with Debug::{to_repr}
 pub extend Rect with Eq::{not_equal, equal}
 
 ///|
-pub fn Rect::Rect(x~ : Int, y~ : Int, w~ : Int, h~ : Int) -> Rect {
+pub fn Rect::Rect(x~ : Int32, y~ : Int32, w~ : Int32, h~ : Int32) -> Rect {
   { x, y, w, h, }
 }
 
@@ -75,7 +75,7 @@ fn Rect::to_sys(self : Self) -> @sys.Rect {
 ///|
 pub fn Renderer::Renderer(
   window : Window,
-  name? : String = "",
+  name~ : String = "",
 ) -> Renderer raise SdlError {
   let raw = @sys.create_renderer(window.raw(), @utf8.encode(name))
   if raw.is_null() {

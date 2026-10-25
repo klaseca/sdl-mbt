@@ -11,7 +11,7 @@ pub using @sys {
 }
 
 ///|
-pub fn init_lib(flags : UInt) -> Unit raise SdlError {
+pub fn init_lib(flags : UInt32) -> Unit raise SdlError {
   check_ok(@sys.init_lib(flags), "SDL_Init")
 }
 

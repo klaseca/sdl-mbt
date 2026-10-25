@@ -33,7 +33,7 @@ fn WindowCloseBehavior::from_int64(value : Int64) -> Self {
 }
 
 ///|
-fn window_close_behavior(window_id : UInt) -> WindowCloseBehavior {
+fn window_close_behavior(window_id : UInt32) -> WindowCloseBehavior {
   let window = @sys.get_window_from_id(window_id)
   if window.is_null() {
     ExitApp
@@ -55,7 +55,7 @@ fn window_close_behavior(window_id : UInt) -> WindowCloseBehavior {
 
 ///|
 fn set_window_close_behavior(
-  window_id : UInt,
+  window_id : UInt32,
   behavior : WindowCloseBehavior,
 ) -> Bool {
   let window = @sys.get_window_from_id(window_id)
@@ -81,15 +81,15 @@ fn set_window_close_behavior_raw(
 }
 
 ///|
-fn hide_window_by_id(window_id : UInt) -> Bool {
+fn hide_window_by_id(window_id : UInt32) -> Bool {
   let window = @sys.get_window_from_id(window_id)
   !window.is_null() && @sys.hide_window(window)
 }
 
 ///|
 pub(all) struct Size {
-  width : Int
-  height : Int
+  width : Int32
+  height : Int32
 } derive(Debug, Eq)
 
 ///|
@@ -100,8 +100,8 @@ pub extend Size with Eq::{not_equal, equal}
 
 ///|
 pub(all) struct Position {
-  x : Int
-  y : Int
+  x : Int32
+  y : Int32
 } derive(Debug, Eq)
 
 ///|
@@ -114,9 +114,9 @@ pub extend Position with Eq::{not_equal, equal}
 pub(all) enum WindowPlacement {
   Positioned(Position)
   Centered
-  CenteredOnDisplay(UInt)
+  CenteredOnDisplay(UInt32)
   Undefined
-  UndefinedOnDisplay(UInt)
+  UndefinedOnDisplay(UInt32)
 } derive(Debug, Eq)
 
 ///|
@@ -126,13 +126,13 @@ pub extend WindowPlacement with Debug::{to_repr}
 pub extend WindowPlacement with Eq::{not_equal, equal}
 
 ///|
-const WINDOWPOS_UNDEFINED_MASK : UInt = 0x1FFF0000
+const WINDOWPOS_UNDEFINED_MASK : UInt32 = 0x1FFF0000
 
 ///|
-const WINDOWPOS_CENTERED_MASK : UInt = 0x2FFF0000
+const WINDOWPOS_CENTERED_MASK : UInt32 = 0x2FFF0000
 
 ///|
-fn sdl_windowpos(mask : UInt, display_id : UInt) -> Int {
+fn sdl_windowpos(mask : UInt32, display_id : UInt32) -> Int32 {
   mask.lor(display_id).reinterpret_as_int()
 }
 
@@ -167,8 +167,8 @@ struct Window {
 ///|
 pub fn Window::Window(
   title~ : String,
-  width~ : Int,
-  height~ : Int,
+  width~ : Int32,
+  height~ : Int32,
   placement? : WindowPlacement,
   hidden? : Bool,
   resizable? : Bool,
@@ -191,7 +191,7 @@ pub fn Window::Window(
   tooltip? : Bool,
   utility? : Bool,
   custom_properties? : Array[Property],
-  close_behavior? : WindowCloseBehavior = ExitApp,
+  close_behavior~ : WindowCloseBehavior = ExitApp,
 ) -> Window raise SdlError {
   let properties = Properties()
   defer properties.destroy()
@@ -319,7 +319,7 @@ pub fn Window::destroy(self : Self) -> Unit {
 }
 
 ///|
-pub fn Window::id(self : Self) -> UInt raise SdlError {
+pub fn Window::id(self : Self) -> UInt32 raise SdlError {
   let id = @sys.get_window_id(self.raw)
   if id == 0 {
     raise_last_error("SDL_GetWindowID")
@@ -359,8 +359,8 @@ pub fn Window::title(self : Self) -> String {
 ///|
 pub fn Window::set_position(
   self : Self,
-  x~ : Int,
-  y~ : Int,
+  x~ : Int32,
+  y~ : Int32,
 ) -> Unit raise SdlError {
   check_ok(@sys.set_window_position(self.raw, x, y), "SDL_SetWindowPosition")
 }
@@ -376,8 +376,8 @@ pub fn Window::set_placement(
 
 ///|
 pub fn Window::position(self : Self) -> Position raise SdlError {
-  let x : Ref[Int] = { val: 0, }
-  let y : Ref[Int] = { val: 0, }
+  let x : Ref[Int32] = { val: 0, }
+  let y : Ref[Int32] = { val: 0, }
   check_ok(@sys.get_window_position(self.raw, x, y), "SDL_GetWindowPosition")
   { x: x.val, y: y.val, }
 }
@@ -385,24 +385,24 @@ pub fn Window::position(self : Self) -> Position raise SdlError {
 ///|
 pub fn Window::set_size(
   self : Self,
-  width~ : Int,
-  height~ : Int,
+  width~ : Int32,
+  height~ : Int32,
 ) -> Unit raise SdlError {
   check_ok(@sys.set_window_size(self.raw, width, height), "SDL_SetWindowSize")
 }
 
 ///|
 pub fn Window::size(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0, }
-  let height : Ref[Int] = { val: 0, }
+  let width : Ref[Int32] = { val: 0, }
+  let height : Ref[Int32] = { val: 0, }
   check_ok(@sys.get_window_size(self.raw, width, height), "SDL_GetWindowSize")
   { width: width.val, height: height.val, }
 }
 
 ///|
 pub fn Window::size_in_pixels(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0, }
-  let height : Ref[Int] = { val: 0, }
+  let width : Ref[Int32] = { val: 0, }
+  let height : Ref[Int32] = { val: 0, }
   check_ok(
     @sys.get_window_size_in_pixels(self.raw, width, height),
     "SDL_GetWindowSizeInPixels",
@@ -413,8 +413,8 @@ pub fn Window::size_in_pixels(self : Self) -> Size raise SdlError {
 ///|
 pub fn Window::set_minimum_size(
   self : Self,
-  width~ : Int,
-  height~ : Int,
+  width~ : Int32,
+  height~ : Int32,
 ) -> Unit raise SdlError {
   check_ok(
     @sys.set_window_minimum_size(self.raw, width, height),
@@ -424,8 +424,8 @@ pub fn Window::set_minimum_size(
 
 ///|
 pub fn Window::minimum_size(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0, }
-  let height : Ref[Int] = { val: 0, }
+  let width : Ref[Int32] = { val: 0, }
+  let height : Ref[Int32] = { val: 0, }
   check_ok(
     @sys.get_window_minimum_size(self.raw, width, height),
     "SDL_GetWindowMinimumSize",
@@ -436,8 +436,8 @@ pub fn Window::minimum_size(self : Self) -> Size raise SdlError {
 ///|
 pub fn Window::set_maximum_size(
   self : Self,
-  width~ : Int,
-  height~ : Int,
+  width~ : Int32,
+  height~ : Int32,
 ) -> Unit raise SdlError {
   check_ok(
     @sys.set_window_maximum_size(self.raw, width, height),
@@ -447,8 +447,8 @@ pub fn Window::set_maximum_size(
 
 ///|
 pub fn Window::maximum_size(self : Self) -> Size raise SdlError {
-  let width : Ref[Int] = { val: 0, }
-  let height : Ref[Int] = { val: 0, }
+  let width : Ref[Int32] = { val: 0, }
+  let height : Ref[Int32] = { val: 0, }
   check_ok(
     @sys.get_window_maximum_size(self.raw, width, height),
     "SDL_GetWindowMaximumSize",
@@ -579,8 +579,8 @@ pub fn Window::opacity(self : Self) -> Float raise SdlError {
 ///|
 pub fn Window::show_system_menu(
   self : Self,
-  x~ : Int,
-  y~ : Int,
+  x~ : Int32,
+  y~ : Int32,
 ) -> Unit raise SdlError {
   check_ok(
     @sys.show_window_system_menu(self.raw, x, y),

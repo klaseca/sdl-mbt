@@ -46,7 +46,7 @@ pub const PROP_APP_METADATA_URL_STRING : Bytes = b"SDL.app.metadata.url"
 pub const PROP_APP_METADATA_TYPE_STRING : Bytes = b"SDL.app.metadata.type"
 
 ///|
-pub extern "c" fn init_lib(flags : UInt) -> Bool = "moonbit_sdl_init_lib"
+pub extern "c" fn init_lib(flags : UInt32) -> Bool = "moonbit_sdl_init_lib"
 
 ///|
 pub extern "c" fn quit() = "moonbit_sdl_quit"

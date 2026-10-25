@@ -348,11 +348,11 @@ pub extern "c" fn create_renderer(window : Window, name : Bytes) -> Renderer = "
 
 ///|
 #borrow(renderer, w, h)
-pub extern "c" fn get_current_render_output_size(renderer : Renderer, w : Ref[Int], h : Ref[Int]) -> Bool = "moonbit_sdl_get_current_render_output_size"
+pub extern "c" fn get_current_render_output_size(renderer : Renderer, w : Ref[Int32], h : Ref[Int32]) -> Bool = "moonbit_sdl_get_current_render_output_size"
 
 ///|
 #borrow(renderer)
-pub extern "c" fn create_texture(renderer : Renderer, format : UInt, access : UInt, w : Int, h : Int) -> Texture = "moonbit_sdl_create_texture"
+pub extern "c" fn create_texture(renderer : Renderer, format : UInt, access : UInt, w : Int32, h : Int32) -> Texture = "moonbit_sdl_create_texture"
 
 ///|
 #borrow(texture, w, h)
@@ -368,23 +368,23 @@ pub extern "c" fn set_texture_alpha_mod(texture : Texture, alpha : Byte) -> Bool
 
 ///|
 #borrow(texture)
-pub extern "c" fn set_texture_blend_mode(texture : Texture, blendMode : UInt) -> Bool = "moonbit_sdl_set_texture_blend_mode"
+pub extern "c" fn set_texture_blend_mode(texture : Texture, blendMode : UInt32) -> Bool = "moonbit_sdl_set_texture_blend_mode"
 
 ///|
 #borrow(texture, rect, pixels)
-extern "c" fn update_texture_ffi(texture : Texture, rect : Bytes, has_rect : Bool, pixels : Bytes, pitch : Int) -> Bool = "moonbit_sdl_update_texture_ffi"
+extern "c" fn update_texture_ffi(texture : Texture, rect : Bytes, has_rect : Bool, pixels : Bytes, pitch : Int32) -> Bool = "moonbit_sdl_update_texture_ffi"
 
 ///|
-pub fn update_texture(texture : Texture, rect : Rect, has_rect : Bool, pixels : Bytes, pitch : Int) -> Bool {
+pub fn update_texture(texture : Texture, rect : Rect, has_rect : Bool, pixels : Bytes, pitch : Int32) -> Bool {
   update_texture_ffi(texture, rect.to_bytes(), has_rect, pixels, pitch)
 }
 
 ///|
 #borrow(texture, rect, pixels, pitch)
-extern "c" fn lock_texture_ffi(texture : Texture, rect : Bytes, has_rect : Bool, pixels : Ref[Pointer], pitch : Ref[Int]) -> Bool = "moonbit_sdl_lock_texture_ffi"
+extern "c" fn lock_texture_ffi(texture : Texture, rect : Bytes, has_rect : Bool, pixels : Ref[Pointer], pitch : Ref[Int32]) -> Bool = "moonbit_sdl_lock_texture_ffi"
 
 ///|
-pub fn lock_texture(texture : Texture, rect : Rect, has_rect : Bool, pixels : Ref[Pointer], pitch : Ref[Int]) -> Bool {
+pub fn lock_texture(texture : Texture, rect : Rect, has_rect : Bool, pixels : Ref[Pointer], pitch : Ref[Int32]) -> Bool {
   lock_texture_ffi(texture, rect.to_bytes(), has_rect, pixels, pitch)
 }
 

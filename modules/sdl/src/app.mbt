@@ -1,7 +1,7 @@
 ///|
 pub(all) enum ControlFlow {
   Poll
-  Wait(Int)
+  Wait(Int32)
   Exit
 } derive(Debug, Eq)
 
@@ -13,14 +13,14 @@ pub extend ControlFlow with Eq::{not_equal, equal}
 
 ///|
 struct App {
-  init_flags : UInt
+  init_flags : UInt32
   mut control_flow : ControlFlow
 }
 
 ///|
 pub fn App::App(
-  init_flags? : UInt = INIT_VIDEO,
-  control_flow? : ControlFlow = Wait(16),
+  init_flags~ : UInt32 = INIT_VIDEO,
+  control_flow~ : ControlFlow = Wait(16),
 ) -> App {
   { init_flags, control_flow, }
 }

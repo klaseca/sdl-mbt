@@ -6,10 +6,10 @@ struct Rect {
 }
 
 ///|
-extern "c" fn rect_make(x : Int, y : Int, w : Int, h : Int) -> Bytes = "moonbit_sdl_rect_make"
+extern "c" fn rect_make(x : Int32, y : Int32, w : Int32, h : Int32) -> Bytes = "moonbit_sdl_rect_make"
 
 ///|
-pub fn Rect::Rect(x : Int, y : Int, w : Int, h : Int) -> Rect {
+pub fn Rect::Rect(x : Int32, y : Int32, w : Int32, h : Int32) -> Rect {
   { bytes: rect_make(x, y, w, h) }
 }
 
@@ -20,37 +20,37 @@ pub fn Rect::to_bytes(self : Self) -> Bytes {
 
 ///|
 #borrow(bytes)
-extern "c" fn rect_x(bytes : Bytes) -> Int = "moonbit_sdl_rect_x"
+extern "c" fn rect_x(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_x"
 
 ///|
-pub fn Rect::x(self : Self) -> Int {
+pub fn Rect::x(self : Self) -> Int32 {
   rect_x(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn rect_y(bytes : Bytes) -> Int = "moonbit_sdl_rect_y"
+extern "c" fn rect_y(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_y"
 
 ///|
-pub fn Rect::y(self : Self) -> Int {
+pub fn Rect::y(self : Self) -> Int32 {
   rect_y(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn rect_w(bytes : Bytes) -> Int = "moonbit_sdl_rect_w"
+extern "c" fn rect_w(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_w"
 
 ///|
-pub fn Rect::w(self : Self) -> Int {
+pub fn Rect::w(self : Self) -> Int32 {
   rect_w(self.to_bytes())
 }
 
 ///|
 #borrow(bytes)
-extern "c" fn rect_h(bytes : Bytes) -> Int = "moonbit_sdl_rect_h"
+extern "c" fn rect_h(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_h"
 
 ///|
-pub fn Rect::h(self : Self) -> Int {
+pub fn Rect::h(self : Self) -> Int32 {
   rect_h(self.to_bytes())
 }
 

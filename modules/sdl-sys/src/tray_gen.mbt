@@ -78,7 +78,7 @@ pub extern "c" fn remove_tray_entry(entry : TrayEntry) = "moonbit_sdl_remove_tra
 
 ///|
 #borrow(label)
-pub extern "c" fn insert_tray_entry_at(menu : TrayMenu, pos : Int, label : Bytes, flags : UInt) -> TrayEntry = "moonbit_sdl_insert_tray_entry_at"
+pub extern "c" fn insert_tray_entry_at(menu : TrayMenu, pos : Int32, label : Bytes, flags : UInt32) -> TrayEntry = "moonbit_sdl_insert_tray_entry_at"
 
 ///|
 #borrow(label)

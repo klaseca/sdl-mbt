@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_init_lib(SDL_InitFlags flags) {
+int32_t moonbit_sdl_init_lib(uint32_t flags) {
   return SDL_Init(flags);
 }
 
