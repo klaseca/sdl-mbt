@@ -51,18 +51,11 @@ const sdl = resolveNativeDependency({
   },
 })
 
-const MOON_INCORRECT_LINK_FLAGS_WORKAROUND =
-  process.platform === 'win32'
-    ? {
-        link_flags: '/link',
-      }
-    : {}
-
 process.stdout.write(
   JSON.stringify({
     vars: {
       SDL_STUB_CC_FLAGS: sdl.compileFlags,
     },
-    link_configs: [{ ...sdl.linkConfig, ...MOON_INCORRECT_LINK_FLAGS_WORKAROUND }],
+    link_configs: [sdl.linkConfig],
   }),
 )
