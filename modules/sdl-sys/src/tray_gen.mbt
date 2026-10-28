@@ -37,19 +37,19 @@ pub fn TrayEntry::is_null(self : Self) -> Bool {
 }
 
 ///|
-pub const TRAYENTRY_BUTTON : UInt = 0x00000001
+pub const TRAYENTRY_BUTTON : UInt32 = 0x00000001
 
 ///|
-pub const TRAYENTRY_CHECKBOX : UInt = 0x00000002
+pub const TRAYENTRY_CHECKBOX : UInt32 = 0x00000002
 
 ///|
-pub const TRAYENTRY_SUBMENU : UInt = 0x00000004
+pub const TRAYENTRY_SUBMENU : UInt32 = 0x00000004
 
 ///|
-pub const TRAYENTRY_DISABLED : UInt = 0x80000000
+pub const TRAYENTRY_DISABLED : UInt32 = 0x80000000
 
 ///|
-pub const TRAYENTRY_CHECKED : UInt = 0x40000000
+pub const TRAYENTRY_CHECKED : UInt32 = 0x40000000
 
 ///|
 #borrow(tooltip)

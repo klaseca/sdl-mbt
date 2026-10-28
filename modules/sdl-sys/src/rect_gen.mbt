@@ -3,6 +3,7 @@
 ///|
 struct Rect {
   bytes : Bytes
+  offset : Int32
 }
 
 ///|
@@ -10,53 +11,51 @@ extern "c" fn rect_make(x : Int32, y : Int32, w : Int32, h : Int32) -> Bytes = "
 
 ///|
 pub fn Rect::Rect(x : Int32, y : Int32, w : Int32, h : Int32) -> Rect {
-  { bytes: rect_make(x, y, w, h) }
+  { bytes: rect_make(x, y, w, h), offset: 0 }
 }
 
 ///|
-pub fn Rect::to_bytes(self : Self) -> Bytes {
-  self.bytes
+extern "c" fn rect_layout_ffi() -> FixedArray[Int32] = "moonbit_sdl_rect_layout"
+
+///|
+let rect_layout : FixedArray[Int32] = rect_layout_ffi()
+
+///|
+/// View exactly the structure bytes without copying; writes and native buffer reuse are shared.
+pub fn Rect::as_bytes(self : Self) -> BytesView {
+  self.bytes.exact_view(start=self.offset, end=self.offset + rect_layout[0])
 }
 
 ///|
-#borrow(bytes)
-extern "c" fn rect_x(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_x"
+/// Copy the structure bytes into independent storage. Native pointers remain shallow copies.
+pub fn Rect::copy(self : Self) -> Self {
+  { bytes: value_copy_bytes(self.bytes, self.offset, rect_layout[0]), offset: 0 }
+}
 
 ///|
 pub fn Rect::x(self : Self) -> Int32 {
-  rect_x(self.to_bytes())
+  read_integer(self.bytes, self.offset + rect_layout[1], rect_layout[2], rect_layout[3] != 0, value_little_endian)
 }
-
-///|
-#borrow(bytes)
-extern "c" fn rect_y(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_y"
 
 ///|
 pub fn Rect::y(self : Self) -> Int32 {
-  rect_y(self.to_bytes())
+  read_integer(self.bytes, self.offset + rect_layout[4], rect_layout[5], rect_layout[6] != 0, value_little_endian)
 }
-
-///|
-#borrow(bytes)
-extern "c" fn rect_w(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_w"
 
 ///|
 pub fn Rect::w(self : Self) -> Int32 {
-  rect_w(self.to_bytes())
+  read_integer(self.bytes, self.offset + rect_layout[7], rect_layout[8], rect_layout[9] != 0, value_little_endian)
 }
 
 ///|
-#borrow(bytes)
-extern "c" fn rect_h(bytes : Bytes) -> Int32 = "moonbit_sdl_rect_h"
-
-///|
 pub fn Rect::h(self : Self) -> Int32 {
-  rect_h(self.to_bytes())
+  read_integer(self.bytes, self.offset + rect_layout[10], rect_layout[11], rect_layout[12] != 0, value_little_endian)
 }
 
 ///|
 struct FRect {
   bytes : Bytes
+  offset : Int32
 }
 
 ///|
@@ -64,46 +63,43 @@ extern "c" fn frect_make(x : Float, y : Float, w : Float, h : Float) -> Bytes = 
 
 ///|
 pub fn FRect::FRect(x : Float, y : Float, w : Float, h : Float) -> FRect {
-  { bytes: frect_make(x, y, w, h) }
+  { bytes: frect_make(x, y, w, h), offset: 0 }
 }
 
 ///|
-pub fn FRect::to_bytes(self : Self) -> Bytes {
-  self.bytes
+extern "c" fn frect_layout_ffi() -> FixedArray[Int32] = "moonbit_sdl_frect_layout"
+
+///|
+let frect_layout : FixedArray[Int32] = frect_layout_ffi()
+
+///|
+/// View exactly the structure bytes without copying; writes and native buffer reuse are shared.
+pub fn FRect::as_bytes(self : Self) -> BytesView {
+  self.bytes.exact_view(start=self.offset, end=self.offset + frect_layout[0])
 }
 
 ///|
-#borrow(bytes)
-extern "c" fn frect_x(bytes : Bytes) -> Float = "moonbit_sdl_frect_x"
+/// Copy the structure bytes into independent storage. Native pointers remain shallow copies.
+pub fn FRect::copy(self : Self) -> Self {
+  { bytes: value_copy_bytes(self.bytes, self.offset, frect_layout[0]), offset: 0 }
+}
 
 ///|
 pub fn FRect::x(self : Self) -> Float {
-  frect_x(self.to_bytes())
+  value_read_float(self.bytes, self.offset + frect_layout[1], frect_layout[2], value_little_endian)
 }
-
-///|
-#borrow(bytes)
-extern "c" fn frect_y(bytes : Bytes) -> Float = "moonbit_sdl_frect_y"
 
 ///|
 pub fn FRect::y(self : Self) -> Float {
-  frect_y(self.to_bytes())
+  value_read_float(self.bytes, self.offset + frect_layout[4], frect_layout[5], value_little_endian)
 }
-
-///|
-#borrow(bytes)
-extern "c" fn frect_w(bytes : Bytes) -> Float = "moonbit_sdl_frect_w"
 
 ///|
 pub fn FRect::w(self : Self) -> Float {
-  frect_w(self.to_bytes())
+  value_read_float(self.bytes, self.offset + frect_layout[7], frect_layout[8], value_little_endian)
 }
 
 ///|
-#borrow(bytes)
-extern "c" fn frect_h(bytes : Bytes) -> Float = "moonbit_sdl_frect_h"
-
-///|
 pub fn FRect::h(self : Self) -> Float {
-  frect_h(self.to_bytes())
+  value_read_float(self.bytes, self.offset + frect_layout[10], frect_layout[11], value_little_endian)
 }

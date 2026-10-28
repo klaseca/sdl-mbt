@@ -16,6 +16,7 @@ formatter(
     "timer_gen.mbt",
     "tray_gen.mbt",
     "video_gen.mbt",
+    "value_gen.mbt",
   ],
 )
 
@@ -43,5 +44,6 @@ options(
     "tray_stub_gen.c",
     "tray_callback_stub.c",
     "video_stub_gen.c",
+    "value_stub_gen.c",
   ],
 )

@@ -28,6 +28,8 @@
     "timer_stub_gen.c",
     "tray_gen.mbt",
     "tray_stub_gen.c",
+    "value_gen.mbt",
+    "value_stub_gen.c",
     "video_gen.mbt",
     "video_stub_gen.c"
   ]

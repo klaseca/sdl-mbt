@@ -346,19 +346,19 @@ pub const PROP_WINDOW_EMSCRIPTEN_KEYBOARD_ELEMENT_STRING : Bytes = b"SDL.window.
 pub const WINDOW_SURFACE_VSYNC_DISABLED : UInt64 = 0
 
 ///|
-pub const WINDOW_SURFACE_VSYNC_ADAPTIVE : Int = -1
+pub const WINDOW_SURFACE_VSYNC_ADAPTIVE : Int32 = -1
 
 ///|
-pub const SYSTEM_THEME_UNKNOWN : Int = 0
+pub const SYSTEM_THEME_UNKNOWN : Int32 = 0
 
 ///|
-pub const SYSTEM_THEME_LIGHT : Int = 1
+pub const SYSTEM_THEME_LIGHT : Int32 = 1
 
 ///|
-pub const SYSTEM_THEME_DARK : Int = 2
+pub const SYSTEM_THEME_DARK : Int32 = 2
 
 ///|
-pub extern "c" fn get_system_theme() -> Int = "moonbit_sdl_get_system_theme"
+pub extern "c" fn get_system_theme() -> Int32 = "moonbit_sdl_get_system_theme"
 
 ///|
 #borrow(title)

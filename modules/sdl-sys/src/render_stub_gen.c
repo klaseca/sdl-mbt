@@ -161,15 +161,15 @@ int32_t moonbit_sdl_set_texture_blend_mode(void * texture, uint32_t blendMode) {
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_update_texture_ffi(void * texture, moonbit_bytes_t rect, int32_t has_rect, moonbit_bytes_t pixels, int32_t pitch) {
-  return SDL_UpdateTexture(moonbit_sdl_texture_ptr(texture), has_rect ? ((const SDL_Rect *)rect) : NULL, ((const void *)pixels), pitch);
+int32_t moonbit_sdl_update_texture_ffi(void * texture, moonbit_bytes_t rect, int32_t rect_offset, int32_t has_rect, moonbit_bytes_t pixels, int32_t pitch) {
+  return SDL_UpdateTexture(moonbit_sdl_texture_ptr(texture), has_rect ? ((const SDL_Rect *)(rect + rect_offset)) : NULL, ((const void *)pixels), pitch);
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_lock_texture_ffi(void * texture, moonbit_bytes_t rect, int32_t has_rect, void ** pixels, int32_t * pitch) {
+int32_t moonbit_sdl_lock_texture_ffi(void * texture, moonbit_bytes_t rect, int32_t rect_offset, int32_t has_rect, void ** pixels, int32_t * pitch) {
   void * pixels_value = NULL;
   int pitch_value = 0;
-  int32_t result = SDL_LockTexture(moonbit_sdl_texture_ptr(texture), has_rect ? ((const SDL_Rect *)rect) : NULL, &pixels_value, &pitch_value);
+  int32_t result = SDL_LockTexture(moonbit_sdl_texture_ptr(texture), has_rect ? ((const SDL_Rect *)(rect + rect_offset)) : NULL, &pixels_value, &pitch_value);
   if (pixels != NULL) *pixels = pixels_value;
   if (pitch != NULL) *pitch = pitch_value;
   return result;
@@ -191,13 +191,13 @@ int32_t moonbit_sdl_render_clear(void * renderer) {
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_render_fill_rect_ffi(void * renderer, moonbit_bytes_t rect) {
-  return SDL_RenderFillRect(moonbit_sdl_renderer_ptr(renderer), ((const SDL_FRect *)rect));
+int32_t moonbit_sdl_render_fill_rect_ffi(void * renderer, moonbit_bytes_t rect, int32_t rect_offset) {
+  return SDL_RenderFillRect(moonbit_sdl_renderer_ptr(renderer), ((const SDL_FRect *)(rect + rect_offset)));
 }
 
 MOONBIT_FFI_EXPORT
-int32_t moonbit_sdl_render_texture_ffi(void * renderer, void * texture, moonbit_bytes_t srcrect, moonbit_bytes_t dstrect) {
-  return SDL_RenderTexture(moonbit_sdl_renderer_ptr(renderer), moonbit_sdl_texture_ptr(texture), ((const SDL_FRect *)srcrect), ((const SDL_FRect *)dstrect));
+int32_t moonbit_sdl_render_texture_ffi(void * renderer, void * texture, moonbit_bytes_t srcrect, int32_t srcrect_offset, moonbit_bytes_t dstrect, int32_t dstrect_offset) {
+  return SDL_RenderTexture(moonbit_sdl_renderer_ptr(renderer), moonbit_sdl_texture_ptr(texture), ((const SDL_FRect *)(srcrect + srcrect_offset)), ((const SDL_FRect *)(dstrect + dstrect_offset)));
 }
 
 MOONBIT_FFI_EXPORT

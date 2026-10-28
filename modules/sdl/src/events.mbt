@@ -166,38 +166,41 @@ fn Event::from_raw(raw : @sys.Event) -> Event {
 
 ///|
 fn KeyboardEvent::from_raw(raw : @sys.Event) -> KeyboardEvent {
+  let key = raw.key()
   {
-    window_id: raw.key_window_id(),
-    keyboard_id: raw.key_keyboard_id(),
-    scancode: raw.key_scancode(),
-    keycode: raw.key_keycode(),
-    modifiers: raw.key_modifiers(),
-    repeat: raw.key_repeat(),
+    window_id: key.window_id(),
+    keyboard_id: key.which(),
+    scancode: key.scancode(),
+    keycode: key.key(),
+    modifiers: key.mod(),
+    repeat: key.repeat(),
   }
 }
 
 ///|
 fn MouseMotionEvent::from_raw(raw : @sys.Event) -> MouseMotionEvent {
+  let motion = raw.motion()
   {
-    window_id: raw.motion_window_id(),
-    mouse_id: raw.motion_mouse_id(),
-    state: raw.motion_state(),
-    x: raw.motion_x(),
-    y: raw.motion_y(),
-    xrel: raw.motion_xrel(),
-    yrel: raw.motion_yrel(),
+    window_id: motion.window_id(),
+    mouse_id: motion.which(),
+    state: motion.state(),
+    x: motion.x(),
+    y: motion.y(),
+    xrel: motion.xrel(),
+    yrel: motion.yrel(),
   }
 }
 
 ///|
 fn MouseButtonEvent::from_raw(raw : @sys.Event) -> MouseButtonEvent {
+  let button = raw.button()
   {
-    window_id: raw.button_window_id(),
-    mouse_id: raw.button_mouse_id(),
-    button: raw.button_button(),
-    clicks: raw.button_clicks(),
-    x: raw.button_x(),
-    y: raw.button_y(),
+    window_id: button.window_id(),
+    mouse_id: button.which(),
+    button: button.button(),
+    clicks: button.clicks(),
+    x: button.x(),
+    y: button.y(),
   }
 }
 
@@ -206,17 +209,19 @@ fn WindowEvent::from_raw(
   raw : @sys.Event,
   name : WindowEventName,
 ) -> WindowEvent {
+  let window = raw.window()
   let size = match name {
     Resized | PixelSizeChanged =>
-      Some(Size::{ width: raw.window_data1(), height: raw.window_data2(), })
+      Some(Size::{ width: window.data1(), height: window.data2(), })
     Exposed | CloseRequested => None
   }
-  { window_id: raw.window_window_id(), name, size, }
+  { window_id: window.window_id(), name, size, }
 }
 
 ///|
 fn TextInputEvent::from_raw(raw : @sys.Event) -> TextInputEvent {
-  { text: @utf8.decode_lossy(raw.text_text()), }
+  let text = raw.text()
+  { text: @utf8.decode_lossy(text.text()), }
 }
 
 ///|

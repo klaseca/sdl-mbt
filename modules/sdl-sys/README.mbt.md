@@ -42,11 +42,19 @@ The getter and constants are generated from SDL's video header.
 
 ## Mouse wheel events
 
-For `EVENT_MOUSE_WHEEL`, `Event` exposes `wheel_window_id`, fractional
-`wheel_x`/`wheel_y`, `wheel_direction` and the window-relative pointer coordinates
-`wheel_mouse_x`/`wheel_mouse_y`. Compare direction with `MOUSEWHEEL_NORMAL` or
-`MOUSEWHEEL_FLIPPED`. These accessors are generated from `SDL_Event`; applications
+For `EVENT_MOUSE_WHEEL`, `event.wheel()` exposes `window_id()`, fractional
+`x()`/`y()`, `direction()` and the window-relative pointer coordinates
+`mouse_x()`/`mouse_y()`. Compare direction with `MOUSEWHEEL_NORMAL` or
+`MOUSEWHEEL_FLIPPED`. These accessors are generated from SDL's event types; applications
 do not need to interpret its native byte layout.
+
+Other event members work the same way: `event.window().window_id()` and
+`event.key().scancode()`. Getters return views into the shared event buffer;
+`event.window().set_data1(800)` updates the event itself. Keep the event's type
+consistent with the member being accessed. Reusing the event with `poll_event`
+updates retained views too. `copy()` copies structure bytes into independent
+storage; native pointer payloads are not deep-copied. The high-level SDL module
+materializes owned MoonBit event values before reusing native storage.
 
 ## Native Configuration
 
@@ -156,8 +164,13 @@ SDL value structs are represented as byte-backed MoonBit structs. For example:
 
 ```mbt
 let rect = @sdl_sys.Rect(0, 0, 640, 480)
-let raw = rect.to_bytes()
+let raw : BytesView = rect.as_bytes()
 ```
+
+`as_bytes()` returns exactly the structure's bytes without copying, including for
+nested event views. The view keeps the backing buffer alive and reflects setters
+and native buffer reuse. Use `copy().as_bytes()` for an independent snapshot;
+native pointer fields remain shallow copies.
 
 `Event` is also byte-backed and exposes generated field accessors:
 

@@ -22,9 +22,9 @@ const source = createSourceCRegex({
   functionPattern: /extern SDL_DECLSPEC (.*?) SDLCALL (SDL_\w+)\((.*?)\);/g,
   constantType: (name) => {
     if (name.endsWith('_ADAPTIVE') || name.startsWith('SDL_SYSTEM_THEME_')) {
-      return 'Int'
+      return 'Int32'
     }
-    return name.startsWith('SDL_WINDOW_') ? 'UInt64' : 'UInt'
+    return name.startsWith('SDL_WINDOW_') ? 'UInt64' : 'UInt32'
   },
 })
 

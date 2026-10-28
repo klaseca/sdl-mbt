@@ -3,7 +3,7 @@ pub type EventWatch
 
 ///|
 pub fn Event::from_bytes(bytes : Bytes) -> Event {
-  { bytes, }
+  { bytes, offset: 0, }
 }
 
 ///|

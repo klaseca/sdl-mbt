@@ -1111,47 +1111,26 @@ pub fn DisplayModeData::to_pointer(Self) -> Pointer
 
 type Event
 pub fn Event::Event() -> Self
-pub fn Event::button_button(Self) -> Byte
-pub fn Event::button_clicks(Self) -> Byte
-pub fn Event::button_mouse_id(Self) -> UInt32
-pub fn Event::button_window_id(Self) -> UInt32
-pub fn Event::button_x(Self) -> Float
-pub fn Event::button_y(Self) -> Float
+pub fn Event::as_bytes(Self) -> BytesView
+pub fn Event::button(Self) -> MouseButtonEvent
+pub fn Event::copy(Self) -> Self
 pub fn Event::event_type(Self) -> UInt32
 pub fn Event::from_bytes(Bytes) -> Self
-pub fn Event::key_keyboard_id(Self) -> UInt32
-pub fn Event::key_keycode(Self) -> UInt32
-pub fn Event::key_modifiers(Self) -> UInt32
-pub fn Event::key_repeat(Self) -> Bool
-pub fn Event::key_scancode(Self) -> Int32
-pub fn Event::key_window_id(Self) -> UInt32
-pub fn Event::motion_mouse_id(Self) -> UInt32
-pub fn Event::motion_state(Self) -> UInt32
-pub fn Event::motion_window_id(Self) -> UInt32
-pub fn Event::motion_x(Self) -> Float
-pub fn Event::motion_xrel(Self) -> Float
-pub fn Event::motion_y(Self) -> Float
-pub fn Event::motion_yrel(Self) -> Float
+pub fn Event::key(Self) -> KeyboardEvent
+pub fn Event::motion(Self) -> MouseMotionEvent
 pub fn Event::set_event_type(Self, UInt32) -> Unit
-pub fn Event::text_text(Self) -> Bytes
-pub fn Event::to_bytes(Self) -> Bytes
-pub fn Event::wheel_direction(Self) -> UInt32
-pub fn Event::wheel_mouse_x(Self) -> Float
-pub fn Event::wheel_mouse_y(Self) -> Float
-pub fn Event::wheel_window_id(Self) -> UInt32
-pub fn Event::wheel_x(Self) -> Float
-pub fn Event::wheel_y(Self) -> Float
-pub fn Event::window_data1(Self) -> Int32
-pub fn Event::window_data2(Self) -> Int32
-pub fn Event::window_window_id(Self) -> UInt32
+pub fn Event::text(Self) -> TextInputEvent
+pub fn Event::wheel(Self) -> MouseWheelEvent
+pub fn Event::window(Self) -> WindowEvent
 
 pub type EventWatch
 pub fn EventWatch::is_null(Self) -> Bool
 
 type FRect
 pub fn FRect::FRect(Float, Float, Float, Float) -> Self
+pub fn FRect::as_bytes(Self) -> BytesView
+pub fn FRect::copy(Self) -> Self
 pub fn FRect::h(Self) -> Float
-pub fn FRect::to_bytes(Self) -> Bytes
 pub fn FRect::w(Self) -> Float
 pub fn FRect::x(Self) -> Float
 pub fn FRect::y(Self) -> Float
@@ -1161,6 +1140,114 @@ pub type GPURenderState
 pub fn GPURenderState::is_null(Self) -> Bool
 pub fn GPURenderState::to_pointer(Self) -> Pointer
 
+type KeyboardEvent
+pub fn KeyboardEvent::KeyboardEvent(UInt32, UInt32, UInt64, UInt32, UInt32, Int32, UInt32, UInt32, UInt32, Bool, Bool) -> Self
+pub fn KeyboardEvent::as_bytes(Self) -> BytesView
+pub fn KeyboardEvent::copy(Self) -> Self
+pub fn KeyboardEvent::down(Self) -> Bool
+pub fn KeyboardEvent::key(Self) -> UInt32
+pub fn KeyboardEvent::mod(Self) -> UInt32
+pub fn KeyboardEvent::raw(Self) -> UInt32
+pub fn KeyboardEvent::repeat(Self) -> Bool
+pub fn KeyboardEvent::reserved(Self) -> UInt32
+pub fn KeyboardEvent::scancode(Self) -> Int32
+pub fn KeyboardEvent::set_down(Self, Bool) -> Unit
+pub fn KeyboardEvent::set_key(Self, UInt32) -> Unit
+pub fn KeyboardEvent::set_mod(Self, UInt32) -> Unit
+pub fn KeyboardEvent::set_raw(Self, UInt32) -> Unit
+pub fn KeyboardEvent::set_repeat(Self, Bool) -> Unit
+pub fn KeyboardEvent::set_reserved(Self, UInt32) -> Unit
+pub fn KeyboardEvent::set_scancode(Self, Int32) -> Unit
+pub fn KeyboardEvent::set_timestamp(Self, UInt64) -> Unit
+pub fn KeyboardEvent::set_type(Self, UInt32) -> Unit
+pub fn KeyboardEvent::set_which(Self, UInt32) -> Unit
+pub fn KeyboardEvent::set_window_id(Self, UInt32) -> Unit
+pub fn KeyboardEvent::timestamp(Self) -> UInt64
+pub fn KeyboardEvent::type_(Self) -> UInt32
+pub fn KeyboardEvent::which(Self) -> UInt32
+pub fn KeyboardEvent::window_id(Self) -> UInt32
+
+type MouseButtonEvent
+pub fn MouseButtonEvent::MouseButtonEvent(UInt32, UInt32, UInt64, UInt32, UInt32, Byte, Bool, Byte, Byte, Float, Float) -> Self
+pub fn MouseButtonEvent::as_bytes(Self) -> BytesView
+pub fn MouseButtonEvent::button(Self) -> Byte
+pub fn MouseButtonEvent::clicks(Self) -> Byte
+pub fn MouseButtonEvent::copy(Self) -> Self
+pub fn MouseButtonEvent::down(Self) -> Bool
+pub fn MouseButtonEvent::padding(Self) -> Byte
+pub fn MouseButtonEvent::reserved(Self) -> UInt32
+pub fn MouseButtonEvent::set_button(Self, Byte) -> Unit
+pub fn MouseButtonEvent::set_clicks(Self, Byte) -> Unit
+pub fn MouseButtonEvent::set_down(Self, Bool) -> Unit
+pub fn MouseButtonEvent::set_padding(Self, Byte) -> Unit
+pub fn MouseButtonEvent::set_reserved(Self, UInt32) -> Unit
+pub fn MouseButtonEvent::set_timestamp(Self, UInt64) -> Unit
+pub fn MouseButtonEvent::set_type(Self, UInt32) -> Unit
+pub fn MouseButtonEvent::set_which(Self, UInt32) -> Unit
+pub fn MouseButtonEvent::set_window_id(Self, UInt32) -> Unit
+pub fn MouseButtonEvent::set_x(Self, Float) -> Unit
+pub fn MouseButtonEvent::set_y(Self, Float) -> Unit
+pub fn MouseButtonEvent::timestamp(Self) -> UInt64
+pub fn MouseButtonEvent::type_(Self) -> UInt32
+pub fn MouseButtonEvent::which(Self) -> UInt32
+pub fn MouseButtonEvent::window_id(Self) -> UInt32
+pub fn MouseButtonEvent::x(Self) -> Float
+pub fn MouseButtonEvent::y(Self) -> Float
+
+type MouseMotionEvent
+pub fn MouseMotionEvent::MouseMotionEvent(UInt32, UInt32, UInt64, UInt32, UInt32, UInt32, Float, Float, Float, Float) -> Self
+pub fn MouseMotionEvent::as_bytes(Self) -> BytesView
+pub fn MouseMotionEvent::copy(Self) -> Self
+pub fn MouseMotionEvent::reserved(Self) -> UInt32
+pub fn MouseMotionEvent::set_reserved(Self, UInt32) -> Unit
+pub fn MouseMotionEvent::set_state(Self, UInt32) -> Unit
+pub fn MouseMotionEvent::set_timestamp(Self, UInt64) -> Unit
+pub fn MouseMotionEvent::set_type(Self, UInt32) -> Unit
+pub fn MouseMotionEvent::set_which(Self, UInt32) -> Unit
+pub fn MouseMotionEvent::set_window_id(Self, UInt32) -> Unit
+pub fn MouseMotionEvent::set_x(Self, Float) -> Unit
+pub fn MouseMotionEvent::set_xrel(Self, Float) -> Unit
+pub fn MouseMotionEvent::set_y(Self, Float) -> Unit
+pub fn MouseMotionEvent::set_yrel(Self, Float) -> Unit
+pub fn MouseMotionEvent::state(Self) -> UInt32
+pub fn MouseMotionEvent::timestamp(Self) -> UInt64
+pub fn MouseMotionEvent::type_(Self) -> UInt32
+pub fn MouseMotionEvent::which(Self) -> UInt32
+pub fn MouseMotionEvent::window_id(Self) -> UInt32
+pub fn MouseMotionEvent::x(Self) -> Float
+pub fn MouseMotionEvent::xrel(Self) -> Float
+pub fn MouseMotionEvent::y(Self) -> Float
+pub fn MouseMotionEvent::yrel(Self) -> Float
+
+type MouseWheelEvent
+pub fn MouseWheelEvent::MouseWheelEvent(UInt32, UInt32, UInt64, UInt32, UInt32, Float, Float, UInt32, Float, Float, Int32, Int32) -> Self
+pub fn MouseWheelEvent::as_bytes(Self) -> BytesView
+pub fn MouseWheelEvent::copy(Self) -> Self
+pub fn MouseWheelEvent::direction(Self) -> UInt32
+pub fn MouseWheelEvent::integer_x(Self) -> Int32
+pub fn MouseWheelEvent::integer_y(Self) -> Int32
+pub fn MouseWheelEvent::mouse_x(Self) -> Float
+pub fn MouseWheelEvent::mouse_y(Self) -> Float
+pub fn MouseWheelEvent::reserved(Self) -> UInt32
+pub fn MouseWheelEvent::set_direction(Self, UInt32) -> Unit
+pub fn MouseWheelEvent::set_integer_x(Self, Int32) -> Unit
+pub fn MouseWheelEvent::set_integer_y(Self, Int32) -> Unit
+pub fn MouseWheelEvent::set_mouse_x(Self, Float) -> Unit
+pub fn MouseWheelEvent::set_mouse_y(Self, Float) -> Unit
+pub fn MouseWheelEvent::set_reserved(Self, UInt32) -> Unit
+pub fn MouseWheelEvent::set_timestamp(Self, UInt64) -> Unit
+pub fn MouseWheelEvent::set_type(Self, UInt32) -> Unit
+pub fn MouseWheelEvent::set_which(Self, UInt32) -> Unit
+pub fn MouseWheelEvent::set_window_id(Self, UInt32) -> Unit
+pub fn MouseWheelEvent::set_x(Self, Float) -> Unit
+pub fn MouseWheelEvent::set_y(Self, Float) -> Unit
+pub fn MouseWheelEvent::timestamp(Self) -> UInt64
+pub fn MouseWheelEvent::type_(Self) -> UInt32
+pub fn MouseWheelEvent::which(Self) -> UInt32
+pub fn MouseWheelEvent::window_id(Self) -> UInt32
+pub fn MouseWheelEvent::x(Self) -> Float
+pub fn MouseWheelEvent::y(Self) -> Float
+
 #external
 pub type Pointer
 pub fn Pointer::is_null(Self) -> Bool
@@ -1168,14 +1255,25 @@ pub fn Pointer::null() -> Self
 
 type Rect
 pub fn Rect::Rect(Int32, Int32, Int32, Int32) -> Self
+pub fn Rect::as_bytes(Self) -> BytesView
+pub fn Rect::copy(Self) -> Self
 pub fn Rect::h(Self) -> Int32
-pub fn Rect::to_bytes(Self) -> Bytes
 pub fn Rect::w(Self) -> Int32
 pub fn Rect::x(Self) -> Int32
 pub fn Rect::y(Self) -> Int32
 
 pub type Renderer
 pub fn Renderer::is_null(Self) -> Bool
+
+type TextInputEvent
+pub fn TextInputEvent::TextInputEvent() -> Self
+pub fn TextInputEvent::as_bytes(Self) -> BytesView
+pub fn TextInputEvent::copy(Self) -> Self
+pub fn TextInputEvent::reserved(Self) -> UInt32
+pub fn TextInputEvent::text(Self) -> Bytes
+pub fn TextInputEvent::timestamp(Self) -> UInt64
+pub fn TextInputEvent::type_(Self) -> UInt32
+pub fn TextInputEvent::window_id(Self) -> UInt32
 
 pub type Texture
 pub fn Texture::is_null(Self) -> Bool
@@ -1197,6 +1295,23 @@ pub fn TrayMenu::to_pointer(Self) -> Pointer
 
 pub type Window
 pub fn Window::is_null(Self) -> Bool
+
+type WindowEvent
+pub fn WindowEvent::WindowEvent(UInt32, UInt32, UInt64, UInt32, Int32, Int32) -> Self
+pub fn WindowEvent::as_bytes(Self) -> BytesView
+pub fn WindowEvent::copy(Self) -> Self
+pub fn WindowEvent::data1(Self) -> Int32
+pub fn WindowEvent::data2(Self) -> Int32
+pub fn WindowEvent::reserved(Self) -> UInt32
+pub fn WindowEvent::set_data1(Self, Int32) -> Unit
+pub fn WindowEvent::set_data2(Self, Int32) -> Unit
+pub fn WindowEvent::set_reserved(Self, UInt32) -> Unit
+pub fn WindowEvent::set_timestamp(Self, UInt64) -> Unit
+pub fn WindowEvent::set_type(Self, UInt32) -> Unit
+pub fn WindowEvent::set_window_id(Self, UInt32) -> Unit
+pub fn WindowEvent::timestamp(Self) -> UInt64
+pub fn WindowEvent::type_(Self) -> UInt32
+pub fn WindowEvent::window_id(Self) -> UInt32
 
 // Type aliases
 

@@ -13,7 +13,7 @@ pub fn Cursor::is_null(self : Self) -> Bool {
 }
 
 ///|
-pub const MOUSEWHEEL_NORMAL : UInt = 0
+pub const MOUSEWHEEL_NORMAL : UInt32 = 0
 
 ///|
-pub const MOUSEWHEEL_FLIPPED : UInt = 1
+pub const MOUSEWHEEL_FLIPPED : UInt32 = 1

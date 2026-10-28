@@ -48,8 +48,8 @@ test "event watches deliver ordered resize events and retain their bytes" {
     let first = @sys.add_event_watch(call_watch, fn(bytes) {
       let event = @sys.Event::from_bytes(bytes)
       if event.event_type() == @sys.EVENT_WINDOW_RESIZED &&
-        event.window_window_id() == window_id {
-        observed.push(("first", event.window_data1(), event.window_data2()))
+        event.window().window_id() == window_id {
+        observed.push(("first", event.window().data1(), event.window().data2()))
         retained.push(bytes)
       }
     })
@@ -58,8 +58,10 @@ test "event watches deliver ordered resize events and retain their bytes" {
     let second = @sys.add_event_watch(call_watch, fn(bytes) {
       let event = @sys.Event::from_bytes(bytes)
       if event.event_type() == @sys.EVENT_WINDOW_RESIZED &&
-        event.window_window_id() == window_id {
-        observed.push(("second", event.window_data1(), event.window_data2()))
+        event.window().window_id() == window_id {
+        observed.push(
+          ("second", event.window().data1(), event.window().data2()),
+        )
       }
     })
     assert_false(second.is_null())
@@ -80,7 +82,7 @@ test "event watches deliver ordered resize events and retain their bytes" {
     assert_eq(observed[4], ("second", 190, 95))
     let sizes = retained.map(fn(bytes) {
       let event = @sys.Event::from_bytes(bytes)
-      (event.window_data1(), event.window_data2())
+      (event.window().data1(), event.window().data2())
     })
     assert_eq(sizes, [(180, 90), (170, 85)])
     let event = @sys.Event()
