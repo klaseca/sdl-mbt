@@ -1,5 +1,8 @@
 # SDL bindings for MoonBit
 
+[![Mooncakes Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmooncakes.io%2Fapi%2Fv0%2Fmanifest%2Fklaseca%2Fsdl&query=version&prefix=v&label=sdl&color=d08700)](https://mooncakes.io/docs/klaseca/sdl)
+[![Mooncakes Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmooncakes.io%2Fapi%2Fv0%2Fmanifest%2Fklaseca%2Fsdl-sys&query=version&prefix=v&label=sdl-sys&color=d08700)](https://mooncakes.io/docs/klaseca/sdl-sys)
+
 This repository contains MoonBit bindings for SDL 3. It is organized as a
 workspace with two publishable modules:
 
