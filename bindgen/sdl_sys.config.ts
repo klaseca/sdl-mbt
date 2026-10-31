@@ -25,7 +25,12 @@ export const sdlSysConfig = defineConfig({
   ],
   functions: [
     'SDL_ClickTrayEntry',
-    'SDL_CreateRenderer',
+    {
+      name: 'SDL_CreateRenderer',
+      params: {
+        name: { nullable: true },
+      },
+    },
     'SDL_CreateTexture',
     {
       name: 'SDL_CreateTray',
@@ -88,7 +93,7 @@ export const sdlSysConfig = defineConfig({
       name: 'SDL_InsertTrayEntryAt',
       params: {
         label: {
-          emptyAsNull: true,
+          nullable: true,
         },
       },
     },

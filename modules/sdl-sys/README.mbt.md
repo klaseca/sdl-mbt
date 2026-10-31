@@ -17,6 +17,15 @@ Add the module as a dependency from another MoonBit module:
 moon add klaseca/sdl-sys
 ```
 
+## Optional string parameters
+
+`create_renderer(window, None)` passes `NULL` to SDL, which chooses a rendering
+driver. Use `Some(b"software")` to select a driver explicitly. `Some(b"")` is a
+non-null empty string and is distinct from `None`.
+
+`insert_tray_entry_at(menu, pos, None, 0)` creates a separator. Labels use
+`Some(bytes)`, including `Some(b"")` for an empty label.
+
 ## Application events
 
 `register_events(count)` reserves application event types and returns zero on

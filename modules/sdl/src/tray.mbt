@@ -88,7 +88,11 @@ priv struct Button {
 
 ///|
 impl MenuElement for Button with fn insert(self, menu, pos) {
-  let element = menu.insert_entry(@utf8.encode(self.label), self.flags, pos~)
+  let element = menu.insert_entry(
+    Some(@utf8.encode(self.label)),
+    self.flags,
+    pos~,
+  )
   element.set_on_click(self.on_click)
 }
 
@@ -101,7 +105,11 @@ priv struct Checkbox {
 
 ///|
 impl MenuElement for Checkbox with fn insert(self, menu, pos) {
-  let element = menu.insert_entry(@utf8.encode(self.label), self.flags, pos~)
+  let element = menu.insert_entry(
+    Some(@utf8.encode(self.label)),
+    self.flags,
+    pos~,
+  )
   element.set_on_click(self.on_click)
 }
 
@@ -110,7 +118,7 @@ priv struct Separator {}
 
 ///|
 impl MenuElement for Separator with fn insert(_self, menu, pos) {
-  menu.insert_entry([], 0, pos~) |> ignore
+  menu.insert_entry(None, 0, pos~) |> ignore
 }
 
 ///|
@@ -122,7 +130,7 @@ priv struct Submenu {
 ///|
 impl MenuElement for Submenu with fn insert(self, menu, pos) {
   let entry = menu.insert_entry(
-    @utf8.encode(self.label),
+    Some(@utf8.encode(self.label)),
     TRAYENTRY_SUBMENU,
     pos~,
   )
@@ -207,7 +215,7 @@ fn TrayMenu::insert_menu(
 ///|
 fn TrayMenu::insert_entry(
   self : Self,
-  label : Bytes,
+  label : Bytes?,
   flags : UInt32,
   pos~ : Int32 = -1,
 ) -> TrayEntry raise SdlError {

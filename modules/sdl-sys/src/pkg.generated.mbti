@@ -906,7 +906,7 @@ pub fn click_tray_entry(TrayEntry) -> Unit
 
 pub fn create_properties() -> UInt32
 
-pub fn create_renderer(Window, Bytes) -> Renderer
+pub fn create_renderer(Window, Bytes?) -> Renderer
 
 pub fn create_texture(Renderer, UInt32, UInt32, Int32, Int32) -> Texture
 
@@ -992,7 +992,7 @@ pub fn hide_window(Window) -> Bool
 
 pub fn init_lib(UInt32) -> Bool
 
-pub fn insert_tray_entry_at(TrayMenu, Int32, Bytes, UInt32) -> TrayEntry
+pub fn insert_tray_entry_at(TrayMenu, Int32, Bytes?, UInt32) -> TrayEntry
 
 pub fn lock_texture(Texture, Rect, Bool, @ref.Ref[Pointer], @ref.Ref[Int32]) -> Bool
 

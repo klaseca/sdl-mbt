@@ -73,11 +73,15 @@ fn Rect::to_sys(self : Self) -> @sys.Rect {
 }
 
 ///|
+/// Create a renderer, letting SDL choose the driver when name is omitted.
 pub fn Renderer::Renderer(
   window : Window,
-  name~ : String = "",
+  name? : String,
 ) -> Renderer raise SdlError {
-  let raw = @sys.create_renderer(window.raw(), @utf8.encode(name))
+  let raw = @sys.create_renderer(
+    window.raw(),
+    name.map(value => @utf8.encode(value)),
+  )
   if raw.is_null() {
     raise_last_error("SDL_CreateRenderer")
   }

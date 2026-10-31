@@ -344,7 +344,7 @@ pub const TEXTUREACCESS_TARGET : UInt32 = 2
 
 ///|
 #borrow(window, name)
-pub extern "c" fn create_renderer(window : Window, name : Bytes) -> Renderer = "moonbit_sdl_create_renderer"
+pub extern "c" fn create_renderer(window : Window, name : Bytes?) -> Renderer = "moonbit_sdl_create_renderer"
 
 ///|
 #borrow(renderer, w, h)
