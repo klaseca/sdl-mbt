@@ -115,6 +115,7 @@ pub(all) enum Event {
   WindowExposed(WindowEvent)
   WindowResized(WindowEvent)
   WindowPixelSizeChanged(WindowEvent)
+  WindowDisplayScaleChanged(WindowEvent)
   WindowCloseRequested(WindowEvent)
   Other(UInt32)
 } derive(Eq, @debug.Debug)
@@ -296,6 +297,7 @@ pub fn Tray::update() -> Unit
 type Window
 pub fn Window::Window(title~ : String, width~ : Int32, height~ : Int32, placement? : WindowPlacement, hidden? : Bool, resizable? : Bool, borderless? : Bool, always_on_top? : Bool, high_pixel_density? : Bool, constrain_popup? : Bool, external_graphics_context? : Bool, fullscreen? : Bool, maximized? : Bool, minimized? : Bool, menu? : Bool, modal? : Bool, mouse_grabbed? : Bool, focusable? : Bool, opengl? : Bool, metal? : Bool, vulkan? : Bool, transparent? : Bool, tooltip? : Bool, utility? : Bool, custom_properties? : Array[Property], close_behavior? : WindowCloseBehavior) -> Self raise SdlError
 pub fn Window::destroy(Self) -> Unit
+pub fn Window::display_scale(Self) -> Float raise SdlError
 pub fn Window::flags(Self) -> UInt64
 pub fn Window::hide(Self) -> Unit raise SdlError
 pub fn Window::id(Self) -> UInt32 raise SdlError
@@ -307,6 +309,7 @@ pub fn Window::minimum_size(Self) -> Size raise SdlError
 pub fn Window::mouse_grab(Self) -> Bool
 pub fn Window::on(Self, WindowEventName, (WindowEvent) -> Unit) -> EventListener raise SdlError
 pub fn Window::opacity(Self) -> Float raise SdlError
+pub fn Window::pixel_density(Self) -> Float raise SdlError
 pub fn Window::position(Self) -> Position raise SdlError
 pub fn Window::raise_window(Self) -> Unit raise SdlError
 pub fn Window::raw(Self) -> @sdl-sys.Window
@@ -356,6 +359,7 @@ pub(all) enum WindowEventName {
   Exposed
   Resized
   PixelSizeChanged
+  DisplayScaleChanged
   CloseRequested
 } derive(Eq, @debug.Debug)
 pub fn WindowEventName::equal(Self, Self) -> Bool

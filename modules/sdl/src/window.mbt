@@ -411,6 +411,26 @@ pub fn Window::size_in_pixels(self : Self) -> Size raise SdlError {
 }
 
 ///|
+/// Physical pixels per logical UI unit, including the user's display scaling.
+pub fn Window::display_scale(self : Self) -> Float raise SdlError {
+  let scale = @sys.get_window_display_scale(self.raw)
+  if scale <= 0.0 {
+    raise_last_error("SDL_GetWindowDisplayScale")
+  }
+  scale
+}
+
+///|
+/// Physical pixels per window coordinate. This can differ from display_scale.
+pub fn Window::pixel_density(self : Self) -> Float raise SdlError {
+  let density = @sys.get_window_pixel_density(self.raw)
+  if density <= 0.0 {
+    raise_last_error("SDL_GetWindowPixelDensity")
+  }
+  density
+}
+
+///|
 pub fn Window::set_minimum_size(
   self : Self,
   width~ : Int32,

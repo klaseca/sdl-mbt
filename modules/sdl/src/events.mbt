@@ -76,6 +76,7 @@ pub(all) enum WindowEventName {
   Exposed
   Resized
   PixelSizeChanged
+  DisplayScaleChanged
   CloseRequested
 } derive(Debug, Eq)
 
@@ -97,6 +98,7 @@ pub(all) enum Event {
   WindowExposed(WindowEvent)
   WindowResized(WindowEvent)
   WindowPixelSizeChanged(WindowEvent)
+  WindowDisplayScaleChanged(WindowEvent)
   WindowCloseRequested(WindowEvent)
   Other(UInt32)
 } derive(Debug, Eq)
@@ -158,6 +160,8 @@ fn Event::from_raw(raw : @sys.Event) -> Event {
       WindowResized(WindowEvent::from_raw(raw, Resized))
     @sys.EVENT_WINDOW_PIXEL_SIZE_CHANGED =>
       WindowPixelSizeChanged(WindowEvent::from_raw(raw, PixelSizeChanged))
+    @sys.EVENT_WINDOW_DISPLAY_SCALE_CHANGED =>
+      WindowDisplayScaleChanged(WindowEvent::from_raw(raw, DisplayScaleChanged))
     @sys.EVENT_WINDOW_CLOSE_REQUESTED =>
       WindowCloseRequested(WindowEvent::from_raw(raw, CloseRequested))
     _ => Other(event_type)
@@ -213,7 +217,7 @@ fn WindowEvent::from_raw(
   let size = match name {
     Resized | PixelSizeChanged =>
       Some(Size::{ width: window.data1(), height: window.data2(), })
-    Exposed | CloseRequested => None
+    Exposed | DisplayScaleChanged | CloseRequested => None
   }
   { window_id: window.window_id(), name, size, }
 }
@@ -234,6 +238,8 @@ fn WindowEventName::matches(
     WindowExposed(event) if self == Exposed => Some(event)
     WindowResized(event) if self == Resized => Some(event)
     WindowPixelSizeChanged(event) if self == PixelSizeChanged => Some(event)
+    WindowDisplayScaleChanged(event) if self == DisplayScaleChanged =>
+      Some(event)
     WindowCloseRequested(event) if self == CloseRequested => Some(event)
     _ => None
   }

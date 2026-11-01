@@ -960,6 +960,8 @@ pub fn get_tray_menu(Tray) -> TrayMenu
 
 pub fn get_tray_submenu(TrayEntry) -> TrayMenu
 
+pub fn get_window_display_scale(Window) -> Float
+
 pub fn get_window_flags(Window) -> UInt64
 
 pub fn get_window_from_id(UInt32) -> Window
@@ -975,6 +977,8 @@ pub fn get_window_minimum_size(Window, @ref.Ref[Int32], @ref.Ref[Int32]) -> Bool
 pub fn get_window_mouse_grab(Window) -> Bool
 
 pub fn get_window_opacity(Window) -> Float
+
+pub fn get_window_pixel_density(Window) -> Float
 
 pub fn get_window_position(Window, @ref.Ref[Int32], @ref.Ref[Int32]) -> Bool
 

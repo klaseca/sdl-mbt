@@ -5,4 +5,5 @@ import {
 
 import {
   "moonbitlang/core/env",
+  "klaseca/sdl-sys" @sys,
 } for "test"

@@ -361,6 +361,14 @@ pub const SYSTEM_THEME_DARK : Int32 = 2
 pub extern "c" fn get_system_theme() -> Int32 = "moonbit_sdl_get_system_theme"
 
 ///|
+#borrow(window)
+pub extern "c" fn get_window_pixel_density(window : Window) -> Float = "moonbit_sdl_get_window_pixel_density"
+
+///|
+#borrow(window)
+pub extern "c" fn get_window_display_scale(window : Window) -> Float = "moonbit_sdl_get_window_display_scale"
+
+///|
 #borrow(title)
 pub extern "c" fn create_window(title : Bytes, w : Int32, h : Int32, flags : UInt64) -> Window = "moonbit_sdl_create_window"
 

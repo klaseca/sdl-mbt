@@ -71,6 +71,16 @@ SDL_SystemTheme moonbit_sdl_get_system_theme(void) {
 }
 
 MOONBIT_FFI_EXPORT
+float moonbit_sdl_get_window_pixel_density(void * window) {
+  return SDL_GetWindowPixelDensity(moonbit_sdl_window_ptr(window));
+}
+
+MOONBIT_FFI_EXPORT
+float moonbit_sdl_get_window_display_scale(void * window) {
+  return SDL_GetWindowDisplayScale(moonbit_sdl_window_ptr(window));
+}
+
+MOONBIT_FFI_EXPORT
 void * moonbit_sdl_create_window(moonbit_bytes_t title, int32_t w, int32_t h, uint64_t flags) {
   return moonbit_sdl_window_make_owned(SDL_CreateWindow((const char *)title, w, h, flags));
 }
