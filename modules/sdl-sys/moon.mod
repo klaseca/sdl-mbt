@@ -14,6 +14,8 @@ description = "Low-level MoonBit bindings for SDL C API"
 
 preferred_target = "native"
 
+supported_targets = "native"
+
 source = "src"
 
 options(

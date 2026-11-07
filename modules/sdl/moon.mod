@@ -18,4 +18,6 @@ import {
 
 preferred_target = "native"
 
+supported_targets = "native"
+
 source = "src"
