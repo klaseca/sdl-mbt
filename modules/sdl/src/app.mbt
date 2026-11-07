@@ -1,9 +1,10 @@
 ///|
+#derive(Debug, Eq)
 pub(all) enum ControlFlow {
   Poll
   Wait(Int32)
   Exit
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend ControlFlow with Debug::{to_repr}

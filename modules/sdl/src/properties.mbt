@@ -4,12 +4,13 @@ pub(all) struct Properties {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum Property {
   StringProperty(name~ : Bytes, value~ : String)
   NumberProperty(name~ : Bytes, value~ : Int64)
   FloatProperty(name~ : Bytes, value~ : Float)
   BooleanProperty(name~ : Bytes, value~ : Bool)
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend Property with Debug::{to_repr}

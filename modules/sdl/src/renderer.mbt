@@ -4,12 +4,13 @@ struct Renderer {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct Color {
   r : Byte
   g : Byte
   b : Byte
   a : Byte
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend Color with Debug::{to_repr}
@@ -28,12 +29,13 @@ pub fn Color::rgba(r~ : Byte, g~ : Byte, b~ : Byte, a~ : Byte) -> Color {
 }
 
 ///|
+#derive(Debug)
 pub(all) struct FRect {
   x : Float
   y : Float
   w : Float
   h : Float
-} derive(Debug)
+}
 
 ///|
 pub extend FRect with Debug::{to_repr}
@@ -49,12 +51,13 @@ fn FRect::to_sys(self : Self) -> @sys.FRect {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct Rect {
   x : Int32
   y : Int32
   w : Int32
   h : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend Rect with Debug::{to_repr}

@@ -1,7 +1,8 @@
 ///|
+#derive(Debug, Eq)
 pub(all) suberror SdlError {
   SdlError(String)
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend SdlError with Debug::{to_repr}

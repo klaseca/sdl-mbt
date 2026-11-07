@@ -171,8 +171,11 @@ Extern declarations in MoonBit refer to those C symbols directly.
 
 SDL value structs are represented as byte-backed MoonBit structs. For example:
 
-```mbt
+```mbt nocheck
+///|
 let rect = @sdl_sys.Rect(0, 0, 640, 480)
+
+///|
 let raw : BytesView = rect.as_bytes()
 ```
 
@@ -183,7 +186,7 @@ native pointer fields remain shallow copies.
 
 `Event` is also byte-backed and exposes generated field accessors:
 
-```mbt
+```mbt nocheck
 let event = @sdl_sys.Event()
 if @sdl_sys.poll_event(event) {
   let event_type = event.event_type()
@@ -196,7 +199,7 @@ handles have native finalizers, while APIs returning unmanaged SDL pointers are
 configured explicitly. Generated destroy functions remain available for
 deterministic cleanup with `defer`.
 
-```mbt
+```mbt nocheck
 let window = @sdl_sys.create_window(@utf8.encode("Example"), 640, 480, 0)
 if window.is_null() {
   // Read @sdl_sys.get_error() or let the high-level module handle errors.

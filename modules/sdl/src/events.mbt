@@ -1,4 +1,5 @@
 ///|
+#derive(Debug, Eq)
 pub(all) struct KeyboardEvent {
   window_id : UInt32
   keyboard_id : UInt32
@@ -6,7 +7,7 @@ pub(all) struct KeyboardEvent {
   keycode : UInt32
   modifiers : UInt32
   repeat : Bool
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend KeyboardEvent with Debug::{to_repr}
@@ -15,6 +16,7 @@ pub extend KeyboardEvent with Debug::{to_repr}
 pub extend KeyboardEvent with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct MouseMotionEvent {
   window_id : UInt32
   mouse_id : UInt32
@@ -23,7 +25,7 @@ pub(all) struct MouseMotionEvent {
   y : Float
   xrel : Float
   yrel : Float
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend MouseMotionEvent with Debug::{to_repr}
@@ -32,6 +34,7 @@ pub extend MouseMotionEvent with Debug::{to_repr}
 pub extend MouseMotionEvent with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct MouseButtonEvent {
   window_id : UInt32
   mouse_id : UInt32
@@ -39,7 +42,7 @@ pub(all) struct MouseButtonEvent {
   clicks : Byte
   x : Float
   y : Float
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend MouseButtonEvent with Debug::{to_repr}
@@ -48,11 +51,12 @@ pub extend MouseButtonEvent with Debug::{to_repr}
 pub extend MouseButtonEvent with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct WindowEvent {
   window_id : UInt32
   name : WindowEventName
   size : Size?
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend WindowEvent with Debug::{to_repr}
@@ -61,9 +65,10 @@ pub extend WindowEvent with Debug::{to_repr}
 pub extend WindowEvent with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct TextInputEvent {
   text : String
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend TextInputEvent with Debug::{to_repr}
@@ -72,13 +77,14 @@ pub extend TextInputEvent with Debug::{to_repr}
 pub extend TextInputEvent with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum WindowEventName {
   Exposed
   Resized
   PixelSizeChanged
   DisplayScaleChanged
   CloseRequested
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend WindowEventName with Debug::{to_repr}
@@ -87,6 +93,7 @@ pub extend WindowEventName with Debug::{to_repr}
 pub extend WindowEventName with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum Event {
   Quit
   KeyDown(KeyboardEvent)
@@ -101,7 +108,7 @@ pub(all) enum Event {
   WindowDisplayScaleChanged(WindowEvent)
   WindowCloseRequested(WindowEvent)
   Other(UInt32)
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend Event with Debug::{to_repr}

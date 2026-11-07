@@ -25,11 +25,13 @@ needed when changing the generated `sdl-sys` API in this repository.
 
 `App` owns SDL initialization and shutdown for simple applications.
 
-```mbt
+```mbt nocheck
+///|
 fn main {
   try! @sdl.App().run(setup)
 }
 
+///|
 fn setup(app : @sdl.App) -> Unit raise @sdl.SdlError {
   let window = @sdl.Window(
     title="MoonBit SDL",
@@ -53,7 +55,7 @@ fn setup(app : @sdl.App) -> Unit raise @sdl.SdlError {
 `ControlFlow` controls how the loop waits between iterations:
 
 - `Poll`: continue immediately.
-- `Wait(Int)`: wait for an SDL event or timeout in milliseconds.
+- `Wait(Int32)`: wait for an SDL event or timeout in milliseconds.
 - `Exit`: stop the loop.
 
 Call `app.exit()` from a callback or loop body to stop the loop.
@@ -62,7 +64,7 @@ Call `app.exit()` from a callback or loop body to stop the loop.
 
 Create a window:
 
-```mbt
+```mbt nocheck
 let window = @sdl.Window(
   title="MoonBit SDL",
   width=800,
@@ -82,7 +84,7 @@ Useful methods include:
 
 Use `WindowPlacement` for SDL-managed placement modes:
 
-```mbt
+```mbt nocheck
 window.set_placement(Centered)
 window.set_placement(CenteredOnDisplay(1))
 ```
@@ -91,7 +93,7 @@ window.set_placement(CenteredOnDisplay(1))
 
 For low-level polling, use `poll_event()`:
 
-```mbt
+```mbt nocheck
 match @sdl.poll_event() {
   Some(Quit) => ()
   Some(WindowCloseRequested(event)) => println("close requested: \{event.window_id}")
@@ -103,7 +105,8 @@ match @sdl.poll_event() {
 windows close the application by default. Tray-style windows can opt into hiding
 on close:
 
-```mbt
+```mbt nocheck
+///|
 let window = @sdl.Window(
   title="MoonBit SDL",
   width=800,
@@ -114,7 +117,7 @@ let window = @sdl.Window(
 
 For window-specific event callbacks, use:
 
-```mbt
+```mbt nocheck
 let redraw = window.on(Exposed, _event => {
   renderer.clear()
   renderer.present()
@@ -125,7 +128,7 @@ defer redraw.dispose()
 `WindowEvent` contains the `window_id`, the event `name`, and `size` for events
 that carry window dimensions:
 
-```mbt
+```mbt nocheck
 let resized = window.on(Resized, event => {
   if event.size is Some(size) {
     println("window size: \{size.width}x\{size.height}")
@@ -152,7 +155,7 @@ Currently supported window event names are:
 
 Create a renderer from a window:
 
-```mbt
+```mbt nocheck
 let renderer = @sdl.Renderer(window)
 defer renderer.destroy()
 
@@ -165,7 +168,7 @@ renderer.present()
 Textures are available through `Renderer::create_texture` or
 `Texture::Texture`:
 
-```mbt
+```mbt nocheck
 let texture = renderer.create_texture(
   width=256,
   height=256,
@@ -181,7 +184,7 @@ Use `Texture::update` for direct pixel uploads.
 
 Tray menus are built declaratively with `Menu`:
 
-```mbt
+```mbt nocheck
 let tray = @sdl.Tray(
   tooltip="MoonBit SDL",
   menu=@sdl.Menu()
@@ -207,7 +210,7 @@ periodically.
 
 ## Clipboard
 
-```mbt
+```mbt nocheck
 @sdl.Clipboard::set_text("Copied from MoonBit")
 let text = @sdl.Clipboard::text()
 ```
@@ -216,7 +219,8 @@ let text = @sdl.Clipboard::text()
 
 Most high-level operations that can fail raise `SdlError`.
 
-```mbt
+```mbt nocheck
+///|
 fn open_window() -> Unit raise @sdl.SdlError {
   let window = @sdl.Window(title="Example", width=640, height=480)
   defer window.destroy()

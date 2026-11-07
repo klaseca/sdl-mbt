@@ -2,11 +2,12 @@
 const PROP_WINDOW_CLOSE_BEHAVIOR : Bytes = b"moonbit.sdl.window.close_behavior"
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum WindowCloseBehavior {
   ExitApp
   Hide
   Ignore
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend WindowCloseBehavior with Debug::{to_repr}
@@ -87,10 +88,11 @@ fn hide_window_by_id(window_id : UInt32) -> Bool {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct Size {
   width : Int32
   height : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend Size with Debug::{to_repr}
@@ -99,10 +101,11 @@ pub extend Size with Debug::{to_repr}
 pub extend Size with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct Position {
   x : Int32
   y : Int32
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend Position with Debug::{to_repr}
@@ -111,13 +114,14 @@ pub extend Position with Debug::{to_repr}
 pub extend Position with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum WindowPlacement {
   Positioned(Position)
   Centered
   CenteredOnDisplay(UInt32)
   Undefined
   UndefinedOnDisplay(UInt32)
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend WindowPlacement with Debug::{to_repr}

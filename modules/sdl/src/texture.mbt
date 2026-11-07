@@ -5,10 +5,11 @@ struct Texture {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) struct FSize {
   width : Float
   height : Float
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend FSize with Debug::{to_repr}
@@ -17,12 +18,13 @@ pub extend FSize with Debug::{to_repr}
 pub extend FSize with Eq::{not_equal, equal}
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum PixelFormat {
   Rgba8888
   Abgr8888
   Bgra8888
   Bgra32
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend PixelFormat with Debug::{to_repr}
@@ -42,11 +44,12 @@ fn PixelFormat::to_sys(self : Self) -> UInt32 {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum TextureAccess {
   Static
   Streaming
   Target
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend TextureAccess with Debug::{to_repr}
@@ -64,6 +67,7 @@ fn TextureAccess::to_sys(self : Self) -> UInt32 {
 }
 
 ///|
+#derive(Debug, Eq)
 pub(all) enum BlendMode {
   NoBlend
   Blend
@@ -72,7 +76,7 @@ pub(all) enum BlendMode {
   AddPremultiplied
   Mod
   Mul
-} derive(Debug, Eq)
+}
 
 ///|
 pub extend BlendMode with Debug::{to_repr}

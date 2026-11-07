@@ -15,6 +15,7 @@ texture APIs that are already present.
 
 ## Requirements
 
+- MoonBit compiler version recorded in [`.moonbit-version`](.moonbit-version).
 - Node.js, used by the prebuild script and binding generator. The supported
   version is defined in `package.json`.
 - A shared SDL 3 development package containing matching headers and link
