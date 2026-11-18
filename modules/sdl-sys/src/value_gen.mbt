@@ -24,7 +24,7 @@ impl NativeWord for UInt32 with fn from_u32(value) {
 
 ///|
 impl NativeWord for UInt64 with fn from_i32(value) {
-  Int64::from_int(value).reinterpret_as_uint64()
+  value.to_int64().reinterpret_as_uint64()
 }
 
 ///|

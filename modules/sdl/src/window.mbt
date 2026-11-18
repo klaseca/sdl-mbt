@@ -206,22 +206,22 @@ pub fn Window::Window(
   )
   properties.set_number(
     name=@sys.PROP_WINDOW_CREATE_WIDTH_NUMBER,
-    value=Some(Int64::from_int(width)),
+    value=Some(width.to_int64()),
   )
   properties.set_number(
     name=@sys.PROP_WINDOW_CREATE_HEIGHT_NUMBER,
-    value=Some(Int64::from_int(height)),
+    value=Some(height.to_int64()),
   )
   if placement is Some(placement) {
     let position = placement.to_position()
 
     properties.set_number(
       name=@sys.PROP_WINDOW_CREATE_X_NUMBER,
-      value=Some(Int64::from_int(position.x)),
+      value=Some(position.x.to_int64()),
     )
     properties.set_number(
       name=@sys.PROP_WINDOW_CREATE_Y_NUMBER,
-      value=Some(Int64::from_int(position.y)),
+      value=Some(position.y.to_int64()),
     )
   }
   properties.set_boolean(

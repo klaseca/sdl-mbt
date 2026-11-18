@@ -84,12 +84,12 @@ pub fn WindowEvent::set_window_id(self : Self, value : UInt32) -> Unit {
 
 ///|
 pub fn WindowEvent::set_data1(self : Self, value : Int32) -> Unit {
-  value_write_bits(self.bytes, self.offset + windowevent_layout[13], windowevent_layout[14], Int64::from_int(value).reinterpret_as_uint64())
+  value_write_bits(self.bytes, self.offset + windowevent_layout[13], windowevent_layout[14], value.to_int64().reinterpret_as_uint64())
 }
 
 ///|
 pub fn WindowEvent::set_data2(self : Self, value : Int32) -> Unit {
-  value_write_bits(self.bytes, self.offset + windowevent_layout[16], windowevent_layout[17], Int64::from_int(value).reinterpret_as_uint64())
+  value_write_bits(self.bytes, self.offset + windowevent_layout[16], windowevent_layout[17], value.to_int64().reinterpret_as_uint64())
 }
 
 ///|
@@ -206,7 +206,7 @@ pub fn KeyboardEvent::set_which(self : Self, value : UInt32) -> Unit {
 
 ///|
 pub fn KeyboardEvent::set_scancode(self : Self, value : Int32) -> Unit {
-  value_write_bits(self.bytes, self.offset + keyboardevent_layout[16], keyboardevent_layout[17], Int64::from_int(value).reinterpret_as_uint64())
+  value_write_bits(self.bytes, self.offset + keyboardevent_layout[16], keyboardevent_layout[17], value.to_int64().reinterpret_as_uint64())
 }
 
 ///|
@@ -709,12 +709,12 @@ pub fn MouseWheelEvent::set_mouse_y(self : Self, value : Float) -> Unit {
 
 ///|
 pub fn MouseWheelEvent::set_integer_x(self : Self, value : Int32) -> Unit {
-  value_write_bits(self.bytes, self.offset + mousewheelevent_layout[31], mousewheelevent_layout[32], Int64::from_int(value).reinterpret_as_uint64())
+  value_write_bits(self.bytes, self.offset + mousewheelevent_layout[31], mousewheelevent_layout[32], value.to_int64().reinterpret_as_uint64())
 }
 
 ///|
 pub fn MouseWheelEvent::set_integer_y(self : Self, value : Int32) -> Unit {
-  value_write_bits(self.bytes, self.offset + mousewheelevent_layout[34], mousewheelevent_layout[35], Int64::from_int(value).reinterpret_as_uint64())
+  value_write_bits(self.bytes, self.offset + mousewheelevent_layout[34], mousewheelevent_layout[35], value.to_int64().reinterpret_as_uint64())
 }
 
 ///|
