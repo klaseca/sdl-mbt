@@ -15,6 +15,13 @@ texture APIs that are already present.
 
 ## Requirements
 
+For OpenGL presentation, create a `Window(opengl=true, ...)` and an owned
+`GlContext(window)`. Set context attributes through `sdl-sys` before creating the
+window. `make_current()`, `set_swap_interval()` and `swap()` operate on the
+creating UI thread. Release graphics resources first, then explicitly
+`context.destroy()` before destroying the window. OpenGL contexts are manually
+owned and do not use a GC finalizer.
+
 - MoonBit compiler version recorded in [`.moonbit-version`](.moonbit-version).
 - Node.js, used by the prebuild script and binding generator. The supported
   version is defined in `package.json`.

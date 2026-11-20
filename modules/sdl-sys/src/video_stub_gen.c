@@ -274,3 +274,46 @@ MOONBIT_FFI_EXPORT
 int32_t moonbit_sdl_show_window_system_menu(void * window, int32_t x, int32_t y) {
   return SDL_ShowWindowSystemMenu(moonbit_sdl_window_ptr(window), x, y);
 }
+
+MOONBIT_FFI_EXPORT
+void moonbit_sdl_gl_reset_attributes(void) {
+  SDL_GL_ResetAttributes();
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_gl_set_attribute(SDL_GLAttr attr, int32_t value) {
+  return SDL_GL_SetAttribute(attr, value);
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_gl_get_attribute(SDL_GLAttr attr, int32_t * value) {
+  int value_value = 0;
+  int32_t result = SDL_GL_GetAttribute(attr, &value_value);
+  if (value != NULL) *value = value_value;
+  return result;
+}
+
+MOONBIT_FFI_EXPORT
+SDL_GLContext moonbit_sdl_gl_create_context(void * window) {
+  return SDL_GL_CreateContext(moonbit_sdl_window_ptr(window));
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_gl_make_current(void * window, SDL_GLContext context) {
+  return SDL_GL_MakeCurrent(moonbit_sdl_window_ptr(window), context);
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_gl_set_swap_interval(int32_t interval) {
+  return SDL_GL_SetSwapInterval(interval);
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_gl_swap_window(void * window) {
+  return SDL_GL_SwapWindow(moonbit_sdl_window_ptr(window));
+}
+
+MOONBIT_FFI_EXPORT
+int32_t moonbit_sdl_gl_destroy_context(SDL_GLContext context) {
+  return SDL_GL_DestroyContext(context);
+}

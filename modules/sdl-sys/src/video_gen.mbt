@@ -25,6 +25,18 @@ pub fn Window::is_null(self : Self) -> Bool {
 }
 
 ///|
+#external
+pub type GLContext
+
+///|
+pub fn GLContext::to_pointer(self : Self) -> Pointer = "%identity"
+
+///|
+pub fn GLContext::is_null(self : Self) -> Bool {
+  self.to_pointer().is_null()
+}
+
+///|
 pub const PROP_GLOBAL_VIDEO_WAYLAND_WL_DISPLAY_POINTER : Bytes = b"SDL.video.wayland.wl_display"
 
 ///|
@@ -104,6 +116,39 @@ pub const WINDOW_TRANSPARENT : UInt64 = 0x0000000040000000
 
 ///|
 pub const WINDOW_NOT_FOCUSABLE : UInt64 = 0x0000000080000000
+
+///|
+pub const GL_CONTEXT_PROFILE_CORE : Int32 = 0x0001
+
+///|
+pub const GL_CONTEXT_PROFILE_COMPATIBILITY : Int32 = 0x0002
+
+///|
+pub const GL_CONTEXT_PROFILE_ES : Int32 = 0x0004
+
+///|
+pub const GL_CONTEXT_DEBUG_FLAG : Int32 = 0x0001
+
+///|
+pub const GL_CONTEXT_FORWARD_COMPATIBLE_FLAG : Int32 = 0x0002
+
+///|
+pub const GL_CONTEXT_ROBUST_ACCESS_FLAG : Int32 = 0x0004
+
+///|
+pub const GL_CONTEXT_RESET_ISOLATION_FLAG : Int32 = 0x0008
+
+///|
+pub const GL_CONTEXT_RELEASE_BEHAVIOR_NONE : Int32 = 0x0000
+
+///|
+pub const GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH : Int32 = 0x0001
+
+///|
+pub const GL_CONTEXT_RESET_NO_NOTIFICATION : Int32 = 0x0000
+
+///|
+pub const GL_CONTEXT_RESET_LOSE_CONTEXT : Int32 = 0x0001
 
 ///|
 pub const PROP_DISPLAY_HDR_ENABLED_BOOLEAN : Bytes = b"SDL.display.HDR_enabled"
@@ -358,6 +403,90 @@ pub const SYSTEM_THEME_LIGHT : Int32 = 1
 pub const SYSTEM_THEME_DARK : Int32 = 2
 
 ///|
+pub const GL_RED_SIZE : Int32 = 0
+
+///|
+pub const GL_GREEN_SIZE : Int32 = 1
+
+///|
+pub const GL_BLUE_SIZE : Int32 = 2
+
+///|
+pub const GL_ALPHA_SIZE : Int32 = 3
+
+///|
+pub const GL_BUFFER_SIZE : Int32 = 4
+
+///|
+pub const GL_DOUBLEBUFFER : Int32 = 5
+
+///|
+pub const GL_DEPTH_SIZE : Int32 = 6
+
+///|
+pub const GL_STENCIL_SIZE : Int32 = 7
+
+///|
+pub const GL_ACCUM_RED_SIZE : Int32 = 8
+
+///|
+pub const GL_ACCUM_GREEN_SIZE : Int32 = 9
+
+///|
+pub const GL_ACCUM_BLUE_SIZE : Int32 = 10
+
+///|
+pub const GL_ACCUM_ALPHA_SIZE : Int32 = 11
+
+///|
+pub const GL_STEREO : Int32 = 12
+
+///|
+pub const GL_MULTISAMPLEBUFFERS : Int32 = 13
+
+///|
+pub const GL_MULTISAMPLESAMPLES : Int32 = 14
+
+///|
+pub const GL_ACCELERATED_VISUAL : Int32 = 15
+
+///|
+pub const GL_RETAINED_BACKING : Int32 = 16
+
+///|
+pub const GL_CONTEXT_MAJOR_VERSION : Int32 = 17
+
+///|
+pub const GL_CONTEXT_MINOR_VERSION : Int32 = 18
+
+///|
+pub const GL_CONTEXT_FLAGS : Int32 = 19
+
+///|
+pub const GL_CONTEXT_PROFILE_MASK : Int32 = 20
+
+///|
+pub const GL_SHARE_WITH_CURRENT_CONTEXT : Int32 = 21
+
+///|
+pub const GL_FRAMEBUFFER_SRGB_CAPABLE : Int32 = 22
+
+///|
+pub const GL_CONTEXT_RELEASE_BEHAVIOR : Int32 = 23
+
+///|
+pub const GL_CONTEXT_RESET_NOTIFICATION : Int32 = 24
+
+///|
+pub const GL_CONTEXT_NO_ERROR : Int32 = 25
+
+///|
+pub const GL_FLOATBUFFERS : Int32 = 26
+
+///|
+pub const GL_EGL_PLATFORM : Int32 = 27
+
+///|
 pub extern "c" fn get_system_theme() -> Int32 = "moonbit_sdl_get_system_theme"
 
 ///|
@@ -505,3 +634,31 @@ pub extern "c" fn show_window_system_menu(window : Window, x : Int32, y : Int32)
 ///|
 #borrow(window)
 pub extern "c" fn destroy_window(window : Window) = "moonbit_sdl_destroy_window"
+
+///|
+pub extern "c" fn gl_reset_attributes() = "moonbit_sdl_gl_reset_attributes"
+
+///|
+pub extern "c" fn gl_set_attribute(attr : Int32, value : Int32) -> Bool = "moonbit_sdl_gl_set_attribute"
+
+///|
+#borrow(value)
+pub extern "c" fn gl_get_attribute(attr : Int32, value : Ref[Int32]) -> Bool = "moonbit_sdl_gl_get_attribute"
+
+///|
+#borrow(window)
+pub extern "c" fn gl_create_context(window : Window) -> GLContext = "moonbit_sdl_gl_create_context"
+
+///|
+#borrow(window)
+pub extern "c" fn gl_make_current(window : Window, context : GLContext) -> Bool = "moonbit_sdl_gl_make_current"
+
+///|
+pub extern "c" fn gl_set_swap_interval(interval : Int32) -> Bool = "moonbit_sdl_gl_set_swap_interval"
+
+///|
+#borrow(window)
+pub extern "c" fn gl_swap_window(window : Window) -> Bool = "moonbit_sdl_gl_swap_window"
+
+///|
+pub extern "c" fn gl_destroy_context(context : GLContext) -> Bool = "moonbit_sdl_gl_destroy_context"

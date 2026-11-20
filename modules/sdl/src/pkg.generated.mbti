@@ -150,6 +150,15 @@ pub fn FSize::equal(Self, Self) -> Bool
 pub fn FSize::not_equal(Self, Self) -> Bool
 pub fn FSize::to_repr(Self) -> @debug.Repr
 
+pub struct GlContext {
+  // private fields
+}
+pub fn GlContext::GlContext(Window) -> Self raise SdlError
+pub fn GlContext::destroy(Self) -> Unit raise SdlError
+pub fn GlContext::make_current(Self) -> Unit raise SdlError
+pub fn GlContext::set_swap_interval(Self, Int32) -> Unit raise SdlError
+pub fn GlContext::swap(Self) -> Unit raise SdlError
+
 #derive(Eq, @debug.Debug)
 pub(all) struct KeyboardEvent {
   window_id : UInt32
