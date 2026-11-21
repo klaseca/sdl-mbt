@@ -1022,6 +1022,8 @@ pub fn get_float_property(UInt32, Bytes, Float) -> Float
 
 pub fn get_number_property(UInt32, Bytes, Int64) -> Int64
 
+pub fn get_pointer_property(UInt32, Bytes, Pointer) -> Pointer
+
 pub fn get_string_property(UInt32, Bytes, Bytes) -> Bytes
 
 pub fn get_system_theme() -> Int32

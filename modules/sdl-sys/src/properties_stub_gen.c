@@ -32,6 +32,11 @@ int32_t moonbit_sdl_set_boolean_property(uint32_t props, moonbit_bytes_t name, i
 }
 
 MOONBIT_FFI_EXPORT
+void * moonbit_sdl_get_pointer_property(uint32_t props, moonbit_bytes_t name, void * default_value) {
+  return SDL_GetPointerProperty(props, (const char *)name, default_value);
+}
+
+MOONBIT_FFI_EXPORT
 moonbit_bytes_t moonbit_sdl_get_string_property(uint32_t props, moonbit_bytes_t name, moonbit_bytes_t default_value) {
   return moonbit_cstring_to_bytes_sdl(SDL_GetStringProperty(props, (const char *)name, (const char *)default_value));
 }

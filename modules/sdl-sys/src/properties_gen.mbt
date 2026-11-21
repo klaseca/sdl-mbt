@@ -23,6 +23,10 @@ pub extern "c" fn set_float_property(props : UInt32, name : Bytes, value : Float
 pub extern "c" fn set_boolean_property(props : UInt32, name : Bytes, value : Bool) -> Bool = "moonbit_sdl_set_boolean_property"
 
 ///|
+#borrow(name)
+pub extern "c" fn get_pointer_property(props : UInt32, name : Bytes, default_value : Pointer) -> Pointer = "moonbit_sdl_get_pointer_property"
+
+///|
 #borrow(name, default_value)
 pub extern "c" fn get_string_property(props : UInt32, name : Bytes, default_value : Bytes) -> Bytes = "moonbit_sdl_get_string_property"
 

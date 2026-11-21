@@ -65,6 +65,12 @@ export const sdlSysConfig = defineConfig({
     'SDL_SetFloatProperty',
     'SDL_GetNumberProperty',
     'SDL_SetNumberProperty',
+    {
+      name: 'SDL_GetPointerProperty',
+      params: {
+        default_value: { passing: 'pointer' },
+      },
+    },
     'SDL_GetStringProperty',
     'SDL_SetStringProperty',
     'SDL_GetError',
