@@ -276,6 +276,16 @@ int32_t moonbit_sdl_show_window_system_menu(void * window, int32_t x, int32_t y)
 }
 
 MOONBIT_FFI_EXPORT
+SDL_FunctionPointer moonbit_sdl_gl_get_proc_address(moonbit_bytes_t proc) {
+  return SDL_GL_GetProcAddress((const char *)proc);
+}
+
+MOONBIT_FFI_EXPORT
+SDL_FunctionPointer moonbit_sdl_egl_get_proc_address(moonbit_bytes_t proc) {
+  return SDL_EGL_GetProcAddress((const char *)proc);
+}
+
+MOONBIT_FFI_EXPORT
 void moonbit_sdl_gl_reset_attributes(void) {
   SDL_GL_ResetAttributes();
 }

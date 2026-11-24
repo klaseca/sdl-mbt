@@ -55,6 +55,8 @@ export const sdlSysConfig = defineConfig({
     'SDL_GL_DestroyContext',
     'SDL_GL_SetAttribute',
     'SDL_GL_GetAttribute',
+    'SDL_GL_GetProcAddress',
+    'SDL_EGL_GetProcAddress',
     'SDL_GL_MakeCurrent',
     'SDL_GL_SetSwapInterval',
     'SDL_GL_SwapWindow',

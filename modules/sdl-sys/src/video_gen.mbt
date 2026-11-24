@@ -636,6 +636,14 @@ pub extern "c" fn show_window_system_menu(window : Window, x : Int32, y : Int32)
 pub extern "c" fn destroy_window(window : Window) = "moonbit_sdl_destroy_window"
 
 ///|
+#borrow(proc)
+pub extern "c" fn gl_get_proc_address(proc : Bytes) -> FuncRef[() -> Unit] = "moonbit_sdl_gl_get_proc_address"
+
+///|
+#borrow(proc)
+pub extern "c" fn egl_get_proc_address(proc : Bytes) -> FuncRef[() -> Unit] = "moonbit_sdl_egl_get_proc_address"
+
+///|
 pub extern "c" fn gl_reset_attributes() = "moonbit_sdl_gl_reset_attributes"
 
 ///|

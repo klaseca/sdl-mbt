@@ -26,6 +26,14 @@ non-null empty string and is distinct from `None`.
 `insert_tray_entry_at(menu, pos, None, 0)` creates a separator. Labels use
 `Some(bytes)`, including `Some(b"")` for an empty label.
 
+## OpenGL function lookup
+
+`gl_get_proc_address(b"glBindFramebuffer")` looks up an OpenGL function for
+the current context. `egl_get_proc_address(b"eglQueryString")` looks up a
+function in the loaded EGL library. Both return SDL's native function pointer
+as `FuncRef[() -> Unit]` and can return a null address. Use the function's
+actual native signature when invoking the address through FFI.
+
 ## Application events
 
 `register_events(count)` reserves application event types and returns zero on
