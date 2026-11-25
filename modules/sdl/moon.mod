@@ -13,7 +13,7 @@ keywords = [ "sdl" ]
 description = "MoonBit bindings for SDL"
 
 import {
-  "klaseca/sdl-sys@0.4.1",
+  "klaseca/sdl-sys@0.4.2",
 }
 
 preferred_target = "native"
